@@ -1,16 +1,17 @@
-# METHODOLOGY — Synthetic Reproduction of the ContAI Classification Pipeline
+# METHODOLOGY — Synthetic Reproduction of the ADS-Cascade Classification Pipeline
 
-This is the `research` branch of a production accounting-classification project
-(D406 Romanian fiscal invoices → GL account classification, extended to receipt
-classification). `main` holds the real, confidential production pipeline and
-data. This branch holds the **same methodology** — the same unmodified scripts,
-the same architecture decisions — running against **entirely synthetic data**,
-so the design can be published and independently inspected without exposing
-any client's identity, invoices, or receipts.
+This repository is the public research export of a production
+accounting-classification project (D406 Romanian fiscal invoices → GL account
+classification, extended to receipt classification). The confidential
+production pipeline and data live in a separate, private repository. This
+repository holds the **same methodology** — the same unmodified scripts, the
+same architecture decisions — running against **entirely synthetic data**, so
+the design can be published and independently inspected without exposing any
+client's identity, invoices, or receipts.
 
 ## What's confidential vs. what's public
 
-| | Confidential (main only) | Public (this branch) |
+| | Confidential (private repo only) | Public (this repository) |
 |---|---|---|
 | Client identity, CUIs, addresses | ✓ | never |
 | Raw D406 XMLs, receipt photos, invoice line data | ✓ | never |
@@ -18,7 +19,7 @@ any client's identity, invoices, or receipts.
 | Aggregate statistics computed from real data (91.2% deterministic, 0.695 cross-company consistency, 94.5% VAT stability, etc.) | — | ✓, cited as such |
 
 Everything in `architecture/`, `scripts/` (Phase 1 + Phase 2 + `p2lib/`), and the
-reports is the same code that produced the real numbers above — this branch
+reports is the same code that produced the real numbers above — this repository
 does not redesign anything, it re-runs it on synthetic input.
 
 ## What changed from `main`
@@ -44,11 +45,10 @@ does not redesign anything, it re-runs it on synthetic input.
    and still held real content (`llm_tail_proposals.csv`, `receipts_demo.json`
    — both require a paid LLM call this branch doesn't make).
 4. **Anonymized worked examples**: `architecture/11_SEQUENCE_ROMPETROL.md` →
-   `11_SEQUENCE_PETROMAX.md` and every other doc that named a real company
-   (Rompetrol, FIRCOM VTEC, Vinalcool, etc.) as a worked example now uses a
-   fictitious name, CUI, and address. The Phase 1 evidence pattern the example
-   illustrates (the same product booked to different accounts by different real
-   companies) is real; the names are not.
+   `11_SEQUENCE_PETROMAX.md` and every other doc that named a real company as a
+   worked example now uses a fictitious name, CUI, and address. The Phase 1
+   evidence pattern the example illustrates (the same product booked to
+   different accounts by different real companies) is real; the names are not.
 5. **Removed superseded delivery drafts** (old presentation HTML/MD files that
    predate the final demo) — not part of the methodology package.
 

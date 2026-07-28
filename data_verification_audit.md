@@ -1,6 +1,6 @@
 # Data Verification Audit
 
-> Source of truth: [phase1_final_report.md](file:///C:/Users/MaitreyaSapariya/Desktop/ContAI/Analysis/reports/phase1_final_report.md) + [architecture_decision.md](file:///C:/Users/MaitreyaSapariya/Desktop/ContAI/Analysis/reports/architecture_decision.md)
+> Source of truth: `phase1_final_report.md` + `architecture_decision.md` (internal Phase 1 reports from the confidential production run; not included in this public export — see `reports/phase1_final_report.md` in this repo for the public-facing summary)
 
 ## Discrepancies Found & Corrected
 

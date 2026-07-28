@@ -25,7 +25,7 @@ Receipt **images** are the highest-risk artifact in the system: they simultaneou
 
 ### 2.1 Roles and lawful basis
 
-- The **client companies** are controllers of their own financial records; the **accounting firm** processes them under its accounting mandate; **ContAI** is a processor for the firm (and, transitively, a subprocessor for the clients). This chain must be reflected in the firm's client contracts — flagged for legal review.
+- The **client companies** are controllers of their own financial records; the **accounting firm** processes them under its accounting mandate; **ADS-Cascade** is a processor for the firm (and, transitively, a subprocessor for the clients). This chain must be reflected in the firm's client contracts — flagged for legal review.
 - **Lawful basis:** for receipt content and classification, Art. 6(1)(c) *legal obligation* (bookkeeping duty under Legea contabilității 82/1991) combined with Art. 6(1)(b)/(f) for the processing workflow itself. For WhatsApp sender numbers of *authorized* senders, legitimate interest / contract performance (the sender is an employee or representative of a client acting in that capacity). For **unknown** senders there is no established basis — which is exactly why the quarantine-and-purge rule exists (§4.2).
 - **Not a basis:** consent. Do not build the system on consent for data that must be retained under fiscal law; consent withdrawal would create an unresolvable conflict.
 
@@ -200,7 +200,7 @@ The same "untrusted data" posture applies to the embedding tier: receipt text is
 1. **Exact Romanian fiscal retention periods** for receipt images, extracted data, and exported documents (Legea 82/1991 / Codul fiscal, current amendments) — blocks final retention configuration; legal review required.
 2. **Data residency requirement:** must all storage and vendor processing be EU-region, or is SCC-based transfer acceptable to the firm and its clients? Drives OCR/LLM vendor shortlist.
 3. **OCR/LLM vendor ZDR terms:** which candidate vendors contractually offer no-training + zero-retention on the tier we would buy, with EU endpoints? To be verified per candidate before selection.
-4. **Controller/processor chain paperwork:** do the firm's existing client contracts permit ContAI as subprocessor, or do they need amendment before go-live?
+4. **Controller/processor chain paperwork:** do the firm's existing client contracts permit ADS-Cascade as subprocessor, or do they need amendment before go-live?
 5. **Operational retention for WhatsApp metadata** (proposed 12 months, then delete/pseudonymize numbers) — needs firm sign-off.
 6. **Row-level security capability** of the chosen database engine — determines whether tenant isolation gets a database-enforced second line of defense or compensating controls.
 7. **Identity provider** for operators/admins (existing firm directory vs managed IdP) and MFA policy.

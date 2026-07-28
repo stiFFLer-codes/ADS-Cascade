@@ -9,7 +9,7 @@
 
 ## 1. Business Context & Goals
 
-ContAI serves a Romanian accounting firm that processes documents for a portfolio of client companies. Phase 1 solved automated classification (AccountID, VAT%, TaxCode) for D406 invoices. Phase 2 extends the same intelligence to **fiscal receipts (bonuri fiscale)** — thermal-paper documents issued at point of sale, which in accounting terms are the invoices **under 500 RON that do not appear in e-Factura**.
+ADS-Cascade serves a Romanian accounting firm that processes documents for a portfolio of client companies. Phase 1 solved automated classification (AccountID, VAT%, TaxCode) for D406 invoices. Phase 2 extends the same intelligence to **fiscal receipts (bonuri fiscale)** — thermal-paper documents issued at point of sale, which in accounting terms are the invoices **under 500 RON that do not appear in e-Factura**.
 
 Today these receipts are keyed into the accounting system by hand. They are numerous, low-value individually, and expensive in aggregate: an accountant re-types supplier, date, totals, and line items, then decides the account, tax code, and (where applicable) warehouse for every line. The goal of this feature is to **automate receipt entry end-to-end**: receive the receipt image, extract its structured content, validate it, classify every product line, and produce an import file for the target accounting system — with the accountant reviewing only what the system is not confident about.
 
@@ -29,8 +29,8 @@ Today these receipts are keyed into the accounting system by hand. They are nume
 | Actor | Description | Interactions |
 |---|---|---|
 | **Accountant / operator** | Employee of the accounting firm. Manages the per-company phone allowlists, imports documents via the frontend, reviews flagged receipts, edits classifications, manages the monography, triggers XML export. | Frontend (all screens), correction feedback loop |
-| **Client-company employee** | Employee of one of the firm's client companies (e.g. a driver, a site manager). Photographs receipts and sends them over WhatsApp. Has **no** ContAI account or UI access. | WhatsApp only (send image, receive Romanian-language replies) |
-| **The system (ContAI receipts pipeline)** | Ingests, extracts, validates, allocates VAT, classifies, and queues receipts; sends WhatsApp replies; learns from corrections via the shared knowledge base. | All of the above, plus external registries |
+| **Client-company employee** | Employee of one of the firm's client companies (e.g. a driver, a site manager). Photographs receipts and sends them over WhatsApp. Has **no** ADS-Cascade account or UI access. | WhatsApp only (send image, receive Romanian-language replies) |
+| **The system (ADS-Cascade receipts pipeline)** | Ingests, extracts, validates, allocates VAT, classifies, and queues receipts; sends WhatsApp replies; learns from corrections via the shared knowledge base. | All of the above, plus external registries |
 | **Target accounting / ERP system** | The firm's bookkeeping software. Consumes the generated XML import file. Not integrated bidirectionally in this phase — export is file-based. | XML import (format pending confirmation — see §14) |
 | **External registries (ANAF / etva)** | Authoritative source for company VAT status, active status, and CAEN code by CUI. | Monthly refresh (FR-40..FR-42) |
 

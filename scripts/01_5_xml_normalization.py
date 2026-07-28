@@ -396,7 +396,7 @@ def main(retry_failed: bool = False, force: bool = False) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="ContAI XML normalization pipeline — v3")
+        description="ADS-Cascade XML normalization pipeline — v3")
     parser.add_argument(
         "--retry-failed", action="store_true",
         help="Re-process only rows whose error_stage == DOWNLOAD from last run")

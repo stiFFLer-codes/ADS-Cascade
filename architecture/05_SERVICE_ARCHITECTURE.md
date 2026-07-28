@@ -141,8 +141,8 @@ Cross-cutting adapter layer for OCR, embeddings, LLM (ADR-011). Owns provider ad
 
 | Concern | Candidates | Tradeoff sketch |
 |---|---|---|
-| Relational store (documents, rules, evidence) | PostgreSQL; MySQL; SQL Server | Postgres favored if pgvector consolidates vector + relational; final call = whatever ContAI already runs |
+| Relational store (documents, rules, evidence) | PostgreSQL; MySQL; SQL Server | Postgres favored if pgvector consolidates vector + relational; final call = whatever ADS-Cascade already runs |
 | Vector index | pgvector (in-DB); Qdrant; OpenSearch k-NN | pgvector: one store, simpler ops, fine at 47K–1M products; dedicated engine only if scale/latency demands |
-| Event backbone | Managed queue/stream (SQS+SNS, Pub/Sub); Kafka/Redpanda; RabbitMQ | Modest volumes → managed queue simplest; Kafka only if ContAI already operates it |
+| Event backbone | Managed queue/stream (SQS+SNS, Pub/Sub); Kafka/Redpanda; RabbitMQ | Modest volumes → managed queue simplest; Kafka only if ADS-Cascade already operates it |
 | Object storage (images) | S3; GCS; Azure Blob | Client spec's Textract affinity hints AWS, but unconfirmed |
 | OCR / LLM / embeddings | See 09 | Behind adapters regardless |

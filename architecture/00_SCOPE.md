@@ -30,7 +30,7 @@
 
 ---
 
-## 2. Disposition of the Prior Vision Notes ("ContAI Accounting Intelligence Platform")
+## 2. Disposition of the Prior Vision Notes ("ADS-Cascade Accounting Intelligence Platform")
 
 Each element of the prior vision is kept, changed, or dropped based on a specific Phase 1 metric.
 

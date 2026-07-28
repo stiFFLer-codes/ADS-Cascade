@@ -1,9 +1,9 @@
-# STATE — ContAI Invoice/Receipt Classification
+# STATE — ADS-Cascade Invoice/Receipt Classification
 
 > **Read this first.** Living project state for cheap session handoffs.
 > Pointer-based on purpose — it links canonical docs, it does not copy them.
 >
-> `Last updated: 2026-07-28` · **Current phase: Phase 2 demo COMPLETE; Track A Phase 1 (research branch + synthetic data) COMPLETE on `research` branch**
+> `Last updated: 2026-07-28` · **Current phase: Phase 2 demo COMPLETE; Track A Phase 1 (public research export + synthetic data) COMPLETE**
 
 ---
 
@@ -11,7 +11,7 @@
 
 Paste this into a fresh session to continue with full context:
 
-> I'm continuing the **ContAI Phase 2** project (Romanian receipt/invoice AI classification).
+> I'm continuing the **ADS-Cascade Phase 2** project (Romanian receipt/invoice AI classification).
 > Read `STATE.md` first, then `docs/INDEX.md`, `docs/PHASE2_PLAN.md`, and `architecture/00_SCOPE.md`
 > for full context. Phase 1 (D406 pipeline) and the Phase 2 demo are **complete and committed** —
 > code in `scripts/phase2/` (p2_01…p2_06 + p2lib/), interactive demo at `docs/demo/index.html`.
@@ -43,7 +43,7 @@ being finalized as the delivery package. No open implementation work — remaini
 
 ## Next (immediate)
 
-**DONE (2026-07-28): Track A Phase 1 — research branch + synthetic data, on `research` branch (commit `456f417`).**
+**DONE (2026-07-28): Track A Phase 1 — public research export + synthetic data.**
 `scripts/00_generate_synthetic.py` generates synthetic companies/products/invoice lines from the
 documented target distributions (no real data read). Full pipeline (03_5 → 04 → phase2
 p2_01/p2_02/p2_05) re-run end-to-end on synthetic data. All real data, stale real-derived
@@ -51,12 +51,11 @@ files, and real-named worked examples in architecture/reports stripped or anonym
 `METHODOLOGY.md` for the honest real-vs-synthetic comparison (including a boundary-case R3
 architecture-decision flip at the smaller synthetic scale, documented not tuned away).
 
-**Flag for the eventual "publish to public GitHub" step:** the `research` branch's git *history*
-still contains every pre-2026-07-28 commit on `main`, including commits with real client data
-(before this session's cleanup). Deleting files in new commits does not remove them from history.
-Before pushing this branch publicly, it needs either a fresh orphan branch/squashed history
-containing only the clean synthetic snapshot, or history-scrubbing (e.g. `git filter-repo`) —
-do not `git push` this branch as-is.
+**Resolved:** this repository was created fresh on 2026-07-28 specifically so its git history
+would never contain the client-repo commits that predate the cleanup — no orphan-branch/squash/
+history-scrub step is needed before pushing. (That history-scrubbing caveat applies only to the
+original private client repo, if a `research` branch there is ever pushed instead of this
+standalone export.)
 
 **Track A remaining (must-do, ~3 weeks):**
 1. Write 4–8 page technical report (problem/method/evaluation/honest limitations, cite as "validated on 296K invoices, synthetic shown for reproducibility")
