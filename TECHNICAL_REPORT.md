@@ -248,6 +248,16 @@ before being treated as fixed, rather than evidence that either run is wrong.
 
 ## 4. Limitations
 
+- **Validated on a single domain.** Every empirical result in this report, real and synthetic,
+  comes from Romanian fiscal-document classification (D406 invoices and retail receipts). Neither
+  the ADS metric nor the four-tier cascade references anything specific to Romania or to fiscal
+  documents: both operate on any historical record of `(item, label)` assignments with counts.
+  We expect the method to transfer to adjacent problems (expense categorization under other tax
+  regimes, retail SKU-to-category mapping, medical billing code assignment) wherever a large,
+  imperfectly-consistent, human-labeled history exists. That transfer is argued from the method's
+  design, not measured: the pipeline has not been run against a second domain's data, and the
+  specific threshold values in §2.3 (90% for RULES_FIRST, 0.75/0.90 for retrieval strategy) were
+  calibrated against this domain's statistics and would need re-validation elsewhere.
 - **Lexical retrieval, not embeddings.** The fuzzy fallback (§2.5) is an explicit, documented
   placeholder for the embedding/vector-DB layer specified in the architecture but not built in this
   phase. It resolves OCR-formatting variance well; it has not been evaluated against genuine semantic

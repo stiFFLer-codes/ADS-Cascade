@@ -1,78 +1,101 @@
-# ADS-Cascade — Score Determinism, Then Choose the Architecture
+# ADS-Cascade
 
-Most accounting-document classification products start by picking a model. This project starts
-by **measuring the data**: for Romanian fiscal documents (D406/SAF-T invoices, extended to
-photographed retail receipts), how consistently does a product map to one GL account? That
-measurement — the **Automated Determinism Score (ADS)** — is computed first, and it *decides* the
-architecture: a rules-first, per-company knowledge base with hybrid retrieval, not a single
-learned classifier, with an LLM used only as a re-ranker over retrieved candidates for the
-measured minority tail.
+A data-driven method for deciding how much of a classification problem actually needs a model.
 
-**Read the paper:** [`TECHNICAL_REPORT.md`](TECHNICAL_REPORT.md) — problem, method, evaluation
-(real + synthetic), honest limitations. **Read the method in full:** [`METHODOLOGY.md`](METHODOLOGY.md)
-— what's public vs. confidential, and the honest real-vs-synthetic comparison this report draws from.
+Most document-classification systems start by picking a model, then scale it up when accuracy
+disappoints. This project starts by measuring the data: how consistently does history already
+answer the question being asked, before any model is trained? That measurement, the **Automated
+Determinism Score (ADS)**, is computed first and it decides the architecture. If most items already
+have one dominant, historically consistent answer, the system's job for those items is retrieval,
+not inference, and the architecture should reflect that: a rules-first, per-company knowledge base
+with hybrid retrieval, not a single learned classifier, with an LLM used only as a re-ranker over
+retrieved candidates for the measured minority tail.
+
+The method is validated end to end on Romanian fiscal documents: D406 (SAF-T) invoice filings,
+extended to photographed retail receipts. Nothing in the ADS metric or the cascade design is
+specific to that domain or that country. Romania is the case study, not the boundary of the idea.
+
+**The paper:** [`TECHNICAL_REPORT.md`](TECHNICAL_REPORT.md) covers the problem, the method, the
+evaluation (real and synthetic), and an honest limitations section, including where the method has
+and hasn't been tested.
+
+**The full method:** [`METHODOLOGY.md`](METHODOLOGY.md) explains what is public in this repository
+versus what stays confidential, and gives the complete real-versus-synthetic comparison the report
+draws its numbers from.
 
 ---
 
-## ▶ Start here
+## Start here
 
-1. **Read the technical report:** [`TECHNICAL_REPORT.md`](TECHNICAL_REPORT.md)
-2. **Open the interactive demo:** [`docs/demo/index.html`](docs/demo/index.html) — double-click
-   it; a self-contained, animated walkthrough of the whole system (no install, works offline).
-   Shows the real (anonymized) production trace — see note below.
-3. **Current status & how to run:** [`STATE.md`](STATE.md)
-4. **Navigate everything:** [`docs/INDEX.md`](docs/INDEX.md)
+1. Read the technical report: [`TECHNICAL_REPORT.md`](TECHNICAL_REPORT.md)
+2. Open the interactive demo: [`docs/demo/index.html`](docs/demo/index.html). Double-click the file;
+   it is self-contained and works offline, no install required. It walks through the real
+   (anonymized) production trace described below.
+3. Current status and how to run the pipeline: [`STATE.md`](STATE.md)
+4. Full navigation: [`docs/INDEX.md`](docs/INDEX.md)
 
 ---
 
 ## What's inside
 
-| Phase | What | Result |
+| Phase | What it does | Result (cited from production) |
 |---|---|---|
-| **Phase 1 — Data Engineering** | 6-script pipeline mining D406 (SAF-T) XML filings for per-product determinism | 296,648 invoice lines · 76,843 product→account mappings · 91.2% of products deterministic (cited, production) |
-| **Phase 2 — Receipt Intelligence** | photo → OCR → structure/validate → RULES_FIRST four-tier cascade → retrieval → LLM tail | Tier-1 **98.4%** held-out accuracy; auto-apply 42.8% @ 98.1% (cited, production) |
+| **Phase 1, Data Engineering** | Six-script pipeline that mines D406 (SAF-T) XML filings to compute per-product determinism | 296,648 invoice lines, 76,843 product-to-account mappings, 91.2% of products deterministic |
+| **Phase 2, Receipt Intelligence** | Photo to OCR to structuring/validation to a rules-first four-tier cascade to retrieval to LLM re-ranking | Tier-1 held-out accuracy 98.4%; full-cascade auto-apply 42.8% coverage at 98.1% accuracy |
 
-**The idea:** most classification is repetition, not judgment — so a per-company knowledge base
-answers the bulk with no AI, retrieval bridges the tail, and an LLM (behind a swappable adapter)
-re-ranks only what's genuinely new. Everything is evidence-driven and reproducible.
+The core idea: most classification is repetition, not judgment. A per-company knowledge base
+answers the majority of cases with no AI involved, a retrieval layer bridges formatting gaps in the
+remaining cases, and an LLM (behind a swappable adapter) is consulted only for what is genuinely
+new. Every number above traces to a script and an artifact in this repository; nothing is asserted
+without a source.
 
-**Real vs. synthetic, and why both exist here:**
+### Real results versus synthetic reproduction
 
-- The interactive demo (`docs/demo/index.html`) walks through the **real production trace** —
-  10 actual photographed receipts, OCR'd and classified — with vendor names and CIFs anonymized.
-  Its numbers are cited from a confidential engagement, not recomputed in this repo.
-- The runnable pipeline (`scripts/`, `data/outputs/`) uses a **from-scratch synthetic generator**
-  (`scripts/00_generate_synthetic.py`) so anyone can reproduce the methodology end-to-end offline,
-  at $0, with no client data and no API keys. See `METHODOLOGY.md` for the full real-vs-synthetic
+Two different things live in this repository, for two different reasons:
+
+- The interactive demo (`docs/demo/index.html`) shows the real production trace: ten actual
+  photographed receipts, OCR'd and classified, with vendor names and tax IDs anonymized. Its
+  numbers are cited from a confidential engagement and are not recomputed here.
+- The runnable pipeline (`scripts/`, `data/outputs/`) uses a from-scratch synthetic generator
+  (`scripts/00_generate_synthetic.py`), so anyone can reproduce the methodology end to end offline,
+  at no cost, with no client data and no API keys. `METHODOLOGY.md` has the full real-versus-synthetic
   comparison table, including one architecture decision (R3) that flips at the smaller synthetic
-  scale — reported as a threshold-sensitivity finding, not tuned away.
+  scale. That result is reported as a threshold-sensitivity finding, not tuned away to force
+  agreement.
 
 ---
 
 ## Folder map
 
 ```
-TECHNICAL_REPORT.md ← the paper: problem / method / evaluation / limitations
-METHODOLOGY.md      ← what's public vs. confidential + real-vs-synthetic comparison
-docs/            ← demo/, INDEX.md, PHASE2_PLAN.md, Context.md, Phases.md
-STATE.md         ← living status + how to run + resume prompt
-architecture/    ← Phase 2 solution architecture (17 docs, 16 ADRs, open questions)
-scripts/         ← Phase 1 pipeline (01–04) + Phase 2 (phase2/: p2_01…p2_06 + p2lib/)
-reports/         ← Phase 1 findings & architecture decision
-data/            ← source_of_truth manifest + outputs/ (synthetic results, incl. phase2/)
-config/ utils/   ← shared settings and helpers
-AGENTS.md        ← working conventions
-requirements.txt ← Python deps (stdlib-first; rapidfuzz, requests, boto3, pypdf)
+TECHNICAL_REPORT.md  the paper: problem, method, evaluation, limitations
+METHODOLOGY.md        what is public versus confidential, and the real-vs-synthetic comparison
+docs/                  demo/, INDEX.md, PHASE2_PLAN.md, Context.md, Phases.md
+STATE.md               living status, how to run, resume prompt
+architecture/          Phase 2 solution architecture: 17 docs, 16 ADRs, open questions
+scripts/               Phase 1 pipeline (01-04) and Phase 2 (phase2/: p2_01...p2_06 plus p2lib/)
+reports/               Phase 1 findings and architecture decision report
+data/                  source-of-truth manifest plus outputs/ (synthetic results, incl. phase2/)
+config/  utils/        shared settings and helpers
+AGENTS.md              working conventions
+requirements.txt       Python dependencies (standard library first; rapidfuzz, requests, boto3, pypdf)
 ```
+
+---
+
+## How to cite
+
+See [`CITATION.cff`](CITATION.cff) for structured citation metadata (GitHub renders a "Cite this
+repository" button from it automatically). Licensed under [MIT](LICENSE).
 
 ---
 
 ## Honest framing
 
-This is a **validated prototype**, not a shipped product. OCR quality is demonstrated on 10 real
-sample receipts in the cited production trace (qualitative validation, not a hand-labeled OCR
-benchmark); the AWS Textract and Groq LLM calls in that original run used **test accounts** and
-all responses were **cached** so the demo reproduces at **$0** with no keys. This repository's own
-runnable pipeline validates the same methodology on synthetic data only. Production pieces
-(WhatsApp intake, review UI, ERP export) await business decisions, tracked in
-[`architecture/OPEN_QUESTIONS.md`](architecture/OPEN_QUESTIONS.md).
+This is a validated prototype, not a shipped product. OCR quality is demonstrated on ten real
+sample receipts in the cited production trace as qualitative validation, not as a hand-labeled OCR
+benchmark. The AWS Textract and Groq LLM calls in that original run used test accounts, and every
+response was cached, so the demo reproduces at no cost with no keys required. This repository's own
+runnable pipeline validates the same methodology on synthetic data only. Production components not
+covered here, such as WhatsApp intake, a review UI, and ERP export, are awaiting business decisions
+and are tracked in [`architecture/OPEN_QUESTIONS.md`](architecture/OPEN_QUESTIONS.md).

@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this methodology or software, please cite it as below."
+type: software
+title: "ADS-Cascade"
+abstract: >-
+  A data-driven method for deciding how much of a classification problem
+  actually needs a model. An Automated Determinism Score (ADS) is computed
+  per item before any classifier is built, and a four-tier confidence
+  cascade uses an LLM only as a re-ranker over retrieved candidates for the
+  measured minority tail. Validated end to end on Romanian fiscal-document
+  classification (D406/SAF-T invoices and photographed retail receipts);
+  the method itself is not specific to that domain.
+authors:
+  - family-names: "Sapariya"
+    given-names: "Maitreya"
+    orcid: "https://orcid.org/0009-0003-9346-3775"
+version: 1.0.0
+date-released: "2026-07-28"
+license: MIT
+repository-code: "https://github.com/stiFFLer-codes/ADS-Cascade"
+keywords:
+  - classification
+  - document-ai
+  - accounting-automation
+  - confidence-cascade
+  - retrieval
+  - fiscal-documents
