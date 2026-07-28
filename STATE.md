@@ -3,7 +3,7 @@
 > **Read this first.** Living project state for cheap session handoffs.
 > Pointer-based on purpose — it links canonical docs, it does not copy them.
 >
-> `Last updated: 2026-07-28` · **Current phase: Phase 2 demo COMPLETE; Track A Phase 1 (public research export + synthetic data) COMPLETE**
+> `Last updated: 2026-07-28` · **Current phase: Phase 2 demo COMPLETE; Track A Phase 1 (public research export + synthetic data) COMPLETE; repo published + archived on Zenodo (v1.0.0, DOI 10.5281/zenodo.21644208)**
 
 ---
 
@@ -57,11 +57,21 @@ history-scrub step is needed before pushing. (That history-scrubbing caveat appl
 original private client repo, if a `research` branch there is ever pushed instead of this
 standalone export.)
 
-**Track A remaining (must-do, ~3 weeks):**
-1. Write 4–8 page technical report (problem/method/evaluation/honest limitations, cite as "validated on 296K invoices, synthetic shown for reproducibility")
-2. Publish to arXiv/Zenodo preprint (publication credit for Criterion 2 — Previous Relevant Experience)
-3. Public GitHub `research` branch (squashed/orphan history, see flag above) with README + `METHODOLOGY.md`
-4. Draft CV entry (~150 words) + video talking points (3–4 on rules-first + human feedback)
+**DONE (2026-07-28): Renamed project ADS-Cascade, published to GitHub, archived on Zenodo.**
+Repo renamed `stiFFLer-codes/ADS-Cascade` (was a temporary placeholder name). `TECHNICAL_REPORT.md`
+written (problem/method/evaluation/limitations, including an explicit "validated on a single
+domain" limitation and a rewritten README that leads with the general determinism-first method
+rather than the Romanian-fiscal-documents case study, matching the report's own framing). Two
+pre-publication leaks found and fixed: `METHODOLOGY.md` had named the real client companies in its
+own anonymization changelog, and `data_verification_audit.md` had `file://` links into the local
+confidential client repo. `CONTINUATION_PROMPT.md` and a superseded `REFINED_REPORT.md` draft were
+removed (internal-only, not part of the public package). Added `LICENSE` (MIT) and `CITATION.cff`
+(ORCID-linked). GitHub-Zenodo integration connected; `v1.0.0` GitHub release published; Zenodo
+minted **DOI 10.5281/zenodo.21644208** (badge + citation identifier committed).
+
+**Track A remaining (must-do):**
+1. Draft CV entry (~150 words) + video talking points (3–4 on rules-first + human feedback)
+2. Optional: arXiv preprint (Zenodo DOI already covers the "publication credit" need for Criterion 2 — Previous Relevant Experience; arXiv would add reach but isn't required)
 
 **Track B (stretch, no deadline):** Once preprint exists, optionally prep for next-year workshop cycles (DocInsights 2027, FinanSE 2027, PAKDD finance 2027). Aug 2, 2026 DocInsights is off the table (only 5 days; too risky to compromise Track A).
 
