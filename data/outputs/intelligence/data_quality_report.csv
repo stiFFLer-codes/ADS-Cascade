@@ -1,0 +1,10 @@
+﻿field,total_rows,non_empty,empty,missing_pct,notes
+product_description,7523,7523,0,0.0,
+account_id,7523,7523,0,0.0,
+vat_percent,7523,7188,335,4.45,
+tax_code,7523,7523,0,0.0,
+warehouse_id,7523,0,7523,100.0,
+line_amount,7523,0,7523,100.0,
+invoice_date,7523,7523,0,0.0,
+validation_status,7523,7523,0,0.0,INCOMPLETE status count
+duplicate_invoice_lines,7523,7523,0,0.0,Exact line duplicates

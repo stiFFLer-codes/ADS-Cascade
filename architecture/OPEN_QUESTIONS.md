@@ -1,0 +1,37 @@
+# Open Questions for Engineering
+
+Every unconfirmed assumption in the package, consolidated. Each item: what we need, why it matters, the **default assumed** in the documents until answered, and who can answer. Nothing in this file blocks the design — every document is written to survive any answer here — but several items gate *implementation* start.
+
+Referenced from other documents as `OPEN-Q<n>`.
+
+| # | Question | Why it matters | Default assumed meanwhile | Owner |
+|---|---|---|---|---|
+| **Q1** | **Production stack**: language/framework, database engine, hosting/cloud, deployment pipeline of ContAI today | Deployment topology (services vs modular monolith), DB dialect for 07's DDL, which managed services are natural picks | Contracts and schemas written engine-agnostic; candidates named per concern (05 §4, 07, 14 §6) | ContAI engineering lead |
+| **Q2** | How the **existing D406 pipeline** is deployed and scheduled today, and where its outputs live | It becomes the KB's bulk feeder via the evidence sync contract (10 §5); its cadence sets KB freshness for invoice-derived rules | Assumed batch, per filing cycle (monthly-ish); contract is idempotent so cadence is free to change | ContAI engineering |
+| **Q3** | **Vector store**: pgvector in-DB vs dedicated engine (Qdrant, OpenSearch k-NN) | Ops surface, KB↔vector consistency, cost (+€70–300/mo for dedicated — 14 §6) | pgvector-class in-DB assumed; scale evidence (47K products, modest QPS) doesn't justify dedicated | Engineering, after Q1 |
+| **Q4** | **Event backbone**: managed queue (SQS/PubSub-class) vs Kafka-class vs RabbitMQ | Delivery semantics plumbing (06 §1: at-least-once + outbox works on all three), ops burden | Managed queue assumed; per-company ordering achieved via keyed queues/partitions | Engineering, after Q1 |
+| **Q5** | Where **warehouse master data** lives (target ERP?) and whether client companies actually use warehouses for receipt bookings at all | WarehouseID is config-resolved (ADR-009); config must be populated from somewhere; may be legitimately null for most companies | `warehouse_config.default_warehouse_id = NULL` (no warehouse) unless configured | Accounting firm + ERP owner |
+| **Q6** | **Receipt volume**: receipts/company/month and lines/receipt distribution | The single largest cost/capacity unknown (14 §2); also decides batch-mode default | Scenarios 100/500/2,000 receipts/company/month; planning mean 3–3.5 lines/receipt | Accounting firm intake data or pilot measurement |
+| **Q7** | **WhatsApp Business route**: direct Meta vs BSP partner; fee schedule; template approval timeline | Ingestion integration effort, per-message fees (14 §6), template messages must be pre-approved | BSP-agnostic webhook design; fees banded €0–150/mo | Business + procurement |
+| **Q8** | **e-Factura lookup mechanism** for the "<500 RON and not in e-Factura" receipt-scoping rule | Determines which D406 documents seed the receipts-relevant KB slice and which incoming docs are receipts at all | Rule implemented as a filter with a pluggable e-Factura presence check; seeding proceeds on amount filter alone until available | ContAI engineering (SPV/ANAF integration owner) |
+| **Q9** | **etva/ANAF API access**: credentials, rate limits, terms for CUI→name resolution and monthly CAEN/VAT-status refresh | Client spec requires monthly refresh (FR-40..42); rate limits shape the refresh job | Monthly batch refresh assumed feasible; supplier-name resolution degrades gracefully to receipt-printed name | ContAI engineering |
+| **Q10** | **Export XML schema**: exact target accounting system and its import format; policy for corrections after export | Export Service's whole output contract; post-export corrections are out of scope pending this (ADR-008 §4) | Placeholder XML artifact per batch; exported docs immutable | Accounting firm (which ERP: Saga? WinMentor? other) |
+| **Q11** | **Data residency & retention**: exact Romanian fiscal retention period for receipt images vs extracted data; EU-region processing constraints on OCR/LLM vendors | Storage growth (14 §6), GDPR minimization vs fiscal duty (12), vendor region selection | 5-year image retention assumed for sizing; EU-region processing preferred; flagged for legal review | Legal + firm's compliance |
+| **Q12** | **Threshold calibration**: T1 ADS ≥0.95 / evidence ≥3, T2 sim ≥0.85, spot-check 20%, etc. | Phase 1-derived starting points, not validated on receipts; miscalibration shifts tier volumes and accuracy | Values in 08 §3 as pilot starting points; calibration is a pilot exit criterion | Pilot measurement |
+| **Q13** | **Romanian-language AI bake-off**: OCR adapters (raw OCR+LLM structuring vs receipt-aware parsers) and embedding models on real Romanian receipts/diacritics | Extraction quality drives everything downstream; ~7× per-page price gap between OCR classes (14 §3); embedding quality drives Tier 2 precision | Adapter interfaces fixed (09 §2); sample Petromax image = test case #1 | Pilot bake-off |
+| **Q14** | **Vendor pricing re-quote** at procurement (LLM, OCR, embeddings, WhatsApp) | All prices in 14 are indicative mid-2026 list prices | Quarterly re-quote cadence (14 §8.7) | Procurement |
+| **Q15** | **Multi-company sender disambiguation**: when one phone number is allowlisted for several companies, how does a submission pick its company? | Client spec allows the same number in multiple companies but doesn't say how a given receipt routes | Assume sender is asked via WhatsApp quick-reply when ambiguous; single-company senders route automatically | Business decision |
+| **Q16** | **7-day quarantine vs GDPR**: is holding documents from unknown numbers for 7 days (client spec) compatible with minimization? | Unknown senders have no relationship with the firm yet | Quarantine kept, pseudonymized, auto-purged at day 7, documented in the privacy notice (12) | Legal |
+| **Q17** | **Review SLA ownership**: who staffs and owns the Tier 3 queue latency (>24h escalation) — the firm's accountants or a ContAI ops function? | Review queue is the throughput bottleneck for the 5–9% tail; €282/month automated-cost figure includes this labor | Firm's accountants assumed | Business |
+| **Q18** | **Composition of the €282/month automated baseline** (labor vs platform allocation) | The ROI case leans on it (14 §7); direction robust, precision isn't | Assumed mostly residual review labor | Whoever produced the Phase 1 ROI figure |
+| **Q19** | **Build cost & pilot size** for break-even arithmetic | <2-month break-even holds at ≥5 companies for €20k build / ≥10 for €40k (14 §7) | €20k–40k build; 5–20 company pilot | Engineering + management |
+| **Q20** | **Batch mode default**: normal (~minutes) vs 15-minute LLM batching (client spec) as the fleet default | Latency-vs-cost lever (06 §4, 14 §8.6); WhatsApp confirmation timing is user-visible | Configurable per company; pilot default = 15-min batching (client's own proposal) | Business |
+
+## Items that gate implementation start (subset)
+
+- **Q1/Q3/Q4** — stack confirmation converts 05/07 candidates into picks (first sprint).
+- **Q7** — WhatsApp route has procurement lead time (template approval).
+- **Q10** — export schema is required before the pilot can complete an end-to-end cycle.
+- **Q13** — OCR bake-off should run in week 1 of the pilot; everything downstream consumes its output quality.
+
+Everything else can be answered in parallel with early implementation.

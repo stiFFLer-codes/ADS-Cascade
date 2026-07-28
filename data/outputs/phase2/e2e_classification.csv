@@ -1,0 +1,10 @@
+receipt,supplier,normalized_product,vat_bracket,vat_percent,tier,method,predicted_account,confidence,candidate_accounts,nearest_global
+synth-receipt-01,SYNTH FUEL STATION 011 SRL,synth retail 00493,A,21.0,3,GLOBAL_WEAK,628,0.9107,628:357;622:29;371:6,synth retail 00493(100); synth retail 00932(94); synth retail 00490(94)
+synth-receipt-01,SYNTH FUEL STATION 011 SRL,synth office 00407,A,21.0,3,GLOBAL_WEAK,601,0.871,601:216;625:27;613:5,synth office 00407(100); synth office 00140(94); synth office 00479(94)
+synth-receipt-02,SYNTH MART 044 SRL,synth service 00101,A,,3,GLOBAL_WEAK,607,0.5309,607:86;602:37;608:28,synth service 00101(100); synth service 00201(94); synth service 00211(94)
+synth-receipt-02,SYNTH MART 044 SRL,synth utility 00962,B,11.0,2,GLOBAL_RULE_MID,628,0.9368,628:89;608:5;622:1,
+synth-receipt-03,SYNTH DEPOT 007 SRL,synth retail 00493 xl,A,21.0,3,GLOBAL_FUZZY_REVIEW,628,0.95,628:357;622:29;371:6,synth retail 00493(95); synth retail 00932(87); synth retail 00490(87)
+synth-receipt-03,SYNTH DEPOT 007 SRL,never seen product 001,A,21.0,4,NO_PRECEDENT,,0.0,,
+synth-receipt-04,SYNTH KIOSK 019 SRL,mystery item alpha,B,11.0,4,NO_PRECEDENT,,0.0,,
+synth-receipt-04,SYNTH KIOSK 019 SRL,mystery item beta,B,11.0,4,NO_PRECEDENT,,0.0,,
+synth-receipt-05,SYNTH MAINTENANCE CO 023 SRL,synth maintenance 01121-variant,A,21.0,4,NO_PRECEDENT,,0.0,,synth office 01085(85); synth utility 01016(85); synth utility 00135(85)

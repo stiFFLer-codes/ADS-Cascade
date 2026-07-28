@@ -1,0 +1,845 @@
+product,direction,dominant_account,global_ads,company_count,distinct_accounts
+synth maintenance 00545,PURCHASE,609,1.0000,4,1
+synth office 01085,PURCHASE,4426,1.0000,3,1
+synth raw material 01041,PURCHASE,609,1.0000,1,1
+synth utility 01016,PURCHASE,605,0.7879,6,3
+synth raw material 00027,PURCHASE,612,0.8704,6,2
+synth utility 00135,PURCHASE,6022,1.0000,1,1
+synth misc 00054,PURCHASE,612,1.0000,1,1
+synth office 00581,PURCHASE,605,0.5500,8,3
+synth raw material 01045,SALE,701,1.0000,1,1
+synth service 00239,SALE,707,0.5909,5,3
+synth service 00787,SALE,707,0.6000,4,2
+synth packaging 00995,SALE,704,1.0000,1,1
+synth maintenance 01069,SALE,4427,1.0000,1,1
+synth utility 00587,PURCHASE,628,0.8571,1,2
+synth office 00284,PURCHASE,625,1.0000,1,1
+synth packaging 01194,PURCHASE,4426,1.0000,1,1
+synth retail 01130,SALE,707,1.0000,2,1
+synth packaging 00004,PURCHASE,6022,1.0000,1,1
+synth transport 00009,PURCHASE,625,1.0000,1,1
+synth retail 00911,PURCHASE,371,1.0000,1,1
+synth service 00389,PURCHASE,613,0.7895,6,3
+synth service 00101,PURCHASE,607,0.5309,6,4
+synth fuel 00441,PURCHASE,605,1.0000,1,1
+synth fuel 00792,PURCHASE,6022,1.0000,1,1
+synth office 00959,SALE,411,1.0000,1,1
+synth utility 00946,SALE,4427,1.0000,1,1
+synth misc 01118,SALE,701,1.0000,1,1
+synth service 00381,PURCHASE,601,1.0000,1,1
+synth retail 00484,PURCHASE,401,1.0000,1,1
+synth retail 00136,PURCHASE,608,1.0000,1,1
+synth fuel 00750,PURCHASE,628,1.0000,1,1
+synth service 00201,PURCHASE,609,1.0000,1,1
+synth misc 01042,PURCHASE,6022,1.0000,1,1
+synth service 00480,SALE,701,1.0000,1,1
+synth maintenance 01121,PURCHASE,601,0.7609,10,3
+synth office 00977,PURCHASE,622,1.0000,4,1
+synth packaging 00196,PURCHASE,401,1.0000,3,1
+synth office 00499,SALE,707,0.7917,5,3
+synth retail 00629,PURCHASE,622,1.0000,1,1
+synth office 00927,PURCHASE,612,0.6875,5,4
+synth office 00282,PURCHASE,612,1.0000,1,1
+synth retail 00493,PURCHASE,628,0.9107,4,3
+synth retail 00070,PURCHASE,608,0.9062,4,2
+synth packaging 00094,PURCHASE,602,1.0000,1,1
+synth utility 01083,SALE,704,1.0000,1,1
+synth office 00841,SALE,411,1.0000,1,1
+synth retail 00932,PURCHASE,607,1.0000,1,1
+synth service 00253,PURCHASE,602,1.0000,1,1
+synth packaging 00299,PURCHASE,608,0.6667,2,2
+synth utility 00833,SALE,4427,0.8000,1,2
+synth raw material 00601,SALE,4427,1.0000,1,1
+synth misc 01191,PURCHASE,607,0.8276,5,3
+synth utility 00914,PURCHASE,635,1.0000,4,1
+synth transport 00872,PURCHASE,607,0.9259,3,3
+synth office 00928,PURCHASE,601,1.0000,1,1
+synth retail 01128,PURCHASE,628,1.0000,1,1
+synth raw material 01015,SALE,704,1.0000,3,1
+synth packaging 00546,SALE,707,0.5000,1,3
+synth misc 00131,PURCHASE,613,1.0000,1,1
+synth maintenance 00664,PURCHASE,605,1.0000,1,1
+synth office 00226,PURCHASE,628,1.0000,1,1
+synth retail 01178,PURCHASE,609,1.0000,1,1
+synth misc 00822,PURCHASE,635,1.0000,1,1
+synth retail 00971,SALE,701,1.0000,1,1
+synth transport 00232,PURCHASE,625,1.0000,1,1
+synth maintenance 00939,PURCHASE,605,1.0000,1,1
+synth retail 00615,PURCHASE,401,1.0000,1,1
+synth fuel 00907,SALE,411,1.0000,1,1
+synth utility 00473,SALE,707,1.0000,1,1
+synth utility 00159,PURCHASE,4426,1.0000,1,1
+synth packaging 00421,PURCHASE,401,0.5714,5,3
+synth raw material 00854,PURCHASE,628,1.0000,1,1
+synth service 00192,PURCHASE,622,1.0000,1,1
+synth transport 00193,PURCHASE,601,1.0000,1,1
+synth service 00497,PURCHASE,628,0.8235,5,2
+synth service 00818,PURCHASE,602,1.0000,1,1
+synth fuel 00333,PURCHASE,628,1.0000,1,1
+synth packaging 00173,PURCHASE,625,1.0000,1,1
+synth maintenance 00806,PURCHASE,6022,1.0000,1,1
+synth misc 00778,PURCHASE,613,1.0000,1,1
+synth raw material 00405,SALE,707,1.0000,1,1
+synth transport 00231,SALE,707,1.0000,1,1
+synth service 00055,SALE,707,0.8462,9,2
+synth service 00736,PURCHASE,605,1.0000,1,1
+synth misc 01081,PURCHASE,635,1.0000,1,1
+synth office 00225,PURCHASE,622,1.0000,1,1
+synth office 00654,PURCHASE,401,1.0000,1,1
+synth utility 00749,PURCHASE,608,0.9565,3,2
+synth retail 00164,SALE,411,0.4310,5,4
+synth service 00332,PURCHASE,602,0.6667,2,2
+synth office 00635,PURCHASE,601,1.0000,1,1
+synth utility 00657,SALE,4427,1.0000,1,1
+synth packaging 00658,SALE,704,1.0000,1,1
+synth utility 00878,PURCHASE,4426,0.4545,3,4
+synth raw material 00761,PURCHASE,625,1.0000,1,1
+synth service 00211,PURCHASE,613,1.0000,1,1
+synth office 01155,PURCHASE,601,0.8511,4,2
+synth raw material 00935,SALE,707,0.9333,2,2
+synth maintenance 01110,PURCHASE,612,1.0000,4,1
+synth office 01087,PURCHASE,4426,0.8056,3,2
+synth fuel 00950,PURCHASE,602,1.0000,1,1
+synth transport 00366,PURCHASE,608,1.0000,1,1
+synth misc 00425,PURCHASE,608,1.0000,1,1
+synth misc 00042,PURCHASE,607,0.5000,1,2
+synth raw material 00338,PURCHASE,613,1.0000,1,1
+synth misc 00840,PURCHASE,622,1.0000,1,1
+synth transport 00590,PURCHASE,625,1.0000,1,1
+synth transport 00565,SALE,411,1.0000,1,1
+synth fuel 00402,PURCHASE,601,0.7500,2,2
+synth office 00271,PURCHASE,625,1.0000,1,1
+synth misc 00579,PURCHASE,613,1.0000,1,1
+synth transport 00334,PURCHASE,635,1.0000,1,1
+synth retail 00944,PURCHASE,609,1.0000,1,1
+synth maintenance 00867,SALE,701,1.0000,1,1
+synth packaging 00858,SALE,701,0.4444,9,4
+synth transport 01062,SALE,411,1.0000,1,1
+synth misc 00393,PURCHASE,625,0.5778,7,3
+synth office 00374,PURCHASE,6022,1.0000,1,1
+synth transport 00495,PURCHASE,371,1.0000,1,1
+synth fuel 00756,PURCHASE,401,1.0000,4,1
+synth fuel 00047,PURCHASE,628,0.5902,9,5
+synth fuel 00762,PURCHASE,622,1.0000,1,1
+synth raw material 00365,PURCHASE,605,1.0000,1,1
+synth maintenance 00605,PURCHASE,608,1.0000,1,1
+synth utility 00227,PURCHASE,628,1.0000,1,1
+synth fuel 00985,PURCHASE,6022,0.8750,4,2
+synth raw material 00265,PURCHASE,607,1.0000,1,1
+synth packaging 00129,PURCHASE,6022,1.0000,1,1
+synth fuel 00968,PURCHASE,613,0.5000,2,2
+synth fuel 00481,SALE,704,0.6400,6,3
+synth raw material 01103,PURCHASE,601,0.7000,4,4
+synth maintenance 00594,PURCHASE,601,1.0000,1,1
+synth packaging 01049,SALE,701,1.0000,1,1
+synth fuel 00732,PURCHASE,371,0.5556,5,2
+synth service 00980,PURCHASE,605,0.8750,2,2
+synth utility 00398,PURCHASE,605,1.0000,1,1
+synth raw material 00494,PURCHASE,601,0.6154,3,2
+synth office 00604,PURCHASE,6022,0.9130,5,2
+synth raw material 00216,PURCHASE,628,1.0000,7,1
+synth transport 01057,PURCHASE,601,0.5000,2,2
+synth fuel 01033,PURCHASE,4426,0.6667,3,3
+synth office 00014,PURCHASE,635,1.0000,1,1
+synth transport 00343,PURCHASE,635,1.0000,1,1
+synth transport 00064,PURCHASE,612,1.0000,1,1
+synth maintenance 00049,PURCHASE,628,0.4667,7,4
+synth misc 00154,PURCHASE,6022,1.0000,1,1
+synth utility 00080,SALE,701,1.0000,1,1
+synth service 00651,SALE,411,1.0000,1,1
+synth misc 00125,SALE,704,1.0000,1,1
+synth packaging 00194,SALE,4427,1.0000,1,1
+synth retail 00021,PURCHASE,625,0.5000,4,3
+synth utility 00190,PURCHASE,625,1.0000,1,1
+synth misc 00643,SALE,704,1.0000,1,1
+synth maintenance 00597,SALE,4427,1.0000,2,1
+synth misc 00346,PURCHASE,609,1.0000,1,1
+synth misc 00269,SALE,704,1.0000,1,1
+synth transport 00457,PURCHASE,608,1.0000,1,1
+synth packaging 00369,PURCHASE,628,1.0000,1,1
+synth transport 00740,PURCHASE,608,1.0000,1,1
+synth packaging 00970,SALE,704,1.0000,1,1
+synth raw material 00286,SALE,411,1.0000,4,1
+synth misc 00953,SALE,701,0.5455,6,3
+synth office 00616,PURCHASE,605,1.0000,1,1
+synth maintenance 00472,PURCHASE,401,1.0000,1,1
+synth raw material 01010,PURCHASE,6022,1.0000,1,1
+synth raw material 00596,PURCHASE,609,0.3333,2,3
+synth maintenance 01184,SALE,4427,1.0000,1,1
+synth retail 00715,PURCHASE,608,1.0000,1,1
+synth fuel 00033,SALE,4427,1.0000,1,1
+synth transport 01132,PURCHASE,612,0.8750,4,2
+synth utility 00352,PURCHASE,601,1.0000,1,1
+synth packaging 00784,PURCHASE,608,1.0000,1,1
+synth misc 00542,PURCHASE,635,0.5000,1,2
+synth office 00023,PURCHASE,401,1.0000,1,1
+synth misc 01175,PURCHASE,635,1.0000,1,1
+synth utility 00655,SALE,411,1.0000,1,1
+synth maintenance 01159,PURCHASE,612,0.5714,5,3
+synth transport 01080,PURCHASE,625,1.0000,1,1
+synth retail 00642,PURCHASE,608,0.6000,3,2
+synth retail 00327,PURCHASE,605,1.0000,1,1
+synth packaging 00355,SALE,411,1.0000,1,1
+synth office 00407,PURCHASE,601,0.8710,3,3
+synth fuel 00895,SALE,411,1.0000,1,1
+synth retail 00757,SALE,4427,0.9688,1,2
+synth raw material 00353,SALE,4427,0.9655,1,2
+synth service 00122,SALE,704,1.0000,1,1
+synth raw material 00069,SALE,411,1.0000,1,1
+synth utility 00504,PURCHASE,625,1.0000,1,1
+synth misc 00163,PURCHASE,613,1.0000,1,1
+synth retail 00132,SALE,411,1.0000,1,1
+synth utility 00812,PURCHASE,605,1.0000,1,1
+synth service 00804,PURCHASE,401,1.0000,1,1
+synth office 01032,PURCHASE,607,1.0000,1,1
+synth utility 00800,PURCHASE,6022,1.0000,1,1
+synth retail 00620,PURCHASE,635,1.0000,2,1
+synth retail 00744,PURCHASE,601,0.8065,6,2
+synth fuel 00273,SALE,4427,1.0000,2,1
+synth utility 00469,PURCHASE,625,0.4737,6,4
+synth utility 00450,PURCHASE,613,1.0000,1,1
+synth retail 00447,PURCHASE,609,1.0000,1,1
+synth service 00454,SALE,701,0.9259,5,2
+synth packaging 00825,SALE,704,1.0000,1,1
+synth fuel 00539,PURCHASE,612,1.0000,1,1
+synth raw material 00837,PURCHASE,612,1.0000,1,1
+synth office 00439,PURCHASE,625,1.0000,1,1
+synth office 00561,PURCHASE,6022,1.0000,1,1
+synth fuel 00470,PURCHASE,613,0.7500,3,3
+synth office 01124,PURCHASE,625,1.0000,1,1
+synth raw material 00573,PURCHASE,628,1.0000,1,1
+synth raw material 00893,PURCHASE,635,1.0000,1,1
+synth misc 00315,PURCHASE,628,1.0000,1,1
+synth office 00209,PURCHASE,612,0.5000,2,2
+synth maintenance 00656,PURCHASE,609,1.0000,1,1
+synth raw material 00829,PURCHASE,371,1.0000,1,1
+synth maintenance 00345,PURCHASE,609,1.0000,1,1
+synth service 00278,SALE,704,1.0000,2,1
+synth packaging 00619,SALE,707,1.0000,1,1
+synth misc 00912,SALE,701,1.0000,1,1
+synth fuel 00738,PURCHASE,612,1.0000,5,1
+synth utility 00537,PURCHASE,612,1.0000,1,1
+synth fuel 01158,PURCHASE,612,1.0000,1,1
+synth fuel 00844,PURCHASE,608,1.0000,1,1
+synth office 00811,PURCHASE,401,1.0000,1,1
+synth service 00452,PURCHASE,609,0.3953,5,4
+synth transport 00955,PURCHASE,4426,1.0000,1,1
+synth utility 00962,PURCHASE,628,0.9368,9,3
+synth office 00177,PURCHASE,401,0.7500,2,2
+synth raw material 00503,PURCHASE,609,1.0000,1,1
+synth misc 00344,PURCHASE,401,1.0000,1,1
+synth utility 00785,PURCHASE,612,1.0000,1,1
+synth misc 00116,PURCHASE,605,1.0000,1,1
+synth fuel 00570,PURCHASE,371,0.6667,1,2
+synth raw material 00357,PURCHASE,371,1.0000,1,1
+synth office 01029,PURCHASE,601,1.0000,3,1
+synth fuel 00952,PURCHASE,605,1.0000,1,1
+synth office 00140,PURCHASE,6022,0.6667,1,2
+synth raw material 00186,PURCHASE,401,1.0000,1,1
+synth office 01013,PURCHASE,608,1.0000,1,1
+synth misc 00759,SALE,704,1.0000,1,1
+synth misc 00448,PURCHASE,6022,1.0000,1,1
+synth packaging 00379,SALE,411,1.0000,1,1
+synth fuel 00187,SALE,411,0.5000,1,2
+synth misc 00404,PURCHASE,6022,0.8788,5,3
+synth raw material 00707,PURCHASE,613,1.0000,1,1
+synth office 01168,PURCHASE,4426,1.0000,1,1
+synth service 00595,SALE,411,1.0000,1,1
+synth misc 00509,PURCHASE,612,1.0000,1,1
+synth retail 00391,PURCHASE,628,1.0000,1,1
+synth maintenance 00770,PURCHASE,6022,1.0000,1,1
+synth office 00028,PURCHASE,612,1.0000,1,1
+synth transport 00918,PURCHASE,601,1.0000,1,1
+synth service 00742,PURCHASE,6022,1.0000,1,1
+synth office 00479,PURCHASE,608,1.0000,1,1
+synth transport 00031,PURCHASE,401,1.0000,1,1
+synth utility 00794,PURCHASE,371,1.0000,1,1
+synth retail 00525,PURCHASE,605,1.0000,1,1
+synth maintenance 00414,PURCHASE,608,1.0000,1,1
+synth service 00237,SALE,411,0.6667,1,2
+synth raw material 00463,PURCHASE,609,0.5714,4,2
+synth retail 00538,PURCHASE,602,0.8571,2,2
+synth service 01071,SALE,704,1.0000,1,1
+synth packaging 00500,SALE,707,1.0000,1,1
+synth utility 00748,PURCHASE,609,1.0000,2,1
+synth utility 01023,SALE,701,1.0000,1,1
+synth utility 01195,SALE,701,1.0000,1,1
+synth service 00713,PURCHASE,625,1.0000,1,1
+synth retail 00337,PURCHASE,625,1.0000,1,1
+synth packaging 00746,PURCHASE,371,1.0000,1,1
+synth maintenance 00098,PURCHASE,4426,1.0000,1,1
+synth raw material 00307,SALE,704,1.0000,1,1
+synth utility 00843,PURCHASE,6022,1.0000,1,1
+synth maintenance 01181,PURCHASE,622,1.0000,1,1
+synth service 00005,PURCHASE,4426,1.0000,1,1
+synth utility 01074,SALE,4427,1.0000,1,1
+synth fuel 01077,SALE,704,1.0000,1,1
+synth maintenance 00699,PURCHASE,622,1.0000,1,1
+synth packaging 00554,PURCHASE,613,0.5556,6,3
+synth packaging 00134,PURCHASE,601,1.0000,1,1
+synth utility 00982,PURCHASE,635,1.0000,1,1
+synth service 00753,PURCHASE,628,0.6429,4,3
+synth transport 00130,SALE,411,1.0000,1,1
+synth misc 01190,SALE,707,1.0000,1,1
+synth raw material 01055,SALE,707,1.0000,1,1
+synth maintenance 00741,PURCHASE,605,0.5000,2,2
+synth retail 01030,PURCHASE,6022,0.7907,7,2
+synth packaging 00625,PURCHASE,622,1.0000,1,1
+synth raw material 00019,SALE,704,1.0000,1,1
+synth service 00017,PURCHASE,635,1.0000,1,1
+synth fuel 00849,PURCHASE,605,1.0000,1,1
+synth packaging 01165,PURCHASE,6022,1.0000,1,1
+synth service 01133,PURCHASE,625,1.0000,1,1
+synth office 00073,PURCHASE,371,0.3256,5,4
+synth transport 00659,PURCHASE,602,1.0000,1,1
+synth maintenance 01180,PURCHASE,401,0.8333,2,2
+synth misc 00533,PURCHASE,4426,1.0000,1,1
+synth service 00945,SALE,704,1.0000,1,1
+synth transport 00498,PURCHASE,635,1.0000,1,1
+synth misc 00889,SALE,411,1.0000,1,1
+synth misc 01186,PURCHASE,371,1.0000,1,1
+synth packaging 00636,SALE,4427,0.5429,5,2
+synth service 00288,SALE,4427,1.0000,1,1
+synth office 00251,SALE,704,1.0000,1,1
+synth maintenance 00185,PURCHASE,628,1.0000,1,1
+synth maintenance 00074,SALE,4427,1.0000,1,1
+synth utility 00930,SALE,707,1.0000,1,1
+synth raw material 00638,PURCHASE,635,1.0000,1,1
+synth raw material 00032,PURCHASE,608,1.0000,1,1
+synth misc 00725,PURCHASE,635,1.0000,1,1
+synth packaging 00146,PURCHASE,602,1.0000,1,1
+synth packaging 01047,PURCHASE,601,0.7500,3,2
+synth retail 01147,PURCHASE,605,1.0000,1,1
+synth retail 00022,PURCHASE,607,1.0000,1,1
+synth transport 00386,PURCHASE,612,1.0000,1,1
+synth office 00612,PURCHASE,635,1.0000,1,1
+synth retail 00392,PURCHASE,4426,1.0000,1,1
+synth utility 00739,PURCHASE,609,1.0000,1,1
+synth maintenance 01171,PURCHASE,612,0.5833,5,3
+synth utility 00758,PURCHASE,401,1.0000,1,1
+synth fuel 00705,SALE,411,1.0000,1,1
+synth office 00847,SALE,4427,1.0000,1,1
+synth misc 00246,PURCHASE,602,1.0000,1,1
+synth maintenance 01075,PURCHASE,625,1.0000,1,1
+synth transport 00644,PURCHASE,607,1.0000,1,1
+synth maintenance 00737,SALE,411,0.6000,4,4
+synth fuel 00133,SALE,704,1.0000,1,1
+synth misc 00633,PURCHASE,625,1.0000,1,1
+synth retail 00731,PURCHASE,625,1.0000,1,1
+synth transport 00056,PURCHASE,401,1.0000,1,1
+synth retail 00350,PURCHASE,612,1.0000,1,1
+synth utility 00777,PURCHASE,609,0.9310,2,2
+synth office 00772,PURCHASE,612,1.0000,1,1
+synth transport 00710,PURCHASE,4426,1.0000,1,1
+synth utility 00551,PURCHASE,601,0.5217,4,2
+synth misc 00412,PURCHASE,622,1.0000,1,1
+synth office 00896,PURCHASE,613,1.0000,1,1
+synth transport 01122,SALE,704,1.0000,1,1
+synth transport 00799,SALE,4427,1.0000,1,1
+synth office 00622,SALE,4427,1.0000,1,1
+synth retail 00314,SALE,704,1.0000,1,1
+synth raw material 00165,SALE,411,1.0000,1,1
+synth maintenance 01157,PURCHASE,613,1.0000,1,1
+synth utility 00852,PURCHASE,609,1.0000,1,1
+synth maintenance 00810,PURCHASE,622,1.0000,1,1
+synth retail 00874,SALE,704,0.7143,2,2
+synth packaging 00973,PURCHASE,6022,1.0000,1,1
+synth transport 00598,PURCHASE,628,1.0000,1,1
+synth packaging 00517,PURCHASE,6022,1.0000,1,1
+synth packaging 00948,PURCHASE,371,0.9231,1,2
+synth packaging 00886,PURCHASE,625,1.0000,1,1
+synth office 00535,PURCHASE,625,1.0000,1,1
+synth fuel 00591,PURCHASE,613,1.0000,1,1
+synth packaging 00855,PURCHASE,601,1.0000,1,1
+synth raw material 00183,PURCHASE,609,1.0000,1,1
+synth fuel 00118,PURCHASE,401,1.0000,1,1
+synth office 00317,PURCHASE,602,1.0000,1,1
+synth packaging 00384,PURCHASE,622,1.0000,1,1
+synth raw material 00157,SALE,411,1.0000,1,1
+synth fuel 01127,SALE,704,1.0000,1,1
+synth misc 00891,SALE,701,1.0000,1,1
+synth retail 00490,SALE,704,1.0000,1,1
+synth raw material 00607,PURCHASE,625,1.0000,1,1
+synth maintenance 01200,SALE,411,1.0000,1,1
+synth office 00037,SALE,701,1.0000,1,1
+synth utility 00815,PURCHASE,628,0.5000,1,2
+synth fuel 00623,PURCHASE,601,1.0000,1,1
+synth raw material 00851,PURCHASE,607,1.0000,1,1
+synth fuel 00397,PURCHASE,635,1.0000,1,1
+synth utility 01197,PURCHASE,4426,1.0000,2,1
+synth utility 01116,PURCHASE,628,1.0000,1,1
+synth utility 00846,PURCHASE,371,0.7647,5,2
+synth retail 00182,PURCHASE,401,1.0000,1,1
+synth office 00320,PURCHASE,601,1.0000,3,1
+synth maintenance 00966,PURCHASE,612,1.0000,1,1
+synth raw material 00864,SALE,707,1.0000,1,1
+synth maintenance 00075,PURCHASE,4426,1.0000,1,1
+synth retail 00694,SALE,704,1.0000,1,1
+synth raw material 00114,PURCHASE,371,1.0000,1,1
+synth office 00560,PURCHASE,605,1.0000,1,1
+synth transport 00603,PURCHASE,6022,1.0000,1,1
+synth office 00702,PURCHASE,635,1.0000,1,1
+synth raw material 00198,PURCHASE,401,1.0000,1,1
+synth maintenance 00107,PURCHASE,601,1.0000,1,1
+synth fuel 00091,PURCHASE,612,1.0000,1,1
+synth raw material 00174,PURCHASE,613,1.0000,1,1
+synth service 01003,PURCHASE,608,1.0000,1,1
+synth packaging 00809,PURCHASE,625,1.0000,1,1
+synth service 00206,PURCHASE,635,1.0000,1,1
+synth maintenance 00215,SALE,707,1.0000,1,1
+synth transport 01161,PURCHASE,635,1.0000,1,1
+synth retail 00885,SALE,4427,1.0000,1,1
+synth maintenance 00158,PURCHASE,601,0.5000,2,2
+synth packaging 00790,PURCHASE,401,0.6667,2,2
+synth utility 00145,PURCHASE,635,0.5000,1,3
+synth utility 00293,PURCHASE,635,1.0000,1,1
+synth packaging 00905,PURCHASE,635,1.0000,1,1
+synth utility 00423,SALE,701,1.0000,1,1
+synth service 00520,PURCHASE,612,1.0000,1,1
+synth office 00147,SALE,4427,1.0000,1,1
+synth fuel 00564,PURCHASE,608,1.0000,1,1
+synth maintenance 01018,SALE,4427,1.0000,1,1
+synth fuel 00461,PURCHASE,605,1.0000,1,1
+synth maintenance 01084,PURCHASE,607,0.8000,2,2
+synth packaging 00781,PURCHASE,622,1.0000,1,1
+synth raw material 00721,PURCHASE,602,1.0000,1,1
+synth transport 00960,PURCHASE,602,1.0000,1,1
+synth utility 00943,PURCHASE,6022,0.9375,3,2
+synth utility 00303,SALE,4427,1.0000,1,1
+synth service 00233,SALE,704,1.0000,1,1
+synth office 00606,PURCHASE,6022,0.5000,2,2
+synth office 00296,PURCHASE,605,1.0000,1,1
+synth misc 00826,SALE,4427,1.0000,1,1
+synth retail 00322,PURCHASE,635,0.6000,3,2
+synth transport 00727,PURCHASE,625,1.0000,1,1
+synth transport 00508,PURCHASE,401,1.0000,1,1
+synth fuel 00908,SALE,4427,0.8750,3,2
+synth maintenance 00613,PURCHASE,609,1.0000,1,1
+synth misc 00143,PURCHASE,371,1.0000,1,1
+synth office 00922,PURCHASE,635,1.0000,1,1
+synth retail 00861,PURCHASE,608,1.0000,1,1
+synth transport 00832,PURCHASE,601,1.0000,1,1
+synth retail 00528,PURCHASE,622,1.0000,1,1
+synth packaging 00512,SALE,704,1.0000,1,1
+synth maintenance 00323,PURCHASE,612,1.0000,1,1
+synth maintenance 00559,PURCHASE,609,1.0000,1,1
+synth packaging 00368,PURCHASE,605,1.0000,1,1
+synth retail 00138,PURCHASE,601,1.0000,1,1
+synth utility 00051,PURCHASE,613,1.0000,1,1
+synth fuel 01008,PURCHASE,6022,1.0000,1,1
+synth retail 01044,PURCHASE,4426,1.0000,1,1
+synth office 01086,SALE,704,1.0000,1,1
+synth service 00248,PURCHASE,602,1.0000,1,1
+synth service 00180,PURCHASE,612,1.0000,1,1
+synth maintenance 00678,SALE,411,1.0000,1,1
+synth raw material 00558,SALE,707,1.0000,1,1
+synth office 00377,PURCHASE,625,1.0000,1,1
+synth misc 00319,PURCHASE,371,1.0000,1,1
+synth office 00313,SALE,701,1.0000,1,1
+synth retail 00280,SALE,4427,1.0000,2,1
+synth misc 00301,PURCHASE,625,1.0000,1,1
+synth office 01058,PURCHASE,605,0.8000,5,2
+synth packaging 00660,PURCHASE,608,1.0000,1,1
+synth service 00913,SALE,4427,1.0000,1,1
+synth fuel 00888,SALE,4427,1.0000,1,1
+synth office 01019,PURCHASE,625,1.0000,1,1
+synth service 00632,PURCHASE,4426,1.0000,1,1
+synth retail 00610,SALE,411,1.0000,1,1
+synth office 00169,PURCHASE,371,1.0000,1,1
+synth packaging 00734,PURCHASE,401,1.0000,1,1
+synth utility 00445,PURCHASE,371,1.0000,1,1
+synth maintenance 00385,PURCHASE,371,1.0000,1,1
+synth transport 00220,PURCHASE,605,1.0000,1,1
+synth raw material 00677,PURCHASE,635,1.0000,1,1
+synth retail 01000,PURCHASE,601,1.0000,1,1
+synth raw material 00321,PURCHASE,625,1.0000,1,1
+synth misc 00609,SALE,707,1.0000,1,1
+synth transport 00302,SALE,704,1.0000,1,1
+synth raw material 01059,SALE,4427,1.0000,1,1
+synth transport 00092,SALE,701,1.0000,1,1
+synth maintenance 00820,PURCHASE,608,1.0000,1,1
+synth office 00796,PURCHASE,628,1.0000,1,1
+synth raw material 00618,PURCHASE,613,1.0000,1,1
+synth misc 00668,SALE,411,0.5000,1,2
+synth utility 01076,PURCHASE,601,1.0000,2,1
+synth office 00552,PURCHASE,609,1.0000,1,1
+synth packaging 00160,SALE,704,1.0000,1,1
+synth maintenance 00360,PURCHASE,607,1.0000,1,1
+synth service 00060,PURCHASE,607,1.0000,1,1
+synth utility 00801,PURCHASE,612,0.5000,2,2
+synth raw material 00513,PURCHASE,635,1.0000,2,1
+synth packaging 00254,PURCHASE,612,1.0000,1,1
+synth fuel 00007,PURCHASE,613,1.0000,1,1
+synth service 00802,PURCHASE,401,1.0000,1,1
+synth misc 00816,PURCHASE,601,1.0000,1,1
+synth utility 01135,PURCHASE,601,1.0000,1,1
+synth packaging 00783,PURCHASE,607,1.0000,1,1
+synth raw material 00482,SALE,707,1.0000,1,1
+synth maintenance 00276,SALE,411,1.0000,1,1
+synth raw material 00767,PURCHASE,635,1.0000,1,1
+synth raw material 00349,PURCHASE,635,1.0000,1,1
+synth office 00010,SALE,707,1.0000,1,1
+synth service 00341,PURCHASE,608,1.0000,1,1
+synth misc 00181,PURCHASE,601,1.0000,1,1
+synth maintenance 01150,PURCHASE,607,1.0000,1,1
+synth service 00268,PURCHASE,601,1.0000,1,1
+synth packaging 00648,PURCHASE,6022,1.0000,1,1
+synth packaging 00462,PURCHASE,635,1.0000,1,1
+synth office 00006,PURCHASE,609,1.0000,1,1
+synth service 00137,PURCHASE,628,1.0000,1,1
+synth transport 01066,PURCHASE,608,1.0000,1,1
+synth transport 00957,PURCHASE,609,1.0000,1,1
+synth retail 00692,SALE,707,1.0000,1,1
+synth maintenance 00990,PURCHASE,612,1.0000,1,1
+synth office 00884,PURCHASE,622,1.0000,1,1
+synth utility 00842,SALE,4427,1.0000,1,1
+synth office 00356,SALE,707,1.0000,1,1
+synth service 00650,SALE,707,1.0000,1,1
+synth utility 01053,SALE,411,1.0000,1,1
+synth fuel 00722,PURCHASE,635,1.0000,1,1
+synth transport 00530,PURCHASE,609,1.0000,1,1
+synth packaging 00486,PURCHASE,635,1.0000,1,1
+synth transport 00038,PURCHASE,628,1.0000,1,1
+synth maintenance 00257,SALE,701,1.0000,3,1
+synth utility 00845,PURCHASE,635,1.0000,1,1
+synth maintenance 00328,PURCHASE,371,1.0000,1,1
+synth office 00467,PURCHASE,628,1.0000,1,1
+synth office 00880,PURCHASE,612,1.0000,1,1
+synth office 00877,PURCHASE,371,1.0000,1,1
+synth packaging 00221,PURCHASE,625,1.0000,1,1
+synth office 00617,SALE,701,1.0000,1,1
+synth maintenance 00676,PURCHASE,602,1.0000,1,1
+synth service 00266,SALE,411,1.0000,1,1
+synth transport 01070,PURCHASE,401,1.0000,1,1
+synth raw material 00672,PURCHASE,635,1.0000,1,1
+synth office 00475,PURCHASE,628,1.0000,1,1
+synth maintenance 00686,PURCHASE,625,1.0000,1,1
+synth utility 00921,SALE,707,1.0000,1,1
+synth fuel 01031,PURCHASE,601,1.0000,1,1
+synth retail 00588,PURCHASE,607,1.0000,1,1
+synth packaging 00235,PURCHASE,635,0.7500,2,2
+synth utility 01193,SALE,4427,1.0000,1,1
+synth raw material 00458,SALE,701,1.0000,1,1
+synth raw material 00195,SALE,707,1.0000,1,1
+synth transport 00754,PURCHASE,601,1.0000,1,1
+synth fuel 00330,PURCHASE,601,1.0000,1,1
+synth packaging 01146,SALE,701,1.0000,1,1
+synth retail 01020,PURCHASE,612,1.0000,1,1
+synth transport 00704,PURCHASE,613,1.0000,1,1
+synth packaging 00978,PURCHASE,635,1.0000,1,1
+synth service 00306,PURCHASE,6022,1.0000,1,1
+synth utility 00712,PURCHASE,602,1.0000,1,1
+synth packaging 00001,PURCHASE,601,1.0000,1,1
+synth office 01054,PURCHASE,601,1.0000,1,1
+synth packaging 00044,PURCHASE,6022,1.0000,1,1
+synth raw material 00110,PURCHASE,605,0.5714,4,3
+synth service 01095,PURCHASE,635,1.0000,1,1
+synth service 00653,PURCHASE,401,1.0000,1,1
+synth packaging 00986,PURCHASE,601,1.0000,1,1
+synth maintenance 01107,SALE,701,1.0000,1,1
+synth transport 00149,PURCHASE,609,1.0000,1,1
+synth office 00574,PURCHASE,605,1.0000,1,1
+synth service 00153,SALE,4427,1.0000,1,1
+synth utility 01067,SALE,704,1.0000,1,1
+synth transport 00637,PURCHASE,625,1.0000,1,1
+synth maintenance 00983,SALE,704,0.8667,4,3
+synth retail 00170,PURCHASE,635,1.0000,1,1
+synth packaging 00556,PURCHASE,607,1.0000,1,1
+synth packaging 00689,PURCHASE,612,1.0000,1,1
+synth raw material 00105,PURCHASE,613,1.0000,1,1
+synth utility 00641,PURCHASE,613,1.0000,1,1
+synth service 00987,PURCHASE,371,1.0000,2,1
+synth utility 00823,PURCHASE,625,1.0000,1,1
+synth fuel 00999,PURCHASE,602,1.0000,1,1
+synth office 01056,PURCHASE,609,1.0000,1,1
+synth misc 00857,SALE,4427,1.0000,1,1
+synth raw material 00104,SALE,4427,1.0000,1,1
+synth maintenance 00507,SALE,704,1.0000,1,1
+synth service 00222,SALE,411,1.0000,1,1
+synth fuel 00733,PURCHASE,601,1.0000,1,1
+synth packaging 00348,SALE,701,0.7143,1,2
+synth maintenance 00082,PURCHASE,609,1.0000,1,1
+synth retail 00838,PURCHASE,4426,1.0000,1,1
+synth transport 00285,SALE,704,1.0000,1,1
+synth service 00142,PURCHASE,601,1.0000,1,1
+synth packaging 00522,PURCHASE,601,1.0000,1,1
+synth transport 00516,PURCHASE,605,1.0000,1,1
+synth office 00308,PURCHASE,605,1.0000,1,1
+synth transport 00199,SALE,411,0.6667,2,2
+synth maintenance 00093,PURCHASE,401,1.0000,1,1
+synth misc 00242,PURCHASE,371,1.0000,1,1
+synth misc 00730,SALE,704,1.0000,1,1
+synth raw material 00873,SALE,411,1.0000,1,1
+synth fuel 00139,SALE,704,1.0000,1,1
+synth packaging 00178,PURCHASE,401,1.0000,1,1
+synth utility 00083,PURCHASE,625,1.0000,1,1
+synth office 01014,SALE,411,1.0000,1,1
+synth raw material 00025,SALE,704,1.0000,1,1
+synth retail 00940,PURCHASE,628,1.0000,1,1
+synth packaging 00501,SALE,411,1.0000,1,1
+synth service 00358,SALE,704,1.0000,1,1
+synth office 00894,SALE,4427,1.0000,2,1
+synth retail 00519,PURCHASE,601,1.0000,1,1
+synth packaging 00483,PURCHASE,609,1.0000,1,1
+synth office 00624,PURCHASE,601,1.0000,1,1
+synth raw material 01005,PURCHASE,371,1.0000,1,1
+synth fuel 00465,PURCHASE,6022,1.0000,1,1
+synth raw material 00923,SALE,701,1.0000,1,1
+synth maintenance 00141,PURCHASE,602,1.0000,1,1
+synth service 00714,PURCHASE,612,1.0000,1,1
+synth packaging 00628,SALE,4427,1.0000,1,1
+synth maintenance 00086,PURCHASE,613,1.0000,1,1
+synth utility 01185,PURCHASE,602,1.0000,1,1
+synth transport 01009,PURCHASE,607,1.0000,1,1
+synth utility 00008,SALE,704,1.0000,1,1
+synth maintenance 00065,PURCHASE,602,1.0000,1,1
+synth service 00002,PURCHASE,628,1.0000,1,1
+synth fuel 01183,PURCHASE,612,1.0000,2,1
+synth raw material 00424,PURCHASE,609,1.0000,1,1
+synth raw material 01100,PURCHASE,622,1.0000,1,1
+synth office 00690,PURCHASE,622,1.0000,1,1
+synth packaging 00376,SALE,707,1.0000,1,1
+synth packaging 00831,PURCHASE,625,1.0000,1,1
+synth maintenance 00506,PURCHASE,6022,1.0000,1,1
+synth misc 00456,PURCHASE,4426,1.0000,1,1
+synth misc 00863,PURCHASE,371,1.0000,1,1
+synth fuel 00013,PURCHASE,613,1.0000,1,1
+synth packaging 01050,PURCHASE,602,1.0000,1,1
+synth packaging 00367,PURCHASE,613,1.0000,1,1
+synth maintenance 00695,PURCHASE,4426,1.0000,1,1
+synth maintenance 00347,SALE,411,1.0000,1,1
+synth utility 00671,PURCHASE,605,1.0000,1,1
+synth fuel 00176,PURCHASE,608,1.0000,1,1
+synth transport 00238,PURCHASE,602,1.0000,1,1
+synth retail 00924,PURCHASE,635,1.0000,1,1
+synth office 00289,PURCHASE,608,1.0000,1,1
+synth office 00290,PURCHASE,609,1.0000,1,1
+synth packaging 00674,PURCHASE,371,1.0000,1,1
+synth utility 00455,PURCHASE,601,1.0000,1,1
+synth fuel 00219,PURCHASE,601,1.0000,1,1
+synth utility 00631,PURCHASE,601,1.0000,1,1
+synth raw material 00915,PURCHASE,628,1.0000,1,1
+synth service 01138,PURCHASE,609,0.9286,1,2
+synth retail 00813,PURCHASE,602,1.0000,1,1
+synth misc 00395,PURCHASE,608,1.0000,1,1
+synth retail 01160,SALE,704,1.0000,1,1
+synth service 01112,SALE,701,1.0000,1,1
+synth fuel 00989,PURCHASE,607,1.0000,1,1
+synth misc 00600,PURCHASE,605,1.0000,1,1
+synth utility 00256,PURCHASE,609,1.0000,1,1
+synth office 00102,PURCHASE,6022,1.0000,1,1
+synth utility 00489,SALE,4427,1.0000,1,1
+synth transport 00411,SALE,4427,1.0000,1,1
+synth office 00972,SALE,411,1.0000,1,1
+synth office 00252,PURCHASE,4426,1.0000,1,1
+synth misc 01187,PURCHASE,4426,1.0000,1,1
+synth utility 00383,SALE,704,1.0000,1,1
+synth raw material 00188,SALE,704,1.0000,1,1
+synth maintenance 00870,PURCHASE,6022,1.0000,1,1
+synth misc 01104,PURCHASE,607,1.0000,1,1
+synth maintenance 00521,SALE,411,1.0000,1,1
+synth retail 00720,PURCHASE,625,1.0000,1,1
+synth transport 00230,PURCHASE,625,1.0000,1,1
+synth fuel 00277,SALE,707,1.0000,1,1
+synth transport 01149,PURCHASE,371,1.0000,1,1
+synth maintenance 01154,PURCHASE,371,1.0000,1,1
+synth misc 00681,PURCHASE,625,1.0000,1,1
+synth raw material 00245,PURCHASE,4426,1.0000,1,1
+synth misc 00584,PURCHASE,605,1.0000,1,1
+synth utility 00553,PURCHASE,625,1.0000,1,1
+synth service 00034,PURCHASE,371,1.0000,1,1
+synth office 00673,PURCHASE,4426,1.0000,1,1
+synth raw material 00446,PURCHASE,608,1.0000,1,1
+synth retail 00012,PURCHASE,601,1.0000,1,1
+synth office 00532,PURCHASE,613,1.0000,1,1
+synth fuel 00240,PURCHASE,601,1.0000,1,1
+synth transport 00901,PURCHASE,601,1.0000,1,1
+synth packaging 00976,PURCHASE,601,1.0000,1,1
+synth office 00066,PURCHASE,635,1.0000,1,1
+synth misc 00941,SALE,411,1.0000,1,1
+synth packaging 00040,SALE,4427,1.0000,1,1
+synth transport 00097,PURCHASE,625,1.0000,1,1
+synth raw material 01001,PURCHASE,607,1.0000,1,1
+synth utility 01036,PURCHASE,628,1.0000,1,1
+synth maintenance 00550,PURCHASE,608,1.0000,1,1
+synth office 00929,PURCHASE,635,1.0000,1,1
+synth service 00388,PURCHASE,609,1.0000,1,1
+synth transport 01170,PURCHASE,605,1.0000,1,1
+synth packaging 00258,PURCHASE,4426,1.0000,1,1
+synth packaging 00711,SALE,704,1.0000,1,1
+synth transport 00059,SALE,701,0.7143,1,3
+synth utility 00563,PURCHASE,613,1.0000,1,1
+synth retail 00611,PURCHASE,635,1.0000,2,1
+synth utility 01177,PURCHASE,625,1.0000,1,1
+synth service 00418,PURCHASE,622,1.0000,1,1
+synth misc 00179,SALE,701,1.0000,1,1
+synth packaging 00518,SALE,701,1.0000,1,1
+synth utility 00166,PURCHASE,622,1.0000,1,1
+synth misc 00693,PURCHASE,625,1.0000,1,1
+synth utility 00120,PURCHASE,401,1.0000,1,1
+synth fuel 00634,PURCHASE,601,1.0000,1,1
+synth fuel 00897,PURCHASE,371,1.0000,1,1
+synth raw material 00582,PURCHASE,622,1.0000,1,1
+synth service 00949,PURCHASE,601,1.0000,1,1
+synth transport 00152,PURCHASE,625,1.0000,1,1
+synth raw material 00988,PURCHASE,6022,1.0000,1,1
+synth office 01043,PURCHASE,622,1.0000,1,1
+synth misc 00236,SALE,411,1.0000,1,1
+synth raw material 00903,SALE,701,1.0000,1,1
+synth packaging 00887,PURCHASE,6022,1.0000,1,1
+synth raw material 00403,PURCHASE,609,1.0000,1,1
+synth misc 00113,PURCHASE,371,1.0000,1,1
+synth office 00121,PURCHASE,607,1.0000,1,1
+synth office 00184,PURCHASE,401,1.0000,1,1
+synth raw material 00827,PURCHASE,607,1.0000,1,1
+synth misc 00088,PURCHASE,605,1.0000,1,1
+synth office 00156,PURCHASE,601,1.0000,1,1
+synth retail 00078,PURCHASE,602,1.0000,1,1
+synth retail 00526,PURCHASE,608,1.0000,1,1
+synth raw material 00969,PURCHASE,605,1.0000,1,1
+synth misc 00936,PURCHASE,6022,1.0000,1,1
+synth fuel 00426,SALE,707,1.0000,1,1
+synth maintenance 00828,SALE,4427,1.0000,1,1
+synth raw material 00536,PURCHASE,602,1.0000,1,1
+synth packaging 00459,PURCHASE,605,1.0000,1,1
+synth misc 00751,PURCHASE,608,1.0000,1,1
+synth retail 01078,SALE,707,1.0000,1,1
+synth fuel 00557,PURCHASE,401,1.0000,1,1
+synth raw material 01064,SALE,4427,1.0000,1,1
+synth utility 01119,SALE,704,0.5714,2,2
+synth misc 00298,SALE,701,1.0000,1,1
+synth misc 00106,PURCHASE,608,1.0000,1,1
+synth fuel 00992,PURCHASE,371,1.0000,1,1
+synth retail 00431,PURCHASE,601,1.0000,1,1
+synth service 00015,PURCHASE,607,1.0000,1,1
+synth fuel 00514,PURCHASE,628,1.0000,1,1
+synth office 00020,PURCHASE,371,1.0000,1,1
+synth service 00394,PURCHASE,622,1.0000,1,1
+synth service 00575,PURCHASE,602,1.0000,1,1
+synth maintenance 00562,PURCHASE,601,1.0000,1,1
+synth packaging 00419,PURCHASE,4426,1.0000,1,1
+synth utility 00786,PURCHASE,601,1.0000,1,1
+synth office 00440,PURCHASE,602,1.0000,1,1
+synth office 00687,SALE,704,1.0000,1,1
+synth office 01065,PURCHASE,607,1.0000,1,1
+synth raw material 00586,SALE,707,1.0000,1,1
+synth retail 00041,PURCHASE,608,1.0000,1,1
+synth raw material 00071,PURCHASE,609,1.0000,1,1
+synth packaging 00958,PURCHASE,605,1.0000,1,1
+synth service 01068,PURCHASE,628,1.0000,1,1
+synth utility 00218,PURCHASE,401,0.8000,1,2
+synth utility 01125,PURCHASE,605,1.0000,1,1
+synth fuel 01153,PURCHASE,4426,1.0000,1,1
+synth retail 00387,PURCHASE,4426,1.0000,1,1
+synth maintenance 00496,PURCHASE,625,1.0000,1,1
+synth service 00942,PURCHASE,628,1.0000,1,1
+synth misc 00665,PURCHASE,602,1.0000,1,1
+synth utility 01137,SALE,4427,1.0000,1,1
+synth office 00422,SALE,704,1.0000,1,1
+synth transport 00175,SALE,411,1.0000,1,1
+synth fuel 00621,SALE,701,1.0000,1,1
+synth maintenance 00938,PURCHASE,635,1.0000,1,1
+synth raw material 00848,PURCHASE,607,1.0000,1,1
+synth maintenance 00608,PURCHASE,607,1.0000,1,1
+synth service 00224,PURCHASE,612,1.0000,1,1
+synth packaging 01117,PURCHASE,625,1.0000,1,1
+synth raw material 00925,PURCHASE,628,1.0000,1,1
+synth retail 00318,SALE,707,1.0000,1,1
+synth fuel 01017,PURCHASE,602,1.0000,1,1
+synth maintenance 00223,SALE,701,1.0000,1,1
+synth misc 00103,SALE,411,1.0000,1,1
+synth office 00155,PURCHASE,625,1.0000,1,1
+synth maintenance 00639,PURCHASE,635,1.0000,1,1
+synth maintenance 00373,PURCHASE,612,0.6667,1,2
+synth utility 00310,PURCHASE,607,1.0000,1,1
+synth service 00797,PURCHASE,6022,1.0000,1,1
+synth service 00370,PURCHASE,401,1.0000,1,1
+synth packaging 01063,PURCHASE,401,1.0000,1,1
+synth fuel 00544,PURCHASE,622,1.0000,1,1
+synth packaging 00442,PURCHASE,609,1.0000,1,1
+synth office 00718,PURCHASE,608,1.0000,1,1
+synth fuel 00203,PURCHASE,607,1.0000,1,1
+synth utility 01120,PURCHASE,607,1.0000,1,1
+synth utility 00709,PURCHASE,608,1.0000,1,1
+synth packaging 00324,PURCHASE,622,1.0000,1,1
+synth maintenance 00576,PURCHASE,605,1.0000,1,1
+synth retail 00626,PURCHASE,607,1.0000,1,1
+synth fuel 00375,PURCHASE,602,1.0000,1,1
+synth fuel 01108,PURCHASE,605,1.0000,1,1
+synth service 00836,PURCHASE,602,1.0000,1,1
+synth retail 00466,PURCHASE,401,1.0000,1,1
+synth retail 00917,PURCHASE,613,0.6000,1,2
+synth fuel 00415,SALE,704,1.0000,1,1
+synth retail 00081,SALE,704,1.0000,1,1
+synth maintenance 00662,SALE,411,1.0000,1,1
+synth retail 00250,PURCHASE,601,1.0000,1,1
+synth transport 00095,SALE,701,1.0000,1,1
+synth retail 00213,PURCHASE,613,1.0000,1,1
+synth office 00067,PURCHASE,612,1.0000,1,1
+synth retail 00200,PURCHASE,371,1.0000,1,1
+synth maintenance 00578,PURCHASE,602,1.0000,1,1
+synth retail 01176,SALE,4427,1.0000,1,1
+synth service 00998,PURCHASE,612,1.0000,1,1
+synth transport 00967,PURCHASE,601,1.0000,1,1
+synth fuel 00249,PURCHASE,605,1.0000,1,1
+synth retail 00683,PURCHASE,625,0.5000,1,2
+synth transport 01094,PURCHASE,625,1.0000,1,1
+synth utility 01098,PURCHASE,602,1.0000,1,1
+synth fuel 00270,SALE,707,1.0000,1,1
+synth packaging 01025,SALE,4427,1.0000,1,1
+synth office 00026,SALE,707,1.0000,1,1
+synth office 00779,PURCHASE,635,1.0000,1,1
+synth retail 00979,PURCHASE,601,1.0000,1,1
+synth raw material 00436,SALE,704,1.0000,1,1
+synth maintenance 00866,SALE,701,1.0000,1,1
+synth retail 00890,PURCHASE,622,1.0000,1,1
+synth utility 01037,SALE,704,1.0000,1,1
+synth fuel 00261,SALE,4427,1.0000,1,1
+synth maintenance 00951,PURCHASE,601,1.0000,1,1
+synth maintenance 00151,PURCHASE,6022,1.0000,1,1
+synth transport 00443,PURCHASE,612,1.0000,1,1
+synth misc 00572,PURCHASE,601,1.0000,1,1
+synth misc 00780,SALE,411,1.0000,1,1
+synth packaging 00309,SALE,411,1.0000,1,1
+synth utility 00669,SALE,707,1.0000,1,1
+synth maintenance 01163,PURCHASE,622,1.0000,1,1
+synth transport 00485,PURCHASE,609,1.0000,1,1
+synth raw material 00910,PURCHASE,605,1.0000,1,1
+synth service 00312,PURCHASE,635,1.0000,1,1
+synth misc 00765,PURCHASE,401,1.0000,1,1
+synth misc 00993,SALE,4427,1.0000,1,1
+synth fuel 00716,PURCHASE,601,1.0000,1,1
+synth office 00127,PURCHASE,612,1.0000,1,1
+synth misc 00264,PURCHASE,4426,1.0000,1,1
+synth retail 00331,PURCHASE,613,1.0000,1,1
+synth packaging 00468,PURCHASE,613,1.0000,1,1
+synth transport 00297,SALE,707,1.0000,1,1
+synth raw material 01089,PURCHASE,613,1.0000,1,1
+synth fuel 00566,SALE,707,1.0000,1,1
+synth raw material 01007,PURCHASE,628,1.0000,1,1
+synth utility 00580,PURCHASE,613,1.0000,1,1
+synth office 00996,PURCHASE,628,1.0000,1,1
+synth packaging 01145,SALE,704,1.0000,1,1
+synth fuel 00382,SALE,701,1.0000,1,1
+synth office 00050,SALE,704,1.0000,1,1
+synth office 01091,PURCHASE,605,1.0000,1,1
+synth raw material 00351,PURCHASE,602,1.0000,1,1
+synth misc 00876,PURCHASE,607,1.0000,1,1
+synth retail 00630,PURCHASE,608,1.0000,1,1
+synth misc 00311,PURCHASE,625,1.0000,1,1
+synth misc 00700,PURCHASE,613,1.0000,1,1
+synth service 00768,PURCHASE,401,1.0000,1,1
+synth packaging 00335,PURCHASE,609,1.0000,1,1
+synth misc 00208,PURCHASE,609,1.0000,1,1
+synth retail 00735,PURCHASE,602,1.0000,1,1
+synth utility 00036,PURCHASE,601,1.0000,1,1
+synth maintenance 00115,PURCHASE,625,1.0000,1,1
+synth packaging 00243,PURCHASE,601,1.0000,1,1
+synth utility 00340,PURCHASE,635,1.0000,1,1
+synth transport 00627,SALE,704,1.0000,1,1
+synth utility 00275,SALE,411,1.0000,1,1
+synth retail 00647,PURCHASE,4426,1.0000,1,1
+synth raw material 01039,SALE,701,1.0000,1,1
+synth maintenance 00205,PURCHASE,628,1.0000,1,1
+synth fuel 00667,PURCHASE,371,1.0000,1,1
+synth raw material 00984,PURCHASE,605,1.0000,1,1

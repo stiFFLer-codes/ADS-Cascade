@@ -1,0 +1,9 @@
+{
+  "companies": 60,
+  "company_product_rules": 1172,
+  "global_products": 844,
+  "products_determinism_gt_0.95": 1130,
+  "products_determinism_0.50_0.95": 41,
+  "products_determinism_lt_0.50": 1,
+  "pct_deterministic_gt_0.95": 96.4
+}

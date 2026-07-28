@@ -1,0 +1,130 @@
+{
+  "DocumentMetadata": {
+    "Pages": 1
+  },
+  "ExpenseDocuments": [
+    {
+      "ExpenseIndex": 1,
+      "SummaryFields": [
+        {
+          "Type": {
+            "Text": "VENDOR_NAME"
+          },
+          "ValueDetection": {
+            "Text": "SYNTH MART 044 SRL"
+          }
+        },
+        {
+          "Type": {
+            "Text": "TAX_PAYER_ID"
+          },
+          "ValueDetection": {
+            "Text": "998877002"
+          }
+        },
+        {
+          "Type": {
+            "Text": "INVOICE_RECEIPT_DATE"
+          },
+          "ValueDetection": {
+            "Text": "2026-03-15"
+          }
+        },
+        {
+          "Type": {
+            "Text": "AMOUNT_PAID"
+          },
+          "ValueDetection": {
+            "Text": "62.25"
+          }
+        },
+        {
+          "Type": {
+            "Text": "TAX"
+          },
+          "LabelDetection": {
+            "Text": "TVA B 11%"
+          }
+        }
+      ],
+      "LineItemGroups": [
+        {
+          "LineItems": [
+            {
+              "LineItemExpenseFields": [
+                {
+                  "Type": {
+                    "Text": "ITEM"
+                  },
+                  "ValueDetection": {
+                    "Text": "SYNTH SERVICE 00101"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "EXPENSE_ROW"
+                  },
+                  "ValueDetection": {
+                    "Text": "SYNTH SERVICE 00101  1  42.00 A"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "QUANTITY"
+                  },
+                  "ValueDetection": {
+                    "Text": "1"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "PRICE"
+                  },
+                  "ValueDetection": {
+                    "Text": "42.00"
+                  }
+                }
+              ]
+            },
+            {
+              "LineItemExpenseFields": [
+                {
+                  "Type": {
+                    "Text": "ITEM"
+                  },
+                  "ValueDetection": {
+                    "Text": "SYNTH UTILITY 00962"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "EXPENSE_ROW"
+                  },
+                  "ValueDetection": {
+                    "Text": "SYNTH UTILITY 00962  3  6.75 B"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "QUANTITY"
+                  },
+                  "ValueDetection": {
+                    "Text": "3"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "PRICE"
+                  },
+                  "ValueDetection": {
+                    "Text": "6.75"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

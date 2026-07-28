@@ -1,0 +1,130 @@
+{
+  "DocumentMetadata": {
+    "Pages": 1
+  },
+  "ExpenseDocuments": [
+    {
+      "ExpenseIndex": 1,
+      "SummaryFields": [
+        {
+          "Type": {
+            "Text": "VENDOR_NAME"
+          },
+          "ValueDetection": {
+            "Text": "SYNTH FUEL STATION 011 SRL"
+          }
+        },
+        {
+          "Type": {
+            "Text": "TAX_PAYER_ID"
+          },
+          "ValueDetection": {
+            "Text": "998877001"
+          }
+        },
+        {
+          "Type": {
+            "Text": "INVOICE_RECEIPT_DATE"
+          },
+          "ValueDetection": {
+            "Text": "2026-03-14"
+          }
+        },
+        {
+          "Type": {
+            "Text": "AMOUNT_PAID"
+          },
+          "ValueDetection": {
+            "Text": "39.20"
+          }
+        },
+        {
+          "Type": {
+            "Text": "TAX"
+          },
+          "LabelDetection": {
+            "Text": "TVA A 21%"
+          }
+        }
+      ],
+      "LineItemGroups": [
+        {
+          "LineItems": [
+            {
+              "LineItemExpenseFields": [
+                {
+                  "Type": {
+                    "Text": "ITEM"
+                  },
+                  "ValueDetection": {
+                    "Text": "SYNTH RETAIL 00493"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "EXPENSE_ROW"
+                  },
+                  "ValueDetection": {
+                    "Text": "SYNTH RETAIL 00493  2  15.50 A"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "QUANTITY"
+                  },
+                  "ValueDetection": {
+                    "Text": "2"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "PRICE"
+                  },
+                  "ValueDetection": {
+                    "Text": "15.50"
+                  }
+                }
+              ]
+            },
+            {
+              "LineItemExpenseFields": [
+                {
+                  "Type": {
+                    "Text": "ITEM"
+                  },
+                  "ValueDetection": {
+                    "Text": "SYNTH OFFICE 00407"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "EXPENSE_ROW"
+                  },
+                  "ValueDetection": {
+                    "Text": "SYNTH OFFICE 00407  1  8.20 A"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "QUANTITY"
+                  },
+                  "ValueDetection": {
+                    "Text": "1"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "PRICE"
+                  },
+                  "ValueDetection": {
+                    "Text": "8.20"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

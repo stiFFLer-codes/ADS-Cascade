@@ -1,0 +1,130 @@
+{
+  "DocumentMetadata": {
+    "Pages": 1
+  },
+  "ExpenseDocuments": [
+    {
+      "ExpenseIndex": 1,
+      "SummaryFields": [
+        {
+          "Type": {
+            "Text": "VENDOR_NAME"
+          },
+          "ValueDetection": {
+            "Text": "SYNTH KIOSK 019 SRL"
+          }
+        },
+        {
+          "Type": {
+            "Text": "TAX_PAYER_ID"
+          },
+          "ValueDetection": {
+            "Text": "998877004"
+          }
+        },
+        {
+          "Type": {
+            "Text": "INVOICE_RECEIPT_DATE"
+          },
+          "ValueDetection": {
+            "Text": "2026-03-17"
+          }
+        },
+        {
+          "Type": {
+            "Text": "AMOUNT_PAID"
+          },
+          "ValueDetection": {
+            "Text": "21.00"
+          }
+        },
+        {
+          "Type": {
+            "Text": "TAX"
+          },
+          "LabelDetection": {
+            "Text": "TVA B 11%"
+          }
+        }
+      ],
+      "LineItemGroups": [
+        {
+          "LineItems": [
+            {
+              "LineItemExpenseFields": [
+                {
+                  "Type": {
+                    "Text": "ITEM"
+                  },
+                  "ValueDetection": {
+                    "Text": "MYSTERY ITEM ALPHA"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "EXPENSE_ROW"
+                  },
+                  "ValueDetection": {
+                    "Text": "MYSTERY ITEM ALPHA  1  11.00 B"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "QUANTITY"
+                  },
+                  "ValueDetection": {
+                    "Text": "1"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "PRICE"
+                  },
+                  "ValueDetection": {
+                    "Text": "11.00"
+                  }
+                }
+              ]
+            },
+            {
+              "LineItemExpenseFields": [
+                {
+                  "Type": {
+                    "Text": "ITEM"
+                  },
+                  "ValueDetection": {
+                    "Text": "MYSTERY ITEM BETA"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "EXPENSE_ROW"
+                  },
+                  "ValueDetection": {
+                    "Text": "MYSTERY ITEM BETA  4  2.50 B"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "QUANTITY"
+                  },
+                  "ValueDetection": {
+                    "Text": "4"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "PRICE"
+                  },
+                  "ValueDetection": {
+                    "Text": "2.50"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

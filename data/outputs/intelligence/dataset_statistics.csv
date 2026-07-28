@@ -1,0 +1,29 @@
+﻿category,metric,value
+General,Companies count,60
+Invoices per company,min,2
+Invoices per company,max,338
+Invoices per company,avg,43.7
+Invoices per company,median,26.5
+Products per company,min,5
+Products per company,max,43
+Products per company,avg,19.53
+AccountIDs per company,min,5
+AccountIDs per company,max,19
+AccountIDs per company,avg,12.78
+VAT Rates,Rate 11.00,1717
+VAT Rates,Rate 9.00,1416
+VAT Rates,Rate 5.00,1149
+VAT Rates,Rate 21.00,1006
+VAT Rates,Rate 19.00,982
+Direction,PURCHASE,5533
+Direction,SALE,1990
+Top Products,synth retail 00493,392
+Top Products,synth office 00407,248
+Top Products,synth utility 01083,192
+Top Products,synth service 00101,162
+Top Products,synth utility 00962,95
+Top Products,synth maintenance 01121,92
+Top Products,synth retail 00447,91
+Top Products,synth office 00073,86
+Top Products,synth service 00942,73
+Top Products,synth service 00253,69

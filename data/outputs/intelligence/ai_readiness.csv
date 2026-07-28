@@ -1,0 +1,6 @@
+﻿feature,total_rows,non_empty,missing_pct,consistency_metric,consistency_value,ai_value,recommendation
+product_description,7523,0,0.0,ADS,0.8094,HIGH,Strong feature.
+vat_percent,7523,0,4.45,VAT Stable,0.7494,MEDIUM,"Usable, but needs imputation."
+tax_code,7523,0,0.0,-,0,HIGH,Strong feature.
+warehouse_id,7523,0,100.0,-,0,DROP,Too many missing values.
+direction,7523,0,0,-,1.0,HIGH,Strong feature.

@@ -1,0 +1,130 @@
+{
+  "DocumentMetadata": {
+    "Pages": 1
+  },
+  "ExpenseDocuments": [
+    {
+      "ExpenseIndex": 1,
+      "SummaryFields": [
+        {
+          "Type": {
+            "Text": "VENDOR_NAME"
+          },
+          "ValueDetection": {
+            "Text": "SYNTH DEPOT 007 SRL"
+          }
+        },
+        {
+          "Type": {
+            "Text": "TAX_PAYER_ID"
+          },
+          "ValueDetection": {
+            "Text": "998877003"
+          }
+        },
+        {
+          "Type": {
+            "Text": "INVOICE_RECEIPT_DATE"
+          },
+          "ValueDetection": {
+            "Text": "2026-03-16"
+          }
+        },
+        {
+          "Type": {
+            "Text": "AMOUNT_PAID"
+          },
+          "ValueDetection": {
+            "Text": "26.19"
+          }
+        },
+        {
+          "Type": {
+            "Text": "TAX"
+          },
+          "LabelDetection": {
+            "Text": "TVA A 21%"
+          }
+        }
+      ],
+      "LineItemGroups": [
+        {
+          "LineItems": [
+            {
+              "LineItemExpenseFields": [
+                {
+                  "Type": {
+                    "Text": "ITEM"
+                  },
+                  "ValueDetection": {
+                    "Text": "SYNTH RETAIL 00493 XL"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "EXPENSE_ROW"
+                  },
+                  "ValueDetection": {
+                    "Text": "SYNTH RETAIL 00493 XL  1  19.99 A"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "QUANTITY"
+                  },
+                  "ValueDetection": {
+                    "Text": "1"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "PRICE"
+                  },
+                  "ValueDetection": {
+                    "Text": "19.99"
+                  }
+                }
+              ]
+            },
+            {
+              "LineItemExpenseFields": [
+                {
+                  "Type": {
+                    "Text": "ITEM"
+                  },
+                  "ValueDetection": {
+                    "Text": "NEVER SEEN PRODUCT 001"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "EXPENSE_ROW"
+                  },
+                  "ValueDetection": {
+                    "Text": "NEVER SEEN PRODUCT 001  2  3.10 A"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "QUANTITY"
+                  },
+                  "ValueDetection": {
+                    "Text": "2"
+                  }
+                },
+                {
+                  "Type": {
+                    "Text": "PRICE"
+                  },
+                  "ValueDetection": {
+                    "Text": "3.10"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

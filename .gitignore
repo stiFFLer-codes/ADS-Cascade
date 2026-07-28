@@ -1,0 +1,22 @@
+# Secrets — never commit API keys. (Keys should live in env vars, not files; this is a guard.)
+.env
+.env.*
+*.key
+*_secret*
+aws_credentials*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local scratch
+scratch_*
+
+# Tool / local (not project work)
+.claude/
+.ua/
+.agents/
+.commandcode/
+graphify-out/
