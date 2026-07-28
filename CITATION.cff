@@ -18,6 +18,10 @@ version: 1.0.0
 date-released: "2026-07-28"
 license: MIT
 repository-code: "https://github.com/stiFFLer-codes/ADS-Cascade"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21644208"
+    description: "Zenodo archive of v1.0.0"
 keywords:
   - classification
   - document-ai

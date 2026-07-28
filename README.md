@@ -85,6 +85,10 @@ requirements.txt       Python dependencies (standard library first; rapidfuzz, r
 
 ## How to cite
 
+This repository is archived on Zenodo with a citable DOI:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21644208.svg)](https://doi.org/10.5281/zenodo.21644208)
+
 See [`CITATION.cff`](CITATION.cff) for structured citation metadata (GitHub renders a "Cite this
 repository" button from it automatically). Licensed under [MIT](LICENSE).
 
