@@ -184,6 +184,12 @@ Headline items (full list → `architecture/OPEN_QUESTIONS.md`):
 ## Update protocol
 
 At the **end of each session**, edit only *Where we are*, *Next*, *Done*, and the
-`Last updated` date. Keep it pointer-based — never copy architecture prose in here.
-This is the committed, shared counterpart to Claude's private per-machine memory
-(`.claude/.../memory/MEMORY.md`).
+`Last updated` date. Update *Resume in a new session* only when the concrete next step changes;
+its docs-to-read list is stable scaffolding, not per-session content. Keep it pointer-based, never
+copy architecture prose in here.
+
+This is the single committed handoff file. `CLAUDE.md` auto-loads at the start of every session
+and points here; nothing else should carry "current status" prose, to avoid the drift a second
+status file caused before (`CONTINUATION_PROMPT.md`, removed during the public-cleanup pass). This
+file is the committed counterpart to Claude Code's private per-machine memory
+(`.claude/.../memory/MEMORY.md`), which is local-only and not portable across machines or clones.
