@@ -9,19 +9,30 @@
 > read-only for verification (outputs were byte-identical to committed versions except a run
 > timestamp, which was reverted; see `research/determinism_provenance.md`). No manuscript prose was
 > rewritten, no novelty claims were made, and no literature review was performed, per that pass's
-> instructions.
+> instructions. A third pass fixed the A5 bug this audit surfaced (see `research/a5_correction_analysis.md`).
+> A fourth, final pass — the **Final Phase-A Evidence Closure Audit** (2026-08-11) — independently
+> re-checked every quantitative claim in `TECHNICAL_REPORT.md` against the current canonical
+> artifacts (not just the existing `claim_evidence_matrix.csv`), producing
+> `research/final_numbers_audit.csv` (47 claims), `research/MANUSCRIPT_UPDATE_QUEUE.md`, and
+> `research/PHASE_A_CLOSURE.md`. It surfaced one new finding (A6, §2.4's T2 cascade description is
+> stale relative to shipped code) and two previously-unflagged unsupported claims (§4, §6 — see
+> Section B). No manuscript prose was rewritten in this pass either.
 
-## Resolution status (follow-up pass, 2026-08-10)
+## Resolution status (updated 2026-08-11 — Final Phase-A Evidence Closure Audit)
 
 | Finding | Status | Detail |
 |---|---|---|
 | A1 — architecture docs "untracked" | **RESOLVED** | Confirmed false; `STATE.md` and `ROADMAP.md` corrected. |
-| A2 — 76,843 vs ~55,394 | **PARTIALLY RESOLVED** | 76,843 confirmed canonical. ~55,394 is **UNRESOLVED** (exhaustive search found no trace anywhere in this repo) — see `research/mapping_count_provenance.md`. |
-| A3 — 0.7756/0.9746 vs 0.763/0.931 | **RESOLVED** | Both pairs are live, current, non-stale outputs of different (legitimate) aggregation formulas — see `research/determinism_provenance.md`. That investigation also surfaced a **new, more consequential finding** — see A5 below. |
+| A2 — 76,843 vs ~55,394 | **PARTIALLY RESOLVED** | 76,843 confirmed canonical. ~55,394 is **UNRESOLVED** (exhaustive search found no trace anywhere in this repo) — see `research/mapping_count_provenance.md`. This is the only item this repository cannot close by further audit; it needs the author to check outside sources. |
+| A3 — 0.7756/0.9746 vs 0.763/0.931 | **RESOLVED** | Both pairs are live, current, non-stale outputs of different (legitimate) aggregation formulas — see `research/determinism_provenance.md`. That investigation also surfaced finding A5. |
 | A4 — R3 threshold structure | **RESOLVED** | Full three-band structure documented, no bug in the decision logic itself — see `research/r3_threshold_analysis.md`. |
-| A5 (new) — dominant-account selection bug in `product_ambiguity.csv` | **OPEN — pending author decision** | Not part of the original A1-A4 set; discovered while investigating A3. See below. |
+| A5 — dominant-account selection bug in `product_ambiguity.csv` | **RESOLVED — fixed 2026-08-11** | Regression-tested and corrected; see `research/a5_correction_analysis.md`. (This table row was previously stale — see the A5 entry below, which was already marked resolved in prose but not reflected here until this closure pass.) |
+| A6 (new) — `TECHNICAL_REPORT.md` §2.4's T2 cascade description is stale relative to the shipped code | **OPEN — pending author decision** | Discovered during the Final Phase-A Evidence Closure Audit, independent of A1-A5. See below and `research/MANUSCRIPT_UPDATE_QUEUE.md` item I2. |
 
-Canonical values arising from this pass are consolidated in `research/EVIDENCE_BASELINE.md`.
+Canonical values are consolidated in `research/EVIDENCE_BASELINE.md`. The full closure-pass
+cross-check of every quantitative claim in `TECHNICAL_REPORT.md` is in
+`research/final_numbers_audit.csv`, with the manuscript-facing punch list in
+`research/MANUSCRIPT_UPDATE_QUEUE.md` and the closure summary in `research/PHASE_A_CLOSURE.md`.
 
 ---
 
@@ -196,6 +207,37 @@ evidence, exact code citations, and the standalone verification methodology are 
 > is resolved. `TECHNICAL_REPORT.md` §3.2/§3.3 still cite the pre-fix synthetic numbers and need
 > updating in the manuscript-rewrite phase — not done here, per this pass's scope.
 
+**A6 (new finding, Final Phase-A Evidence Closure Audit, 2026-08-11) — `TECHNICAL_REPORT.md` §2.4's
+T2 tier description no longer matches the shipped cascade code.**
+An independent, line-by-line pass over every quantitative claim in `TECHNICAL_REPORT.md` (not
+relying solely on the existing `claim_evidence_matrix.csv`) found that §2.4's T2 row — "Fuzzy/
+embedding match (similarity ≥ 0.85) or a weaker company rule (0.80–0.95 ADS) corroborated by VAT |
+Auto-apply, flagged for a sampled spot-check" — describes an **earlier version** of the cascade
+design, not the code as currently shipped. In `scripts/phase2/p2lib/confidence.py`, `T2_ADS_LOW =
+0.90` (not 0.80), and `FUZZY_AUTO_APPLY = False` is a hardcoded constant that makes the entire
+fuzzy-similarity auto-apply branch in `cascade.py` dead code — every fuzzy match, at any similarity
+score, now falls through to Tier 3 (`FUZZY_REVIEW`), never Tier 2. Code comments explain this was a
+deliberate post-launch tightening: a Stage-A held-out eval measured the original 0.80-ADS-floor
+rules at ~45% accuracy and fuzzy auto-apply at ~49% — both judged unsafe. `STATE.md`'s own Phase 2
+notes already record this recalibration ("fuzzy is demoted to review (never auto-applied)"), and
+`architecture/08_CONFIDENCE_CASCADE.md` §3 independently confirms it describes the same *original*
+0.80/fuzzy-auto-apply design as the manuscript — so this is not a manuscript-vs-architecture-doc
+disagreement, it is a manuscript-and-architecture-doc-vs-shipped-code disagreement. Both documents
+are stale in the same direction, for the same reason. This also means §2.4's T3 row ("Similarity <
+0.85 ... routed to human review") is imprecise as currently implemented: *all* fuzzy matches land
+at T3 regardless of score, not just those below 0.85. Full evidence:
+`research/final_numbers_audit.csv` rows F19/F20; recommended manuscript fix:
+`research/MANUSCRIPT_UPDATE_QUEUE.md` item I2. This also means the original claim_evidence_matrix.csv
+row C18 ("Exact match between the architecture doc's written spec and the running code's named
+constants") was itself incomplete — that earlier check verified T1's constants and T2_SIM/T3_FLOOR,
+but not `T2_ADS_LOW`, `T2_MIN_EVIDENCE`, `T2_GLOBAL_ADS_LOW`, or `FUZZY_AUTO_APPLY`, and did not
+cross-reference `cascade.py`'s actual tier-assignment logic against the prose. **Not a code bug —
+the code is internally consistent and intentionally safety-tightened.** Not fixed here, per this
+task's "do not modify methodology or code" constraint — this is a documentation-lag finding,
+requiring an author decision on whether to update the manuscript+architecture-doc to match the
+safer shipped behavior, or reconsider re-enabling `FUZZY_AUTO_APPLY` if warranted. See Question F7
+below.
+
 ---
 
 ## B. Unsupported claims
@@ -212,6 +254,27 @@ The one item that comes closest to "unsupported" is the **`~55,394` figure** dis
 but it is not actually a claim *in* `TECHNICAL_REPORT.md`; it exists only in the planning documents
 (`STATE.md`, `ROADMAP.md`) as a description of an open question. It is flagged here so it doesn't
 silently get carried into the manuscript before its source is confirmed one way or the other.
+
+> **UPDATED 2026-08-11 — Final Phase-A Evidence Closure Audit found two genuine unsupported claims
+> *in* `TECHNICAL_REPORT.md` itself**, missed by the original pass above. The "none found" verdict
+> above is now superseded for these two specific sentences (the rest of the original finding still
+> stands):
+>
+> - **§4:** "Cross-company consistency has a real, measured ceiling (0.695 in production; **0.76–0.80
+>   across synthetic seeds**)." No multi-seed sweep exists anywhere in this repository — only a
+>   single `seed=42` run has ever been executed, producing 0.7632 (a point, not a range). This
+>   directly contradicts §4's own later bullet that the synthetic run is single-seed and "was not
+>   swept." An internal self-contradiction, not just an unverifiable aside.
+> - **§6:** "the LLM's job shrinks to re-ranking retrieved candidates for a measured minority tail
+>   (**under 10% of production volume**)." No artifact in this repository states an LLM-share-of-
+>   *volume* (occurrence-weighted) figure; the closest real number, 8.8% non-deterministic products,
+>   is a product-*count* statistic, and §2.2 itself argues weighted and unweighted figures diverge
+>   substantially in this dataset — so presenting an unweighted-derived number as a "volume" share is
+>   the exact conflation §2.2 warns against.
+>
+> Full evidence: `research/final_numbers_audit.csv` rows F42/F45. Recommended manuscript fix:
+> `research/MANUSCRIPT_UPDATE_QUEUE.md` items I5/I6. Neither has been edited in the manuscript — see
+> Question F8 below.
 
 ---
 
@@ -248,8 +311,8 @@ this audit (not merely trusted from the prose):
 | Claim | Checked against | Result |
 |---|---|---|
 | 60 companies / 7,523 invoice lines | `invoice_lines_all_companies.csv` row count | Matches (7,524 lines incl. header) |
-| Weighted/unweighted ADS 0.809 / 0.931 | `reports/architecture_decision.md` header (0.8094 / 0.9310) | Matches |
-| 84.1% deterministic | `decision_matrix.csv` R3 row (`deterministic_pct` 0.8412) | Matches |
+| Weighted/unweighted ADS 0.809 / 0.931 | `reports/architecture_decision.md` header (0.8094 / 0.9310) | Matched *at the time of the original pass*. **SUPERSEDED 2026-08-11** — A5 fix changed these to 0.9031/0.9597; see `research/EVIDENCE_BASELINE.md` §2. |
+| 84.1% deterministic | `decision_matrix.csv` R3 row (`deterministic_pct` 0.8412) | Matched *at the time*. **SUPERSEDED 2026-08-11** — now 87.56%; decision (EMBEDDING_PRIMARY) unchanged. |
 | Cross-company consistency 0.763 | `decision_matrix.csv` R1 row (0.7632) | Matches (see A3 for the *other*, uncited 0.7756 figure sitting nearby) |
 | VAT missing 4.45% | `data_quality_report.csv` | Matches |
 | R1 HYBRID / R4 SECONDARY_FEATURE / R5 DROP | `decision_matrix.csv` | Matches |
@@ -263,6 +326,15 @@ T1_MIN_EVIDENCE=3, T1_GLOBAL_ADS=0.98, GLOBAL_MIN_COMPANIES=5, T2_SIM=0.85, T3_F
 retrieval placeholder (§2.5) matches `p2lib/retrieval.py`'s rapidfuzz implementation and its
 in-code `# ponytail:` gap marker; the Textract caching claim matches the 5 committed synthetic
 fixture files under `data/outputs/phase2/textract_raw/`.
+
+> **CORRECTION 2026-08-11 — the "match... exactly" claim above is incomplete.** The Final Phase-A
+> Evidence Closure Audit found that this list checked only T1_ADS, T1_MIN_EVIDENCE, T1_GLOBAL_ADS,
+> GLOBAL_MIN_COMPANIES, T2_SIM, and T3_FLOOR — it did not check `T2_ADS_LOW`, `T2_MIN_EVIDENCE`,
+> `T2_GLOBAL_ADS_LOW`, or `FUZZY_AUTO_APPLY`, and did not cross-reference `cascade.py`'s actual
+> tier-assignment logic against the manuscript's T2/T3 prose. Doing so this pass found §2.4's T2 row
+> is stale (code uses `T2_ADS_LOW=0.90` not 0.80, and `FUZZY_AUTO_APPLY=False` makes fuzzy matches
+> never reach T2 regardless of similarity) — see finding A6 above. The T1 constants listed here
+> remain independently re-verified and correct.
 
 ---
 
@@ -301,6 +373,17 @@ Ordered roughly by effort-to-fix, not severity.
    (`product_ambiguity.csv`'s Module C.1) has been fixed, regression-tested, and the pipeline
    re-run. See Question F6 and `research/a5_correction_analysis.md`. Remaining sub-item: update
    `TECHNICAL_REPORT.md` §3.2/§3.3's cited synthetic figures in the manuscript-rewrite phase.
+9. **NEW (2026-08-11) — rewrite `TECHNICAL_REPORT.md` §2.4's T2/T3 tier descriptions** to match the
+   shipped cascade code (A6): state the actual `T2_ADS_LOW=0.90` floor, and that fuzzy/embedding
+   matches currently always route to Tier 3 review (`FUZZY_AUTO_APPLY=False`), not Tier 2 auto-apply
+   as currently written. Also update `architecture/08_CONFIDENCE_CASCADE.md` §3, which describes the
+   same stale design. **Not applied** — manuscript/architecture-doc edit, out of scope for an audit
+   pass; see Question F7.
+10. **NEW (2026-08-11) — remove or substantiate two unsupported claims**: §4's "0.76–0.80 across
+    synthetic seeds" (no multi-seed sweep exists in this repo) and §6's "under 10% of production
+    volume" (no volume-weighted LLM-share artifact exists in this repo). See
+    `research/MANUSCRIPT_UPDATE_QUEUE.md` items I5/I6 and Question F8. **Not applied** — manuscript
+    edit, out of scope for an audit pass.
 
 ---
 
@@ -363,3 +446,24 @@ Also still unresolved: whether the *production* numbers (91.2%/0.847/0.964) carr
 understatement — this repository has no production data to re-run the corrected code against, so
 that remains an explicit author to-do (re-run `03_5_dataset_intelligence.py`'s corrected version
 against production data before citing production ADS figures as final).
+
+**F7. NEW, OPEN (2026-08-11) — what should happen to the T2 cascade tier (finding A6)?** The
+shipped code (`FUZZY_AUTO_APPLY=False`, `T2_ADS_LOW=0.90`) is stricter/safer than the design both
+`TECHNICAL_REPORT.md` §2.4 and `architecture/08_CONFIDENCE_CASCADE.md` §3 describe (fuzzy matches
+auto-applying at similarity ≥0.85, and a 0.80 ADS floor). Two options, and this audit does not
+recommend one over the other: (a) update the manuscript and architecture doc to describe the
+current, safer, shipped behavior (fuzzy always routes to review) — the more conservative choice,
+since it just documents what already ships; or (b) treat the current code as *itself* not yet
+final, and revisit whether `FUZZY_AUTO_APPLY` should be re-enabled now that more evidence exists
+(this would be a methodology/code change, out of scope for any audit pass). Recommend (a) as the
+lower-risk default for the upcoming manuscript rewrite, but this is the author's call.
+
+**F8. NEW, OPEN (2026-08-11) — how to handle the two unsupported §4/§6 claims?** "0.76–0.80 across
+synthetic seeds" (§4) and "under 10% of production volume" (§6) have no supporting artifact in this
+repository (see updated Section B above, and `research/MANUSCRIPT_UPDATE_QUEUE.md` items I5/I6).
+For the seed-range claim: either actually run a small multi-seed sweep (this would also serve
+Phase D's minimal-validation goal) and report the true range, or replace it with the single
+reproducible value (0.763) and drop the range framing. For the volume claim: either compute a true
+occurrence-weighted LLM-touch-rate from production data (author-only, confidential), or soften the
+wording to "under 10% of the product catalog" (product-count framing, which the data does support).
+Neither requires new methodology — just a decision on which honest, supportable sentence to publish.
