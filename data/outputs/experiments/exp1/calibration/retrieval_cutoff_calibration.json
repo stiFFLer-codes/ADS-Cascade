@@ -1,0 +1,425 @@
+{
+  "label": "CALIBRATION -- GATE 2, product-identity hit-rate (not classification accuracy)",
+  "calibration_seeds": [
+    50001,
+    50002,
+    50003,
+    50004,
+    50005
+  ],
+  "calibration_deterministic_share": 0.8,
+  "calibration_lexical_variation": true,
+  "calibration_p_transform": 0.3,
+  "candidate_cutoffs": [
+    60,
+    65,
+    70,
+    75,
+    80,
+    85,
+    90,
+    95
+  ],
+  "min_coverage_floor": 0.3,
+  "near_tie_margin": 0.01,
+  "selection_rule": "max product-identity hit-rate subject to coverage>=0.30; ties within 0.01 hit-rate -> highest (most conservative) cutoff",
+  "per_seed_curves": {
+    "50001": [
+      {
+        "cutoff": 60,
+        "hit_rate": 0.8874399450926561,
+        "coverage": 1.0,
+        "hits": 1293,
+        "matched": 1457,
+        "total": 1457
+      },
+      {
+        "cutoff": 65,
+        "hit_rate": 0.8874399450926561,
+        "coverage": 1.0,
+        "hits": 1293,
+        "matched": 1457,
+        "total": 1457
+      },
+      {
+        "cutoff": 70,
+        "hit_rate": 0.8867536032944406,
+        "coverage": 1.0,
+        "hits": 1292,
+        "matched": 1457,
+        "total": 1457
+      },
+      {
+        "cutoff": 75,
+        "hit_rate": 0.8888126286890872,
+        "coverage": 1.0,
+        "hits": 1295,
+        "matched": 1457,
+        "total": 1457
+      },
+      {
+        "cutoff": 80,
+        "hit_rate": 0.87920384351407,
+        "coverage": 1.0,
+        "hits": 1281,
+        "matched": 1457,
+        "total": 1457
+      },
+      {
+        "cutoff": 85,
+        "hit_rate": 0.87920384351407,
+        "coverage": 0.9986273164035689,
+        "hits": 1281,
+        "matched": 1455,
+        "total": 1457
+      },
+      {
+        "cutoff": 90,
+        "hit_rate": 0.8888126286890872,
+        "coverage": 0.9560741249142073,
+        "hits": 1295,
+        "matched": 1393,
+        "total": 1457
+      },
+      {
+        "cutoff": 95,
+        "hit_rate": 0.8565545641729582,
+        "coverage": 0.8702814001372684,
+        "hits": 1248,
+        "matched": 1268,
+        "total": 1457
+      }
+    ],
+    "50002": [
+      {
+        "cutoff": 60,
+        "hit_rate": 0.91280276816609,
+        "coverage": 1.0,
+        "hits": 1319,
+        "matched": 1445,
+        "total": 1445
+      },
+      {
+        "cutoff": 65,
+        "hit_rate": 0.91280276816609,
+        "coverage": 1.0,
+        "hits": 1319,
+        "matched": 1445,
+        "total": 1445
+      },
+      {
+        "cutoff": 70,
+        "hit_rate": 0.9134948096885813,
+        "coverage": 1.0,
+        "hits": 1320,
+        "matched": 1445,
+        "total": 1445
+      },
+      {
+        "cutoff": 75,
+        "hit_rate": 0.91280276816609,
+        "coverage": 1.0,
+        "hits": 1319,
+        "matched": 1445,
+        "total": 1445
+      },
+      {
+        "cutoff": 80,
+        "hit_rate": 0.9072664359861592,
+        "coverage": 1.0,
+        "hits": 1311,
+        "matched": 1445,
+        "total": 1445
+      },
+      {
+        "cutoff": 85,
+        "hit_rate": 0.9058823529411765,
+        "coverage": 0.9979238754325259,
+        "hits": 1309,
+        "matched": 1442,
+        "total": 1445
+      },
+      {
+        "cutoff": 90,
+        "hit_rate": 0.9010380622837371,
+        "coverage": 0.9640138408304498,
+        "hits": 1302,
+        "matched": 1393,
+        "total": 1445
+      },
+      {
+        "cutoff": 95,
+        "hit_rate": 0.8844290657439446,
+        "coverage": 0.9010380622837371,
+        "hits": 1278,
+        "matched": 1302,
+        "total": 1445
+      }
+    ],
+    "50003": [
+      {
+        "cutoff": 60,
+        "hit_rate": 0.8813314037626628,
+        "coverage": 1.0,
+        "hits": 1218,
+        "matched": 1382,
+        "total": 1382
+      },
+      {
+        "cutoff": 65,
+        "hit_rate": 0.8827785817655571,
+        "coverage": 1.0,
+        "hits": 1220,
+        "matched": 1382,
+        "total": 1382
+      },
+      {
+        "cutoff": 70,
+        "hit_rate": 0.88205499276411,
+        "coverage": 1.0,
+        "hits": 1219,
+        "matched": 1382,
+        "total": 1382
+      },
+      {
+        "cutoff": 75,
+        "hit_rate": 0.8806078147612156,
+        "coverage": 1.0,
+        "hits": 1217,
+        "matched": 1382,
+        "total": 1382
+      },
+      {
+        "cutoff": 80,
+        "hit_rate": 0.8603473227206947,
+        "coverage": 1.0,
+        "hits": 1189,
+        "matched": 1382,
+        "total": 1382
+      },
+      {
+        "cutoff": 85,
+        "hit_rate": 0.8654124457308249,
+        "coverage": 0.9949348769898697,
+        "hits": 1196,
+        "matched": 1375,
+        "total": 1382
+      },
+      {
+        "cutoff": 90,
+        "hit_rate": 0.8690303907380608,
+        "coverage": 0.9544138929088278,
+        "hits": 1201,
+        "matched": 1319,
+        "total": 1382
+      },
+      {
+        "cutoff": 95,
+        "hit_rate": 0.8552821997105644,
+        "coverage": 0.8791606367583212,
+        "hits": 1182,
+        "matched": 1215,
+        "total": 1382
+      }
+    ],
+    "50004": [
+      {
+        "cutoff": 60,
+        "hit_rate": 0.9429386590584878,
+        "coverage": 1.0,
+        "hits": 2644,
+        "matched": 2804,
+        "total": 2804
+      },
+      {
+        "cutoff": 65,
+        "hit_rate": 0.9425820256776034,
+        "coverage": 1.0,
+        "hits": 2643,
+        "matched": 2804,
+        "total": 2804
+      },
+      {
+        "cutoff": 70,
+        "hit_rate": 0.942225392296719,
+        "coverage": 1.0,
+        "hits": 2642,
+        "matched": 2804,
+        "total": 2804
+      },
+      {
+        "cutoff": 75,
+        "hit_rate": 0.9397289586305279,
+        "coverage": 1.0,
+        "hits": 2635,
+        "matched": 2804,
+        "total": 2804
+      },
+      {
+        "cutoff": 80,
+        "hit_rate": 0.9315263908701854,
+        "coverage": 1.0,
+        "hits": 2612,
+        "matched": 2804,
+        "total": 2804
+      },
+      {
+        "cutoff": 85,
+        "hit_rate": 0.9315263908701854,
+        "coverage": 1.0,
+        "hits": 2612,
+        "matched": 2804,
+        "total": 2804
+      },
+      {
+        "cutoff": 90,
+        "hit_rate": 0.9300998573466477,
+        "coverage": 0.9750356633380884,
+        "hits": 2608,
+        "matched": 2734,
+        "total": 2804
+      },
+      {
+        "cutoff": 95,
+        "hit_rate": 0.9054921540656206,
+        "coverage": 0.9147646219686163,
+        "hits": 2539,
+        "matched": 2565,
+        "total": 2804
+      }
+    ],
+    "50005": [
+      {
+        "cutoff": 60,
+        "hit_rate": 0.9135104578858112,
+        "coverage": 1.0,
+        "hits": 1616,
+        "matched": 1769,
+        "total": 1769
+      },
+      {
+        "cutoff": 65,
+        "hit_rate": 0.9140757490107405,
+        "coverage": 1.0,
+        "hits": 1617,
+        "matched": 1769,
+        "total": 1769
+      },
+      {
+        "cutoff": 70,
+        "hit_rate": 0.9140757490107405,
+        "coverage": 1.0,
+        "hits": 1617,
+        "matched": 1769,
+        "total": 1769
+      },
+      {
+        "cutoff": 75,
+        "hit_rate": 0.9089881288863765,
+        "coverage": 1.0,
+        "hits": 1608,
+        "matched": 1769,
+        "total": 1769
+      },
+      {
+        "cutoff": 80,
+        "hit_rate": 0.8954211418880723,
+        "coverage": 1.0,
+        "hits": 1584,
+        "matched": 1769,
+        "total": 1769
+      },
+      {
+        "cutoff": 85,
+        "hit_rate": 0.8892029395138497,
+        "coverage": 0.996608253250424,
+        "hits": 1573,
+        "matched": 1763,
+        "total": 1769
+      },
+      {
+        "cutoff": 90,
+        "hit_rate": 0.8937252685132844,
+        "coverage": 0.9592990390050876,
+        "hits": 1581,
+        "matched": 1697,
+        "total": 1769
+      },
+      {
+        "cutoff": 95,
+        "hit_rate": 0.8716789146410401,
+        "coverage": 0.8846806105144149,
+        "hits": 1542,
+        "matched": 1565,
+        "total": 1769
+      }
+    ]
+  },
+  "pooled_curve": [
+    {
+      "cutoff": 60,
+      "hit_rate": 0.913401829061759,
+      "coverage": 1.0,
+      "hits": 8090,
+      "matched": 8857,
+      "total": 8857
+    },
+    {
+      "cutoff": 65,
+      "hit_rate": 0.9136276391554703,
+      "coverage": 1.0,
+      "hits": 8092,
+      "matched": 8857,
+      "total": 8857
+    },
+    {
+      "cutoff": 70,
+      "hit_rate": 0.913401829061759,
+      "coverage": 1.0,
+      "hits": 8090,
+      "matched": 8857,
+      "total": 8857
+    },
+    {
+      "cutoff": 75,
+      "hit_rate": 0.9115953483120696,
+      "coverage": 1.0,
+      "hits": 8074,
+      "matched": 8857,
+      "total": 8857
+    },
+    {
+      "cutoff": 80,
+      "hit_rate": 0.9006435587670769,
+      "coverage": 1.0,
+      "hits": 7977,
+      "matched": 8857,
+      "total": 8857
+    },
+    {
+      "cutoff": 85,
+      "hit_rate": 0.8999661284859434,
+      "coverage": 0.9979677091565993,
+      "hits": 7971,
+      "matched": 8839,
+      "total": 8857
+    },
+    {
+      "cutoff": 90,
+      "hit_rate": 0.9017726092356328,
+      "coverage": 0.9637574799593542,
+      "hits": 7987,
+      "matched": 8536,
+      "total": 8857
+    },
+    {
+      "cutoff": 95,
+      "hit_rate": 0.8794174099582251,
+      "coverage": 0.89364344586203,
+      "hits": 7789,
+      "matched": 7915,
+      "total": 8857
+    }
+  ],
+  "selected_cutoff": 75
+}

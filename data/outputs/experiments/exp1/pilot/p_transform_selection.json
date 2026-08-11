@@ -1,0 +1,68 @@
+{
+  "label": "PILOT -- NOT FINAL EVIDENCE",
+  "purpose": "outcome-independent P_TRANSFORM candidate selection",
+  "calibration_seed": 9001,
+  "calibration_deterministic_share": 0.8,
+  "target_disruption_band": [
+    0.15,
+    0.4
+  ],
+  "candidates": [
+    {
+      "p_transform": 0.3,
+      "semantic_identity_preserved": true,
+      "disruption_rate": 0.2424908424908425,
+      "disruptable_test_lines": 1365,
+      "distance_from_target_mid": 0.03250915750915753,
+      "transform_type_counts": {
+        "reorder": 606,
+        "whitespace": 654,
+        "case": 591,
+        "abbrev": 547,
+        "punct": 677
+      },
+      "transformed_share_of_all_lines": 0.2985532661113547,
+      "severity_mean_wratio": 85.33682265738945,
+      "severity_min_wratio": 32.75862068965517,
+      "severity_pct_below_70": 12.922173274596181
+    },
+    {
+      "p_transform": 0.5,
+      "semantic_identity_preserved": true,
+      "disruption_rate": 0.3882783882783883,
+      "disruptable_test_lines": 1365,
+      "distance_from_target_mid": 0.11327838827838826,
+      "transform_type_counts": {
+        "punct": 1043,
+        "case": 990,
+        "reorder": 1017,
+        "whitespace": 1067,
+        "abbrev": 966
+      },
+      "transformed_share_of_all_lines": 0.49715037264357737,
+      "severity_mean_wratio": 85.31575856116031,
+      "severity_min_wratio": 32.75862068965517,
+      "severity_pct_below_70": 12.992357436801882
+    },
+    {
+      "p_transform": 0.7,
+      "semantic_identity_preserved": true,
+      "disruption_rate": 0.5223443223443224,
+      "disruptable_test_lines": 1365,
+      "distance_from_target_mid": 0.24734432234432235,
+      "transform_type_counts": {
+        "reorder": 1427,
+        "punct": 1436,
+        "case": 1411,
+        "whitespace": 1536,
+        "abbrev": 1349
+      },
+      "transformed_share_of_all_lines": 0.6986701739003361,
+      "severity_mean_wratio": 85.17391806177845,
+      "severity_min_wratio": 32.75862068965517,
+      "severity_pct_below_70": 13.449069232378164
+    }
+  ],
+  "selected_p_transform": 0.3,
+  "selection_rule": "closest disruption_rate to 27.5% midpoint; ties -> smaller p_transform"
+}

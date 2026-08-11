@@ -1,0 +1,57 @@
+{
+  "label": "PILOT -- NOT FINAL EVIDENCE",
+  "n_pilot_conditions": 18,
+  "pilot_bands": [
+    0.6,
+    0.9,
+    0.99
+  ],
+  "pilot_seeds": [
+    101,
+    102,
+    103
+  ],
+  "frozen_p_transform_used": 0.3,
+  "pilot_calibrated_retrieval_cutoff": 90,
+  "pilot_calibration_curve": [
+    {
+      "cutoff": 70,
+      "accuracy": 0.8877980364656382,
+      "coverage": 1.0
+    },
+    {
+      "cutoff": 75,
+      "accuracy": 0.8877980364656382,
+      "coverage": 1.0
+    },
+    {
+      "cutoff": 80,
+      "accuracy": 0.8877980364656382,
+      "coverage": 1.0
+    },
+    {
+      "cutoff": 85,
+      "accuracy": 0.8884992987377279,
+      "coverage": 1.0
+    },
+    {
+      "cutoff": 90,
+      "accuracy": 0.8948106591865358,
+      "coverage": 1.0
+    }
+  ],
+  "illustrative_selection_agreement_NOT_AN_H1_VERDICT": {
+    "agreement_rate": 0.8888888888888888,
+    "agree": 8,
+    "disagree": 1,
+    "tie": 9,
+    "na_llm_required": 0,
+    "n_defined": 9,
+    "n_total": 18,
+    "chance_baseline": 0.5
+  },
+  "total_elapsed_seconds": 40.47,
+  "seconds_per_condition": 2.249,
+  "projected_full_sweep_seconds_6x2x20": 539.7,
+  "projected_full_sweep_minutes_6x2x20": 9.0
+}
