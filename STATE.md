@@ -3,7 +3,7 @@
 > **Read this first.** Living project state for cheap session handoffs.
 > Pointer-based on purpose — it links canonical docs, it does not copy them.
 >
-> `Last updated: 2026-07-28` · **Current phase: Phase 2 demo COMPLETE; Track A Phase 1 (public research export + synthetic data) COMPLETE; repo published + archived on Zenodo (v1.0.0, DOI 10.5281/zenodo.21644208)**
+> `Last updated: 2026-08-10` · **Current phase: Phase 2 demo COMPLETE; Track A Phase 1 (public research export + synthetic data) COMPLETE; repo published + archived on Zenodo (v1.0.0, DOI 10.5281/zenodo.21644208); arXiv-preprint prep in progress — see ROADMAP.md**
 
 ---
 
@@ -11,12 +11,28 @@
 
 Paste this into a fresh session to continue with full context:
 
-> I'm continuing the **ADS-Cascade Phase 2** project (Romanian receipt/invoice AI classification).
-> Read `STATE.md` first, then `docs/INDEX.md`, `docs/PHASE2_PLAN.md`, and `architecture/00_SCOPE.md`
-> for full context. Phase 1 (D406 pipeline) and the Phase 2 demo are **complete and committed** —
-> code in `scripts/phase2/` (p2_01…p2_06 + p2lib/), interactive demo at `docs/demo/index.html`.
-> The AWS Textract + Groq LLM calls are cached so everything reproduces offline at $0
-> (`GROQ_API_KEY` goes in a git-ignored `.env`). Don't re-derive what STATE.md already records.
+> I'm continuing the **ADS-Cascade** project. Engineering (Phase 1 D406 pipeline, Phase 2 demo,
+> public export, GitHub + Zenodo publication) is **complete** — read `STATE.md` first for that
+> history, it's not the active work. **The active track is turning `TECHNICAL_REPORT.md` into an
+> arXiv preprint, per `ROADMAP.md`.** Read `ROADMAP.md` next — it has the full Phase A–I plan
+> (Research Audit → Literature Verification → Contribution Positioning → Minimal Validation →
+> Manuscript Rewrite → Figures → LaTeX → Reproducibility Audit → arXiv) and tracks status via
+> checkboxes. As of 2026-08-11: **Phase A (Research Audit) has run three passes** — the initial
+> audit (`research/RESEARCH_AUDIT.md`, `claim_evidence_matrix.csv`, `artifact_inventory.csv`), a
+> follow-up that resolved findings A1-A4 (`research/mapping_count_provenance.md`,
+> `research/determinism_provenance.md`, `research/r3_threshold_analysis.md`,
+> `research/EVIDENCE_BASELINE.md`), and a correction pass that fixed the A5 bug it surfaced
+> (`research/a5_correction_analysis.md`, regression test in `scripts/test_dataset_intelligence.py`).
+> Read `research/EVIDENCE_BASELINE.md` for the current canonical numbers before citing anything in
+> the manuscript — several synthetic ADS/determinism figures changed value on 2026-08-11 (old values
+> now marked `SUPERSEDED — DO NOT CITE`). One item remains genuinely open and needs the human
+> author's decision, not further audit: the ~55,394 mapping-count figure is UNRESOLVED —
+> untraceable anywhere in this repository or its git history, likely only checkable against the
+> private client repo; 76,843 is the verified canonical value regardless. Also outstanding but not
+> blocking: `TECHNICAL_REPORT.md` §3.2/§3.3 still cite the pre-A5-fix synthetic numbers and need
+> updating during the manuscript-rewrite phase (not a research question, just deferred prose work).
+> Don't re-derive the literature-review or positioning conclusions already recorded in STATE.md's
+> "Literature review + paper-positioning conclusions" entry — they're settled, not open questions.
 > **What I want to do next: <fill in>.**
 
 ---
@@ -37,7 +53,9 @@ being finalized as the delivery package. No open implementation work — remaini
 - **Phase 2 — Solution Architecture.** 17 docs (`architecture/`): scope, requirements,
   NFRs, domain model, services, event workflow, data schema, confidence cascade,
   AI orchestration, API contracts, sequences, security, observability, cost, plus
-  16 ADRs and 20 open questions. **Written but untracked in git.**
+  16 ADRs and 20 open questions. **Tracked in git since the initial commit
+  (`81fb74e`, 2026-07-28); public.** (Corrected 2026-08-10 — the prior "written but
+  untracked" note was stale; see `research/RESEARCH_AUDIT.md` finding A1.)
   → `architecture/00_SCOPE.md`
 - **Entry docs** (this file + `docs/`).
 
@@ -69,13 +87,48 @@ removed (internal-only, not part of the public package). Added `LICENSE` (MIT) a
 (ORCID-linked). GitHub-Zenodo integration connected; `v1.0.0` GitHub release published; Zenodo
 minted **DOI 10.5281/zenodo.21644208** (badge + citation identifier committed).
 
-**Track A remaining (must-do):**
-1. Draft CV entry (~150 words) + video talking points (3–4 on rules-first + human feedback)
-2. Optional: arXiv preprint (Zenodo DOI already covers the "publication credit" need for Criterion 2 — Previous Relevant Experience; arXiv would add reach but isn't required)
+**Track A remaining (must-do): Independent Researcher Footprint & EDISS EMJM Prep (Jan 2027)**
+To strongly justify the framing of an independent researcher *and* build a rock-solid portfolio for the EDISS EMJM application (due Jan 2027), we must solidify the public research footprint and prep local materials:
+1. **Clean GitHub Repository:** Polish the repo (`stiFFLer-codes/ADS-Cascade`) so it stands alone perfectly as a professional research artifact.
+2. **Zenodo & ORCID:** Ensure the minted Zenodo DOI (10.5281/zenodo.21644208) is prominent ("This repository is archived on Zenodo with a citable DOI") and linked directly to your ORCID profile.
+3. **arXiv Preprint:** Adapt `TECHNICAL_REPORT.md` into a formal arXiv preprint to gain standard academic distribution.
+4. **Google Scholar:** Ensure metadata across Zenodo and arXiv is properly structured so the research is indexed by Google Scholar.
+5. **General Improvements & Further Work:** Continuously iterate on the research, adding polish and expanding on findings to demonstrate ongoing independent inquiry.
+6. **EDISS EMJM Personal Target (Local Only):** Draft CV entry (~150 words) and motivational video talking points (3–4 on rules-first + human feedback) specifically tailored to the EDISS application. The Zenodo/arXiv/GitHub footprint directly supports "Criterion 2 — Previous Relevant Experience".
 
 **Track B (stretch, no deadline):** Once preprint exists, optionally prep for next-year workshop cycles (DocInsights 2027, FinanSE 2027, PAKDD finance 2027). Aug 2, 2026 DocInsights is off the table (only 5 days; too risky to compromise Track A).
 
 **Numbers discipline:** Any metric in the report must trace to `data_verification_audit.md` "Authoritative Value" column (e.g., 91.2% deterministic not 85%, 0.695 consistency not 0.694).
+
+**DONE (2026-08-10): Literature review + paper-positioning conclusions.** Standard-depth Consensus
+review (10 searches) plus a targeted expanded pass (5 more, aimed at gaps a `/grill-me` interview
+surfaced) produced ~28 candidate citations, none yet in a `.bib` file. Concrete conclusions —
+see `ROADMAP.md` for the execution plan these feed into:
+
+- **Novelty framing (settled):** not a new field. ADS-Cascade's architecture-decision procedure is
+  an instance of Rice's Algorithm Selection Problem (1976) / meta-learning (Smith-Miles 2009,
+  ACM Comput. Surv.) — specifically the *design-time workflow-composition* variant AutoML has been
+  shifting toward (Barbudo et al. 2023, Knowl. Inf. Syst., explicitly note ASP being "superseded by
+  workflow composition"). Closest non-ML analog: self-designed/learned data systems that measure
+  workload and auto-design physical structure (Idreos et al. 2019, SIGMOD). Closest ML analog:
+  reject-option / two-stage classifiers (Hendrickx et al. 2021 survey, Machine Learning; Franc et al.
+  2021, JMLR; Vernon et al. 2022) — but that literature gates *inference-time* per-item abstention,
+  not *design-time* whole-architecture selection, which is the distinction the paper now leans on
+  instead of an "under-explored" claim.
+- **Evidence hierarchy (settled):** the fully-reproducible synthetic pipeline is the paper's primary
+  evidence; the cited production deployment is a motivating case study, not proof — because it's the
+  only independently-checkable result and it already surfaces one real disagreement (the R3 flip).
+- **Pitch (settled):** question-first, not claim-first, and scoped to match the evidence — not
+  "enterprise AI" broadly. Working page-one question: *"Can historical decision consistency be used
+  to guide AI system composition for classification problems that possess large amounts of historical
+  supervisory data?"* Explicit preconditions to state in the paper: (1) a history of repeated
+  decisions, (2) observable labels, (3) measurable consistency, (4) sufficient historical coverage to
+  estimate determinism. Explicitly out of scope (state as such, don't imply): generative writing,
+  open-ended reasoning, planning, creative design, negotiation, exploratory analysis. Broader
+  "enterprise AI" applicability is future-work language, not a conclusion of this paper.
+- **Not yet done:** verify each candidate citation's real metadata (DOI/venue — Consensus abstracts
+  aren't trusted blindly), compile `references.bib`, rewrite `TECHNICAL_REPORT.md` §5 and the
+  Abstract/Introduction to match the above.
 
 ---
 
@@ -180,6 +233,7 @@ Headline items (full list → `architecture/OPEN_QUESTIONS.md`):
 | Entry / navigation docs | `docs/` (start at `docs/INDEX.md`) |
 | Repo map | `README.md` |
 | Working rules | `AGENTS.md` |
+| Paper-publication roadmap (arXiv prep) | `ROADMAP.md` |
 
 ## Update protocol
 

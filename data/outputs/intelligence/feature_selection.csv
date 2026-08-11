@@ -1,5 +1,5 @@
 ﻿feature,missing_pct,consistency,ai_value,action,rationale
-product_description,0.00,0.8094,HIGH,INCLUDE_REQUIRED,Strong feature.
+product_description,0.00,0.9031,HIGH,INCLUDE_REQUIRED,Strong feature.
 vat_percent,4.45,0.7494,MEDIUM,INCLUDE_WITH_FALLBACK,"Usable, but needs imputation."
 tax_code,0.00,0,HIGH,INCLUDE_REQUIRED,Strong feature.
 warehouse_id,100.00,0,DROP,EXCLUDE,Too many missing values.

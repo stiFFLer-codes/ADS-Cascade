@@ -248,22 +248,22 @@ def module_c_behavioral(mappings, c4_data):
     logger.info("Running Module C: Behavioral Analysis...")
     
     # C.1 Product Ambiguity
-    prod_accs = defaultdict(list)
+    prod_accs = defaultdict(Counter)
     for m in mappings:
-        prod_accs[m["normalized_product"]].append((m["account_id"], m["count"]))
+        prod_accs[m["normalized_product"]][m["account_id"]] += m["count"]
 
     c1_rows = []
     total_det_sum = 0
     total_count_sum = 0
-    
-    for prod, acc_list in prod_accs.items():
-        total = sum(c for _, c in acc_list)
+
+    for prod, acc_counter in prod_accs.items():
+        total = sum(acc_counter.values())
         if total == 0: continue
-        
-        acc_list.sort(key=lambda x: x[1], reverse=True)
+
+        acc_list = acc_counter.most_common()
         dominant_account = acc_list[0][0]
         dominant_count = acc_list[0][1]
-        
+
         determinism = dominant_count / total
         
         c1_rows.append({

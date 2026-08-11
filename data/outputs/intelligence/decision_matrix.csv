@@ -1,12 +1,12 @@
 ﻿rule_id,rule_name,metric_name,metric_value,threshold,comparison,decision,rationale
-R1,retrieval_strategy,dataset_ads,0.8094,0.9,>=,HYBRID,ADS 0.8094 vs threshold 0.9
+R1,retrieval_strategy,dataset_ads,0.9031,0.9,>=,HYBRID,ADS 0.9031 vs threshold 0.9
 R1,retrieval_strategy,cross_company_consistency,0.7632,0.85,>=,HYBRID,Cross-co 0.7632 vs threshold 0.85
 R2,feature_product_description,ai_value,HIGH,-,map,INCLUDE_REQUIRED,Strong feature.
 R2,feature_vat_percent,ai_value,MEDIUM,-,map,INCLUDE_WITH_FALLBACK,"Usable, but needs imputation."
 R2,feature_tax_code,ai_value,HIGH,-,map,INCLUDE_REQUIRED,Strong feature.
 R2,feature_warehouse_id,ai_value,DROP,-,map,EXCLUDE,Too many missing values.
 R2,feature_direction,ai_value,HIGH,-,map,INCLUDE_REQUIRED,Strong feature.
-R3,model_complexity,deterministic_pct,0.8412,0.9,>=,EMBEDDING_PRIMARY,"84.1% deterministic, 4.9% ambiguous. Significant minority of ambiguous products. Embedding similarity is the primary classifier."
-R3,model_complexity,ambiguous_pct,0.0486,0.50,det_score<,EMBEDDING_PRIMARY,41 of 844 products are ambiguous
+R3,model_complexity,deterministic_pct,0.8756,0.9,>=,EMBEDDING_PRIMARY,"87.6% deterministic, 0.9% ambiguous. Significant minority of ambiguous products. Embedding similarity is the primary classifier."
+R3,model_complexity,ambiguous_pct,0.0095,0.50,det_score<,EMBEDDING_PRIMARY,8 of 844 products are ambiguous
 R4,vat_strategy,vat_stable_pct,0.7494,0.95,>=,SECONDARY_FEATURE,VAT is somewhat informative: 74.9% single-rate (>= 70%). Include as feature but don't rely on it.
 R5,warehouse,missing_pct,100.0,90.0,>=,DROP,Warehouse data is absent for 100.0% of records (>= 90%). Exclude from Phase 2.

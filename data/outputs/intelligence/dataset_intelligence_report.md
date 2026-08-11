@@ -1,7 +1,7 @@
 # Dataset Intelligence Report
 
 ## Executive Summary
-Dataset Accounting Determinism Score (ADS): **0.8094**
+Dataset Accounting Determinism Score (ADS): **0.9031**
 Global Cross-Company Determinism: **0.7756**
 
 ## Data Quality
