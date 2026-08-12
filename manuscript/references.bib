@@ -1,0 +1,149 @@
+% references.bib -- Phase E2 skeleton.
+%
+% Every entry below is drawn from research/literature/citation_ledger.csv and
+% research/literature/ads_metric_prior_art.csv (both VERIFIED-status rows only).
+% No new literature search was performed to produce this file (per the E2 brief).
+% Where the ledger itself did not independently resolve a field (DOI, volume,
+% pages), the field is left as TODO rather than guessed -- see the inline note
+% on each such entry for the exact ledger row to re-check before E3/E5.
+%
+% This file covers the "at minimum account for" list from the E2 brief, plus
+% two additional entries (Mozannar & Sontag 2020; Jorgensen & Igel 2021) needed
+% so every Related Work subsection in main.tex has at least one real citation
+% key to anchor to (per research/MANUSCRIPT_ARCHITECTURE.md Sec.10's 8-row
+% positioning table) -- not a new search, just reuse of citation_ledger.csv
+% rows B5-02 and B8-01, already verified in Phase B.
+
+@article{rice1976,
+  author  = {Rice, John R.},
+  title   = {The Algorithm Selection Problem},
+  journal = {Advances in Computers},
+  volume  = {15},
+  year    = {1976},
+  doi     = {10.1016/S0065-2458(08)60520-3}
+}
+
+@article{smithmiles2009,
+  author  = {Smith-Miles, Kate A.},
+  title   = {Cross-disciplinary Perspectives on Meta-learning for Algorithm Selection},
+  journal = {ACM Computing Surveys},
+  volume  = {41},
+  number  = {1},
+  year    = {2009},
+  doi     = {10.1145/1456650.1456656}
+}
+
+@book{manning2008,
+  author    = {Manning, Christopher D. and Raghavan, Prabhakar and Sch{\"u}tze, Hinrich},
+  title     = {Introduction to Information Retrieval},
+  publisher = {Cambridge University Press},
+  year      = {2008},
+  note      = {Chapter 16.3 (cluster purity). Ledger row: research/literature/ads_metric_prior_art.csv, G1-01.}
+}
+
+@article{amigo2009,
+  author  = {Amig{\'o}, Enrique and Gonzalo, Julio and Artiles, Javier and Verdejo, Felisa},
+  title   = {A Comparison of Extrinsic Clustering Evaluation Metrics Based on Formal Constraints},
+  journal = {Information Retrieval},
+  volume  = {12},
+  number  = {4},
+  pages   = {461--486},
+  year    = {2009},
+  doi     = {10.1007/s10791-008-9066-8}
+}
+
+@article{dawidskene1979,
+  author  = {Dawid, A. P. and Skene, A. M.},
+  title   = {Maximum Likelihood Estimation of Observer Error-Rates Using the {EM} Algorithm},
+  journal = {Journal of the Royal Statistical Society, Series C (Applied Statistics)},
+  year    = {1979},
+  volume  = {TODO},
+  number  = {TODO},
+  pages   = {TODO},
+  doi     = {TODO},
+  note    = {Volume/number/pages/DOI not independently resolved by the literature ledger --
+             see research/literature/ads_metric_prior_art.csv row G1-04
+             ("no DOI independently resolved in this pass"). Verify before E5, do not guess.}
+}
+
+@article{barbudo2023,
+  author  = {Barbudo, Rafael and Ventura, Sebasti{\'a}n and Romero, Jos{\'e} Ra{\'u}l},
+  title   = {Eight Years of {AutoML}: Categorisation, Review and Trends},
+  journal = {Knowledge and Information Systems},
+  volume  = {65},
+  number  = {12},
+  year    = {2023},
+  doi     = {10.1007/s10115-023-01935-1}
+}
+
+@inproceedings{idreoskraska2019,
+  author    = {Idreos, Stratos and Kraska, Tim},
+  title     = {From Auto-tuning One Size Fits All to Self-designed and Learned Data-intensive Systems},
+  booktitle = {Proceedings of the 2019 International Conference on Management of Data (SIGMOD)},
+  year      = {2019},
+  doi       = {10.1145/3299869.3314034}
+}
+
+@article{frugalgpt2023,
+  author = {Chen, Lingjiao and Zaharia, Matei and Zou, James},
+  title  = {FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance},
+  journal = {Transactions on Machine Learning Research},
+  year   = {2024},
+  note   = {Preprint 2023, arXiv:2305.05176},
+  url    = {https://arxiv.org/abs/2305.05176}
+}
+
+@inproceedings{rankgpt2023,
+  author    = {Sun and Yan and Ma and others},
+  title     = {Is {ChatGPT} Good at Search? Investigating Large Language Models as Re-Ranking Agents},
+  booktitle = {Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2023},
+  doi       = {10.18653/v1/2023.emnlp-main.923},
+  note      = {Full author list abbreviated per the literature ledger (research/literature/llm_advisory_prior_art.csv, G2-01); expand before E5.}
+}
+
+@article{chow1970,
+  author  = {Chow, C. K.},
+  title   = {On Optimum Recognition Error and Reject Tradeoff},
+  journal = {IEEE Transactions on Information Theory},
+  volume  = {16},
+  number  = {1},
+  year    = {1970},
+  doi     = {10.1109/TIT.1970.1054406}
+}
+
+@article{elyaniv2010,
+  author  = {El-Yaniv, Ran and Wiener, Yair},
+  title   = {On the Foundations of Noise-free Selective Classification},
+  journal = {Journal of Machine Learning Research},
+  volume  = {11},
+  year    = {2010},
+  url     = {http://jmlr.org/papers/v11/el-yaniv10a.html}
+}
+
+@article{hendrickx2024,
+  author  = {Hendrickx, Kilian and Perini, Lorenzo and Van der Plas, Dries and Meert, Wannes and Davis, Jesse},
+  title   = {Machine Learning with a Reject Option: A Survey},
+  journal = {Machine Learning},
+  year    = {2024},
+  doi     = {10.1007/s10994-024-06534-x},
+  note    = {arXiv preprint 2021}
+}
+
+@inproceedings{mozannarsontag2020,
+  author    = {Mozannar, Hussein and Sontag, David},
+  title     = {Consistent Estimators for Learning to Defer to an Expert},
+  booktitle = {Proceedings of the 37th International Conference on Machine Learning (ICML), PMLR vol. 119},
+  year      = {2020},
+  url       = {https://proceedings.mlr.press/v119/mozannar20b.html}
+}
+
+@article{jorgensenigel2021,
+  author  = {J{\o}rgensen, Rasmus and Igel, Christian},
+  title   = {Machine Learning for Financial Transaction Classification Across Companies Using Character-level Word Embeddings of Text Fields},
+  journal = {Intelligent Systems in Accounting, Finance and Management},
+  volume  = {28},
+  number  = {3},
+  year    = {2021},
+  doi     = {10.1002/isaf.1500}
+}
