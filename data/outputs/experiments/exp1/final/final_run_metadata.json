@@ -1,0 +1,10 @@
+{
+  "label": "FINAL -- Experiment 1 frozen run",
+  "frozen_at_commit": "3c6b581178aa7cd3598e112f96f1321d61d60aa9",
+  "total_conditions": 240,
+  "successful_conditions": 240,
+  "failed_conditions": 0,
+  "failures": [],
+  "total_elapsed_seconds": 1093.56,
+  "seconds_per_condition": 4.557
+}

@@ -1,0 +1,31 @@
+{
+  "TARGETS": [
+    0.0,
+    0.2,
+    0.3,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "LEXICAL_CONDITIONS": [
+    false,
+    true
+  ],
+  "P_TRANSFORM": 0.3,
+  "RETRIEVAL_CUTOFF": 75,
+  "MECHANISMS": [
+    "rules_only",
+    "retrieval_only"
+  ],
+  "LLM": "excluded",
+  "PRIMARY_INDEPENDENT_VARIABLE": "realized_train_ADS",
+  "PRIMARY_METRIC": "whole_set_accuracy",
+  "WINNER": "paired_bootstrap_winner",
+  "BOOTSTRAP_RESAMPLES": 2000,
+  "BOOTSTRAP_ALPHA": 0.05,
+  "PRACTICAL_EQUIVALENCE_DELTA": 0.02,
+  "SEEDS": "31001-31020 (20 seeds)",
+  "R3_RULES_THRESHOLD": 0.9,
+  "R3_RETRIEVAL_THRESHOLD": 0.7,
+  "TOTAL_CONDITIONS": 240
+}

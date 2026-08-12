@@ -1,0 +1,13 @@
+target_deterministic_share,lexical_variation,n_seeds,realized_ads_mean,realized_ads_std,rules_acc_mean,retrieval_acc_mean,n_rules_wins,n_retrieval_wins,n_ties,r3_selected_mechanism_mode,n_agree,n_disagree,n_na_llm_required
+0.0,False,20,0.479,0.0242,0.6904,0.6858,0,0,20,llm_required,0,0,20
+0.0,True,20,0.479,0.0242,0.5062,0.6313,0,20,0,llm_required,0,0,20
+0.2,False,20,0.5699,0.0247,0.7352,0.7307,0,0,20,llm_required,0,0,20
+0.2,True,20,0.5699,0.0247,0.5491,0.682,0,20,0,llm_required,0,0,20
+0.3,False,20,0.6129,0.0223,0.7617,0.7568,0,0,20,llm_required,0,0,20
+0.3,True,20,0.6129,0.0223,0.5601,0.7057,0,20,0,llm_required,0,0,20
+0.5,False,20,0.6962,0.0193,0.8209,0.8157,0,0,20,retrieval,0,0,10
+0.5,True,20,0.6962,0.0193,0.61,0.7652,0,20,0,retrieval,10,0,10
+0.75,False,20,0.7973,0.0105,0.8963,0.8908,0,0,20,retrieval,0,0,0
+0.75,True,20,0.7973,0.0105,0.6697,0.8435,0,20,0,retrieval,20,0,0
+1.0,False,20,0.9082,0.0091,0.9531,0.9465,0,0,20,rules,0,0,0
+1.0,True,20,0.9082,0.0091,0.7139,0.8971,0,20,0,rules,2,18,0
