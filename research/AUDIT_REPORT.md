@@ -1,254 +1,228 @@
-# Audit Report — Phase D.1 Post-hoc Analysis of Experiment 1
+# Audit Report — Gate 4 Final Verification Pass (Wording-Fix Confirmation)
 
-> Independent audit. First real audit run of this auditor role. Adversarial re-derivation performed
-> against the frozen raw CSV, not trust of the new prose's own numbers.
+> Independent audit. This is the third Gate-4 pass on this document: pass 1 verified numeric
+> accuracy (PASS); pass 2 audited claim-strength/wording and returned CONDITIONAL with four required
+> fixes (F1-F4); this pass verifies those five edits (F4 was satisfied by two edits) actually landed
+> correctly, resolved what F1-F4 raised, and introduced nothing new. Re-derived independently, not a
+> re-trust of either prior pass's word.
 
 ## 1. Repository state
 
-- Branch: `main`. HEAD: `6fb6188` — "Phase D: freeze Experiment 1 evidence" (this is the parent
-  commit the brief names as the frozen checkpoint; no commit has been made on top of it).
-- Working tree: dirty with **only untracked additions**, no modifications to any tracked file.
-  `git diff --stat` (tracked-file diff) is empty.
-- `git diff 6fb618838e47c84234dfad85c89b979e96b6c897 -- data/outputs/experiments/exp1/final/` is
-  **empty** — the frozen evidence directory is byte-identical to the frozen commit. Confirmed.
-- Diffed: working tree vs. HEAD (`git status --porcelain`), frozen dir vs. freeze commit, and the
-  new files' content against `EVIDENCE_BASELINE.md`, `RESEARCH_GPS.md`'s prior state (implicit,
-  since the file didn't exist before), `contribution_status.md`, `contribution_stress_test.md`,
-  and the raw `final_condition_results.csv`.
+- Branch: `main`. HEAD: `572e1b7` — "Phase D.1: analyze Experiment 1 evidence." No new commit.
+- Working tree (`git status --porcelain`): exactly three entries — `M research/AUDIT_REPORT.md` (this
+  file, being overwritten), `?? research/CONTRIBUTION_LOCK.md`, `?? research/contribution_lock.csv`.
+  `git status --porcelain -- data/outputs/experiments/exp1/final/` returned empty (frozen evidence
+  untouched). `git status --porcelain -- README.md TECHNICAL_REPORT.md METHODOLOGY.md` returned empty
+  (no manuscript file touched).
+- Diffed/verified: `research/CONTRIBUTION_LOCK.md` read in full, fresh, this pass (418 lines);
+  `research/contribution_lock.csv` read in full, fresh (11 rows); the prior `research/AUDIT_REPORT.md`
+  read first for the exact F1-F4 text and proposed fixes, then independently checked against the live
+  file rather than trusted; `data/outputs/experiments/exp1/final/final_condition_results.csv`
+  independently re-aggregated via PowerShell (`Import-Csv`/`Group-Object`/`Where-Object`, Python
+  unavailable in this shell) for winner-constancy, band-agreement, and Pearson-correlation checks (own
+  from-scratch Pearson implementation, not reused from either prior pass); `research/RESEARCH_GPS.md`
+  (Gate 4 checkbox status, DO NOT CHASE list); `research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md` §9 (H1
+  verdict cross-check).
 
 ## 2. Current research GPS
 
-`research/RESEARCH_GPS.md` (new file, first version) states: North star = defensible manuscript
-draft → reproducibility package → arXiv preprint. **CURRENT LOCATION** = Phase D.1 complete.
-**CURRENT GATE** = Gate 4 (Contribution Lock) — described correctly as requiring a *human* decision
-to adopt the surviving claim, not further analysis. **NEXT GATE** = Gate 5 (Manuscript, Phase E).
-Scorecard shows Gates 1-3 fully checked, Gate 4 checkboxes open (correctly, since Gate 4 requires
-human sign-off which hasn't happened), Gates 5-6 open. This matches ROADMAP.md's Phase D → Phase E
-sequencing. DO NOT CHASE list correctly enumerates: no new experiments, no further novelty search,
-no vendor/model experimentation, no manuscript polish pre-lock, the lexical-aware-R3-variant
-explicitly deferred to future work, and thresholds/δ/cutoff explicitly frozen. Nothing in the list
-looks stale relative to what Phase D.1 actually produced.
+Phase D.1 complete; current gate = Contribution Lock (Gate 4). `RESEARCH_GPS.md` line 58 still shows
+Gate 4 as `⬜` (unchecked) as of this read — expected and correct, since checking that box is the
+human/builder's action, not an auditor's, and this pass does not alter `RESEARCH_GPS.md`. DO NOT CHASE
+list (lines 70-85) re-read fresh: still current, nothing in this wording-only pass touches any item on
+it (no new experiment, no threshold re-tuning, no vendor/model work). North star = defensible
+manuscript draft → reproducibility package → arXiv preprint; closing Gate 4 with locked, correctly
+scoped wording is directly on that path, not a detour.
 
-## 3. Changed files (all untracked, nothing modified)
+## 3. Changed files
 
-- **Docs (new):** `research/EXPERIMENT_1_DATA_DICTIONARY.md`, `research/EXPERIMENT_1_POSTHOC_ANALYSIS.md`,
-  `research/RESEARCH_GPS.md`
-- **Code (new):** `scripts/experiments/exp1/analyze_posthoc.py`
-- **Experimental artifacts (new, derived-only):** `data/outputs/experiments/exp1/posthoc/posthoc_analysis_report.json`,
-  `data/outputs/experiments/exp1/posthoc/posthoc_rows_with_bands.csv`
-- **Manuscript:** none touched (`README.md`, `TECHNICAL_REPORT.md`, `METHODOLOGY.md` all absent
-  from `git status`).
-- **Frozen evidence:** none touched (`data/outputs/experiments/exp1/final/` diff vs. freeze commit
-  is empty).
-- This exactly matches the expected D.1 file set named in the audit brief — no extra, no missing
-  files. `.claude/` (auditor infra) is correctly gitignored and does not appear in `git status`
-  (confirmed via `git check-ignore -v`). `.pytest_cache/` appearing as ignored is a byproduct of
-  this audit's own test run, harmless and gitignored.
+- **Docs (untracked, unchanged from prior pass except the five described edits):**
+  `research/CONTRIBUTION_LOCK.md` — the document under audit.
+- **Data (untracked, confirmed NOT touched this round):** `research/contribution_lock.csv`.
+- **Code:** none changed.
+- **Experimental artifacts:** none changed; `data/outputs/experiments/exp1/final/` confirmed untouched
+  by `git status`.
+- **Manuscript:** none touched (`README.md`, `TECHNICAL_REPORT.md`, `METHODOLOGY.md` absent from
+  `git status` output).
+- **Audit report:** `research/AUDIT_REPORT.md` — this file, overwritten per instructions.
 
 ## 4. Research integrity
 
-All headline numbers independently re-derived from the raw 240-row
-`final_condition_results.csv`, using a fresh script written for this audit (not
-`analyze_posthoc.py`'s own logic, not its `--demo` output trusted blindly) plus a third
-cross-check against the pre-existing, frozen `final_summary.csv` (12-row pre-aggregation,
-untouched by D.1):
+**All five described edits independently located, read in full context, and confirmed to say what the
+brief claims:**
 
-| Claim | Independently recomputed | Match |
-|---|---|---|
-| Overall agreement 32/50 = 64.0% | 32/50 = 0.6400 | Exact |
-| Wilson 95% CI [50.14%, 75.86%] | [50.14%, 75.86%] (own Wilson implementation) | Exact |
-| Binomial p = 0.0649 | 0.0649 (own exact-binomial implementation) | Exact |
-| 0.70–0.90 realized-ADS band: 100% (32/32) agreement | 32 agree / 0 disagree / 32 n | Exact |
-| ≥0.90 realized-ADS band: 0/18 agreement (sharper than nominal-target 10%) | 0 agree / 18 disagree / 18 n | Exact |
-| VARIED: `empirical_winner=="retrieval"` in 120/120, zero exceptions | 120/120, `[]` exceptions | Exact |
-| CLEAN: `empirical_winner=="tie"` in 120/120, zero exceptions | 120/120, `[]` exceptions | Exact |
-| r(ADS,rules_acc) CLEAN≈0.96 / VARIED≈0.91 | 0.9592 / 0.9091 | Matches to stated precision |
-| r(ADS,retrieval_acc) CLEAN≈0.95 / VARIED≈0.95 | 0.9549 / 0.9476 | Matches to stated precision |
-| r(lexical, rules−retrieval) pooled ≈ −0.97 | −0.9746 | Matches |
-| r(realized ADS, rules−retrieval) CLEAN=+0.230 / VARIED=−0.803 | +0.2300 / −0.8028 | Matches |
-| Nominal-target 100%/10% split traces to `EXPERIMENT_1_FINAL_RESULTS.md` | Confirmed: target=0.50/0.75 → 100% (30/30); target=1.00 → 10% (2/20) | Exact |
+1. §2 step 9 (line 97-99): now reads "...historical consistency predicts mechanism-level accuracy but
+   not mechanism ranking, when, as observed in this synthetic experiment, ranking is governed by a
+   representation-stability property the consistency signal is blind to by construction." — the
+   inserted clause is grammatically integrated (comma-bounded appositive), not a bolted-on fragment.
+2. §3 C2b bullet (line 121-124): now reads "...ranking is governed by a separately-manipulated (in
+   this factorial design), ADS-blind representation-stability factor" — reads coherently; the
+   parenthetical scopes "separately-manipulated" without breaking the sentence.
+3. §5 Formulation #2 table, "Claim" cell (line 188): same replacement, "...that ranking is governed by
+   a separately-manipulated (in this factorial design) representation-stability factor
+   (lexical/surface-form noise) the consistency signal does not capture." — reads coherently inside the
+   table cell.
+4. §6 "Synthesis" paragraph (lines 216-221): now opens "In this synthetic experiment, historical
+   decision consistency is informative about classification-mechanism *difficulty*, not about
+   mechanism *ranking*, when — as observed here — ranking is governed by a representation-stability
+   property the consistency signal does not observe — a narrower, more specific, and empirically
+   falsifiable-and-partly-falsified refinement..." — both insertions present, both grammatically
+   integrated, sentence still reads as one coherent claim rather than two clauses stitched together.
+5. §11.C (lines 369-373): fully replaced, verbatim match to the brief's specified text — "In this
+   experiment, the consistency-based decision rule agreed with the empirically best mechanism in 100%
+   of definable comparisons in the 0.70–0.90 realized-ADS band, but in 0% of definable comparisons in
+   the ≥0.90 realized-ADS band; under the tested synthetic perturbation, the empirical winner was
+   separated by the lexical-noise condition, which the consistency signal did not observe." Confirmed
+   byte-for-byte against the brief.
 
-The "sharper 100%/0% realized-band split supersedes the 100%/10% nominal-target split" claim
-is arithmetically consistent: the 3rd-source cross-check (`final_summary.csv`, untouched, frozen)
-shows target=1.00/VARIED has n_agree=2/n_disagree=18 (the "10%"), and target=0.50/VARIED has
-n_agree=10/n_na=10 (10 of 20 seeds excluded as `llm_required`). The realized-ADS-band regrouping
-moves exactly the 2 target=1.00 seeds whose *realized* ADS falls under 0.90 into the 0.70–0.90
-band (making it 30+2=32) and leaves 18 in the ≥0.90 band, all disagreeing (0%). 32+18=50,
-matching the overall headline. No arithmetic slippage found anywhere in this chain.
+**F1-F4 resolution, checked directly, not assumed:**
 
-**Superseded-value check:** grepped both new prose files for `55,394`/`55394`, `0.7756`,
-`0.9746` (the *cross-company* superseded figure — not to be confused with the *unrelated*
-Pearson r=−0.9746 computed fresh in this D.1 pass, which is a different quantity that happens to
-share digits; verified it is not being used as the superseded cross-company number), `0.7454`,
-`96.4%`, `84.12`, `0.8094`, `0.9310`. **Zero matches in either file.** No superseded number was
-reintroduced.
-
-**No production/synthetic conflation, no ADS-novelty claim, no "enterprise AI" generalization**:
-confirmed by direct read of `EXPERIMENT_1_POSTHOC_ANALYSIS.md` §13 ("Claims we must NOT make"),
-which explicitly and correctly disclaims all of: ADS-as-novel-contribution, generalization beyond
-the tested setting (naming "enterprise AI" explicitly as out of scope), production-confirms-this
-framing, and CLEAN-implies-general-equivalence. Grepped for "novel" and "enterprise AI" across the
-whole file — the only hits are inside this disclaimer list, correctly negated ("is a novel
-contribution — already settled as out of scope").
-
-**H1 verdict:** the pre-existing, frozen `EXPERIMENT_1_EVIDENCE_CHECKPOINT.md` §9 states
-`PARTIALLY_SUPPORTED` (unmodified — this file is part of the frozen commit, not touched by D.1).
-The new `EXPERIMENT_1_POSTHOC_ANALYSIS.md` does not itself repeat an explicit "H1 = X" verdict
-line, but nowhere claims or implies `SUPPORTED`; its own §12 minimum-defensible-claim and §13
-prohibited-claims list are consistent with, not a strengthening of, PARTIALLY_SUPPORTED. No
-upgrade occurred. (Minor observation, not a finding — see §11.)
-
-**"No further experiment needed" (§14):** this is not asserted for convenience. It rests on a
-traced, deterministic, seed-by-seed mechanism (§8-11 of the new doc): `realized_det_pct` is
-computed train-only, grouped by the stable `product_code`, which the Data Dictionary (§"What
-realized ADS is, precisely") and direct inspection of `final_summary.csv` both confirm makes it
-byte-identical between CLEAN/VARIED at every target — a structural, not statistical, invariance.
-Combined with the exceptionless 120/120 winner-constancy, the explanation is falsifiable-in-
-principle (a single counter-example row would have broken it) and was checked exhaustively against
-all 240 rows, not sampled. This reasoning is shown, not merely claimed.
+- Grepped the entire document for `governed`: exactly four remaining occurrences (lines 98, 122, 188,
+  218), matching the four originally-flagged locations (F1=§6/line~216→218, F2 originally at
+  §11.C/line~369 was *removed* by full replacement rather than re-scoped in place, F3=§2/line~98, and
+  the §5 table row is the same textual instance F4 also covers at line~187→188). **Every one of the
+  four remaining `governed` instances now carries an inline, same-sentence scope qualifier** ("as
+  observed in this synthetic experiment," / "separately-manipulated (in this factorial design)" ×2 /
+  "as observed here —"). No sixth unscoped instance found anywhere in the document.
+- Grepped for `orthogonal`: **zero occurrences** in `CONTRIBUTION_LOCK.md`. F4 fully resolved — the
+  word was replaced at both flagged locations (§3 bullet, §5 table cell), not merely glossed.
+- Grepped for `entirely`: one occurrence remains, at line 127 ("Exp1 explicitly bypasses the shipped
+  cascade **entirely**") — an unrelated, pre-existing sentence about scope, not the flagged
+  §11.C "governed entirely" construction, which no longer exists anywhere in the document (fully
+  replaced). F2 resolved — §11.C no longer contains "entirely" + "governed" in any combination,
+  extractable or otherwise.
+- **No resurrected rejected claim found.** Re-read §7's rejected-claims list and its grep-check log in
+  full; re-read §3's per-claim table; nothing upgraded, no "novel," "validates," "universally,"
+  "proves," or unconditional-selection language found asserted as true anywhere (only inside
+  correctly-negated disclaimers, consistent with the prior pass's finding).
 
 ## 5. Scientific consistency
 
-Traced RQ → H1 → Experiment 1 design → frozen results → D.1 interpretation → contribution
-implications. No break found in the chain. The D.1 document is explicit and correct that it
-narrows rather than strengthens the finding: "ADS predicts task difficulty, not mechanism ranking"
-is a *more* conservative claim than the pre-Experiment-1 assumption ("higher ADS → rules is
-better"), and §13 explicitly lists that exact assumption as a claim that must NOT be made — this
-is the correct posture per the known-rejected-claims list in this auditor's brief (the "R3 selects
-the right mechanism" claim is not resurrected; it is explicitly and correctly refuted). No A5/A6-
-shaped drift (script behavior vs. documented behavior) was found: `analyze_posthoc.py`'s R3
-threshold constants (0.90/0.70) are the literal same values imported/hardcoded identically in
-`stats.py` (checked side-by-side, §3 below), and the δ=0.02 and cutoff=75 values are read from the
-CSV columns (`retrieval_cutoff_used`), not re-derived or re-asserted independently.
+- **H1 cross-check:** `EXPERIMENT_1_EVIDENCE_CHECKPOINT.md` §9 re-read directly this pass: verdict is
+  **PARTIALLY_SUPPORTED** (line 106), with the same 100%/10% (2/20 nominal-band) split and the same
+  "CLEAN provides zero evidence" framing `CONTRIBUTION_LOCK.md` §2 step 7 restates. `CONTRIBUTION_LOCK.md`
+  correctly distinguishes the checkpoint's nominal-target-band figure (2/20=10%) from D.1's
+  realized-ADS-rebinned figure (0/18=0%) rather than conflating them — both independently verified
+  against the raw CSV in §6 below. No contradiction.
+- **C2b's "CONDITIONAL" vs. H1's "PARTIALLY_SUPPORTED":** re-confirmed as two different-axis verdicts
+  (statistical-hypothesis-test axis vs. contribution-classification-taxonomy axis) describing the same
+  underlying result, as the prior pass already established — still not in tension.
+- **Evidence-chain integrity (§2, steps 1-9):** traced fresh, start to end — HYPOTHESIZED origin →
+  OBSERVED Phase A discovery → HYPOTHESIZED general claim → OBSERVED literature challenge → INFERRED
+  stress-test decision → HYPOTHESIZED pre-registered H1 → OBSERVED Experiment 1 result → OBSERVED+INFERRED
+  D.1 explanation → INFERRED current synthesis. Every arrow still holds; no step's conclusion outruns
+  its own evidence tag, and the wording edits did not alter any tag (all five edits are additions of
+  scope language, not changes to the OBSERVED/INFERRED/HYPOTHESIZED labeling).
 
 ## 6. Evidence/claim traceability
 
-Every quantitative claim checked in §4 traces to `final_condition_results.csv` directly (240 raw
-rows) and/or `final_summary.csv` (frozen 12-row pre-aggregation) — both under
-`data/outputs/experiments/exp1/final/`, confirmed byte-identical to the freeze commit. No claim
-was found tracing only to another document's prose restating it once removed. The one place the
-document itself flags its own number as *not* independently new (§4: "Exact match to
-`EXPERIMENT_1_FINAL_RESULTS.md` §5... not stopping") was independently re-verified by this audit
-rather than taken on faith, and matched.
+Independently recomputed, from the raw 240-row `final_condition_results.csv`, four separate numeric
+claims the document's edited and unedited passages both rely on:
 
-## 7. Code review — `scripts/experiments/exp1/analyze_posthoc.py`
+| Claim | Document states | Independently recomputed | Match |
+|---|---|---|---|
+| VARIED winner constancy | `retrieval` in 120/120 | `Group-Object empirical_winner` on `lexical_variation=True` rows → `retrieval`=120, no other value | Exact |
+| CLEAN winner constancy | `tie` in 120/120 | `Group-Object empirical_winner` on `lexical_variation=False` rows → `tie`=120, no other value | Exact |
+| Realized ADS range | 0.44-0.93 | `realized_det_pct` min=0.44139, max=0.92576 | Exact (to stated precision) |
+| 0.70-0.90 band agreement (§11.C) | 100% of definable comparisons | 32/32 definable (non-tie) rows in that realized-ADS band, all `r3_agrees_with_empirical=True` | Exact |
+| ≥0.90 band agreement (§11.C) | 0% of definable comparisons | 18/18 definable rows in that band, all `r3_agrees_with_empirical=False` | Exact |
+| r(ADS, rules accuracy), CLEAN/VARIED | 0.959 / 0.909 | own Pearson implementation: 0.9592 / 0.9091 | Exact |
+| r(ADS, retrieval accuracy), CLEAN/VARIED | 0.955 / 0.948 | own Pearson implementation: 0.9549 / 0.9476 | Exact |
 
-- **Reads only** `data/outputs/experiments/exp1/final/final_condition_results.csv`; **writes
-  only** under `data/outputs/experiments/exp1/posthoc/`. Confirmed by direct inspection of the
-  `FINAL_CSV`/`OUT` path constants and the two `open(..., "w")` calls — both under `OUT`. No write
-  path touches `.../exp1/final/`.
-- **No new data generation**: no import of, or call into, any generator module (`gen`,
-  `00_generate_synthetic`, etc.) — imports are `csv, json, math, statistics, pathlib` only
-  (stdlib-only, confirmed by grep, no new dependency).
-- **Thresholds not re-derived**: `R3_RULES_THRESHOLD=0.90`, `R3_RETRIEVAL_THRESHOLD=0.70` are
-  literal copies of `stats.py`'s constants (same values, comment says "reused unchanged, never
-  re-derived here" in both files). `PRACTICAL_EQUIVALENCE_DELTA`/`RETRIEVAL_CUTOFF` are not
-  redefined at all — the script only reads the already-computed `retrieval_cutoff_used` /
-  `empirical_winner` columns from the frozen CSV; it does not recompute the winner rule.
-- **Blank-string parsing**: `r3_agrees_with_empirical` parses `""` → `None`, `"True"` → `True`,
-  `"False"` → `False` (line 49-51) — correct three-way handling, verified by re-deriving the same
-  agree/disagree/blank counts independently (32/18/190) and cross-checking they sum to 240.
-- **Banding logic**: `ads_band()` is a mechanical function of the same two constants R3 itself
-  uses (`>=0.90`, `>=0.70`, else `<0.70`) — not a post-hoc-chosen cut. Confirmed no other banding
-  candidates appear anywhere in the script or its output.
-- **Math implementations**: Wilson-CI and exact two-sided binomial-p implementations were checked
-  against independently-written versions of the same standard formulas (own script, different
-  variable names/loop order) — results matched to the reported precision in every case tested.
-  Pearson/Spearman are standard-formula stdlib implementations (Spearman uses average-rank tie
-  handling); re-derived two Pearson values independently and both matched.
-- **Determinism**: no RNG use anywhere in this script (pure aggregation of already-computed
-  columns) — determinism is trivially guaranteed.
-- **Edge cases**: `agreement_block()` returns `agreement_rate: None` when `n_defined==0` (avoids
-  div-by-zero; exercised in practice by the CLEAN slice, which has 0 defined comparisons).
-- **`--demo` self-check**: ran `python scripts/experiments/exp1/analyze_posthoc.py --demo` —
-  passed: `demo() OK: 32/50 agreement, Wilson CI, and binomial p all reproduce from the frozen
-  CSV.` Sufficient test coverage for a read-only analysis script per the brief's own standard.
+No untraceable number found. Every recomputed value matches the document to stated precision. This is
+an independent re-derivation (own Pearson function, own PowerShell aggregation), not a re-trust of
+either prior pass's arithmetic.
 
-No correctness issues found in this script.
+## 7. Code review
+
+Not applicable — no code changed.
 
 ## 8. Experimental integrity
 
-Not a new experiment — this is a post-hoc analysis of an already-frozen run, so most of dimension
-5 (seed manifests, condition counts, train/test separation, no selective reruns) was already
-locked at the prior freeze commit and is out of scope for re-verification here *except* to confirm
-nothing in this pass altered it. Confirmed: `data/outputs/experiments/exp1/final/` is byte-
-identical to the freeze commit (§1); the new posthoc CSV/JSON are pure derived recombinations of
-already-frozen columns (no new synthetic generation, §7); write-timestamp check on the two new
-posthoc output files shows both at `Aug 12 11:05` (same single run, one timestamp cluster — no
-signs of a manually-edited row or partial rerun). Statistical definitions (paired bootstrap δ=0.02
-winner rule, whole-set-accuracy-with-abstentions-as-incorrect) are read from the frozen CSV's
-columns, not recomputed with a different definition anywhere in the new code.
+Not applicable in the "artifacts changed" sense — `data/outputs/experiments/exp1/final/` confirmed
+untouched by `git status`. The raw CSV was read this pass only to re-verify claims made about it
+(§6 above); nothing in the frozen evidence directory was written to.
 
-## 9. Scope/GPS alignment — PASS
+## 9. Scope/GPS alignment
 
-Phase D.1 is exactly the currently-open work item per `RESEARCH_GPS.md`'s own "CURRENT LOCATION."
-It advances directly toward Gate 4 (Contribution Lock) by producing the evidence a human needs to
-adopt or reject the surviving claim — it does not itself lock the contribution (correctly left as
-`⬜` in the scorecard, a human decision). No new experimentation was run (confirmed: frozen dir
-untouched). The one item flagged as a legitimate future-work idea (lexical-noise-aware R3 variant)
-is explicitly *not* built, consistent with the DO NOT CHASE list, and is correctly deferred to a
-future-work paragraph (§15) rather than acted on. No detour, no unrequested scope expansion found.
+**PASS.** This is a wording-precision fix to a Gate-4 decision document already scoped correctly
+everywhere else (§8 Scope, §9 Limitations, §10 Future Work all unchanged by the five edits and still
+read as tightly bounded as the prior pass found them). Nothing in this round starts new
+experimentation, reopens Experiment 1, or touches a DO NOT CHASE item. The DO NOT CHASE list itself
+(re-read fresh this pass, `RESEARCH_GPS.md` lines 70-85) still reads current.
 
 ## 10. Git hygiene
 
-- `git status --short`: 5 untracked entries, exactly the expected D.1 set (§3). No unexpected
-  files.
-- No secrets/API keys/credentials/bearer tokens/private-key material found (grepped all 6 new/
-  changed files).
-- No client/production data or real-company names found in the new files (all content is derived
-  from the already-public-scoped synthetic Experiment 1 CSV).
-- No local Windows paths or usernames found in the new files (grepped for `C:\Users\` and the
-  account name; zero hits).
+- `git status --short`: exactly the three expected entries, nothing unexplained.
+- Grepped `CONTRIBUTION_LOCK.md` and `contribution_lock.csv` for API keys, secrets, passwords, bearer
+  tokens, private-key blocks, and local Windows user paths: no matches.
+- No client/production data or real-company names introduced (production case study still cited by
+  reference only, consistent with `METHODOLOGY.md`'s confidentiality boundary).
 - No `.bak`/`.swp`/`.orig`/`.tmp` files present.
-- `README.md`, `TECHNICAL_REPORT.md`, `METHODOLOGY.md` — none modified.
-- No file under `data/outputs/experiments/exp1/final/` or any other frozen path modified.
-- `.claude/agents/research-code-auditor.md` is correctly gitignored, not tracked, does not appear
-  as a change to stage.
-- A safe `git add` for a checkpoint would be exactly: `research/EXPERIMENT_1_DATA_DICTIONARY.md`,
-  `research/EXPERIMENT_1_POSTHOC_ANALYSIS.md`, `research/RESEARCH_GPS.md`,
-  `scripts/experiments/exp1/analyze_posthoc.py`, `data/outputs/experiments/exp1/posthoc/` (both
-  files). Nothing else. (`.pytest_cache/` created incidentally by this audit's own test run is
-  gitignored and should not be staged; it is not part of D.1's output.)
+- `README.md`, `TECHNICAL_REPORT.md`, `METHODOLOGY.md`: absent from `git status`, confirmed untouched.
+- `research/contribution_lock.csv`: confirmed untouched this round — file mtime (12:44) predates
+  `CONTRIBUTION_LOCK.md`'s edit mtime (13:34) in the same session, consistent with "not touched by
+  these edits" as the brief states; content read in full and contains only the pre-existing 11-row
+  status table (no `orthogonal`/`governed`-scoping fixes applied to it, which is expected — the brief
+  scoped all five edits to the `.md` file only, and the CSV was never in scope for F1-F4).
+- A safe `git add` for a future checkpoint would be exactly:
+  `git add research/CONTRIBUTION_LOCK.md research/contribution_lock.csv research/AUDIT_REPORT.md`.
 
 ## 11. Findings
 
-1. **OPTIONAL FUTURE WORK** — `EXPERIMENT_1_POSTHOC_ANALYSIS.md` never restates an explicit
-   "H1 verdict: PARTIALLY_SUPPORTED" line of its own; it relies on the reader cross-referencing
-   `EXPERIMENT_1_EVIDENCE_CHECKPOINT.md` §9 (frozen, unmodified, correctly says
-   `PARTIALLY_SUPPORTED`). No incorrect claim is made anywhere in the new document, so this is not
-   a defect — but adding one explicit confirming sentence ("this analysis does not change the
-   Evidence Checkpoint's H1 verdict of PARTIALLY_SUPPORTED") would make the non-upgrade
-   unambiguous to a future reader who doesn't cross-reference both files. File:
-   `research/EXPERIMENT_1_POSTHOC_ANALYSIS.md` (no specific line — an absence, not an error).
-2. **OPTIONAL FUTURE WORK** — `STATE.md` (line 6, `Last updated: 2026-08-10`) predates Experiment 1
-   and Phase D.1 entirely and does not mention either. This staleness pre-dates this pass (it was
-   already stale before D.1 started) and is not something D.1 was responsible for updating, but it
-   will need a pass before Phase E starts, since STATE.md is the documented first-read entry point.
-   File: `STATE.md:6`.
+**No REQUIRED NOW findings.** All five edits landed exactly as described, resolved F1-F4 completely
+(re-verified independently, not assumed), and introduced no new numeric, verdict, or scope drift.
 
-No REQUIRED NOW findings.
+**G1 — OPTIONAL FUTURE WORK.** The "Auditor verdict" section embedded at the bottom of
+`CONTRIBUTION_LOCK.md` (lines 404-418) still contains the text from the *first* Gate-4 audit pass
+(pure numeric-accuracy verification, PASS) and was never updated to reflect the *second* pass's
+CONDITIONAL verdict (the one that produced F1-F4) or this third, final pass. A reader who opens only
+`CONTRIBUTION_LOCK.md` and reads its self-contained "Auditor verdict" section — which §12 explicitly
+makes load-bearing ("Gate 4 is complete pending the auditor verdict below") — would see a verdict
+narrative describing the first pass's checks (Pearson re-derivation, winner-constancy, band split) and
+would not know a full CONDITIONAL round with four required wording fixes happened in between, even
+though the fixes are correctly applied in the document body. Not a research-integrity issue (the body
+content is accurate and current) and not something this pass is authorized to fix (editing
+`CONTRIBUTION_LOCK.md` is out of scope for an auditor). Recommend the builder append or replace that
+section with this pass's verdict before treating Gate 4 as closed in `RESEARCH_GPS.md`, so the
+document's self-reported status matches its actual audit history.
+
+**G2 — OPTIONAL FUTURE WORK.** `research/contribution_lock.csv` row 4 (C2b) still contains the word
+"orthogonal" in its `Rationale` column ("ranking governed by orthogonal representation-stability
+factor") — the same term F4 required removing from the `.md` file for the same reason (risk of being
+read as a general statistical-independence claim rather than a within-this-factorial-design fact). The
+CSV was explicitly out of scope for this round's five edits and remains untouched as instructed, so
+this is not a regression from this pass — it is pre-existing content the wording-precision pass never
+touched. Non-blocking (the CSV is a supporting data table, not manuscript-facing prose), but worth
+noting for whichever future pass next touches the CSV, for consistency with the now-corrected `.md`.
 
 ## 12. Required fixes
 
-None. (Empty — no CONDITIONAL or BLOCK-level issues found.)
+None. (G1 and G2 above are optional, non-blocking notes for future housekeeping, not conditions on
+this verdict.)
 
 ## 13. Verdict
 
-## 🟢 PASS
+🟢 **PASS.**
 
-Every headline quantitative claim in the new Phase D.1 files was independently re-derived from the
-raw, frozen 240-row CSV using code written fresh for this audit (not the builder's own
-`analyze_posthoc.py` logic trusted blindly), cross-checked a second time against the separate,
-untouched `final_summary.csv`, and matched exactly in every case tested — including the two most
-load-bearing and easiest-to-get-wrong claims (the exceptionless 120/120 VARIED-retrieval /
-120/120 CLEAN-tie split, and the Pearson correlations underpinning the "predicts difficulty, not
-ranking" distinction). No superseded number was reintroduced, no rejected claim (ADS-as-novel,
-"higher ADS means rules is better," enterprise-AI generalization) was resurrected, and the H1
-verdict was not silently upgraded. The frozen evidence directory is byte-identical to the freeze
-commit, the analysis script is read-only against frozen data and stdlib-only, its threshold
-constants are literal unmodified copies of the frozen `stats.py` values, and all 30 existing exp1
-unit tests plus the script's own `--demo` self-check pass. Git hygiene is clean: exactly the
-expected file set is untracked, nothing frozen or manuscript-level was touched, and no secrets,
-client data, or local-path leakage was found. The two findings recorded above are both optional,
-non-blocking documentation-polish notes, not integrity or correctness issues. Safe to checkpoint
-as-is.
+Justification: all five wording-only edits were independently located in the live document, read in
+full grammatical/logical context (not just as isolated matched strings), and confirmed to say exactly
+what the brief described. Direct re-grepping confirms all F1-F4 problems are resolved: every remaining
+"governed" instance (4 of them, down from 5 — one was fully replaced rather than re-scoped) now
+carries an inline, same-sentence scope qualifier; "orthogonal" has zero remaining occurrences in the
+document; §11.C no longer contains an "entirely"+"governed" combination in any form, having been fully
+replaced with numerically precise, already-scoped language. Independent re-derivation from the raw
+240-row `final_condition_results.csv` (own PowerShell aggregation, own from-scratch Pearson
+implementation) confirms seven separate numeric claims — winner constancy in both lexical conditions,
+the realized-ADS range, both band-agreement percentages, and four correlation coefficients — all match
+the document exactly, with no drift from either prior pass's verified numbers. No verdict word,
+classification, or scope/limitation statement changed anywhere relative to what the prior CONDITIONAL
+pass already verified as correct; `contribution_lock.csv` is confirmed untouched; no manuscript file,
+frozen evidence file, or any file outside the three expected `git status` entries was modified; no
+secrets, credentials, or client data present. Two non-blocking notes (G1: the document's
+self-embedded "Auditor verdict" section is stale relative to the actual three-pass audit history; G2:
+the CSV still contains the pre-existing, out-of-scope "orthogonal" term F4 addressed only in the `.md`)
+are recorded for future housekeeping but do not condition this verdict. **Gate 4's wording is now
+locked correctly. This document is checkpoint-ready as audited**, contingent only on the builder
+updating the embedded verdict text (G1) and `RESEARCH_GPS.md`'s Gate 4 checkbox — both outside this
+auditor's authority to change.
