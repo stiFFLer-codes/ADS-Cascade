@@ -100,8 +100,11 @@ before choosing which classification mechanism to build. In one production
 deployment, that statistic was measured at 91.2\% and the rule selected a
 rules-first, exact-match mechanism; in an independently generated synthetic
 reproduction of the same pipeline, the analogous statistic was measured at
-87.56\% and the same rule selected a retrieval-based mechanism instead. Both
-figures sit within a few percentage points of the rule's own 90\% threshold,
+87.56\% and the same rule selected its embedding-based branch
+(\texttt{EMBEDDING\_PRIMARY}) instead -- a different mechanism from the
+lexical-similarity \texttt{retrieval} mechanism this paper's Experiment~1
+tests (Section~3.4); no embedding-based mechanism is evaluated anywhere in
+this paper. Both figures sit within a few percentage points of the rule's own 90\% threshold,
 so the two runs' decisions differ not because the underlying systems differ
 in kind, but because a small measurement difference happened to fall on
 opposite sides of a single cutoff. We report this observation as the
@@ -597,9 +600,10 @@ reproducible random stream (\texttt{random.Random(seed)}) rather than
 mutating one shared global generator, so that a 20-seed sweep produces
 statistically independent replicates. Cross-company alignment -- the rate at
 which different companies agree on a shared product's dominant account -- is
-fixed at 0.695, the production-observed value, so that it does not become a
-second, uncontrolled independent variable alongside the consistency sweep
-itself. This generator is not calibrated against real invoice or OCR error
+fixed at 0.695 -- the production-observed value, cited from a confidential
+engagement and not independently reproducible from this repository -- so
+that it does not become a second, uncontrolled independent variable
+alongside the consistency sweep itself. This generator is not calibrated against real invoice or OCR error
 data; Section~7 states this limitation explicitly.
 
 % EVIDENCE:
