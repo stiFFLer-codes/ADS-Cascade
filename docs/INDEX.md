@@ -12,6 +12,8 @@ drifts.
 - **Plain-English context** (who/what/constraints) → `Context.md`
 - **Roadmap** (phases + Phase 2 slices) → `Phases.md`
 - **Phase 2 implementation plan** (stages, contracts, metrics) → `PHASE2_PLAN.md`
+- **Experiment 1 / arXiv-track manuscript** (separate from the pipeline above — mechanism-selection
+  study, reproduction command, frozen evidence) → `../README.md`'s "Experiment 1" section
 
 ## PRD / Requirements
 - `../architecture/02_REQUIREMENTS.md` — business & functional requirements

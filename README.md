@@ -33,6 +33,8 @@ draws its numbers from.
    (anonymized) production trace described below.
 3. Current status and how to run the pipeline: [`STATE.md`](STATE.md)
 4. Full navigation: [`docs/INDEX.md`](docs/INDEX.md)
+5. The separate arXiv-track controlled experiment (mechanism selection, not the pipeline above): see
+   "Experiment 1" below
 
 ---
 
@@ -65,20 +67,47 @@ Two different things live in this repository, for two different reasons:
 
 ---
 
+## Experiment 1 (arXiv-track manuscript)
+
+A separate, controlled synthetic experiment — not the Phase 1/2 engineering pipeline above — tests
+whether historical decision consistency predicts which classification mechanism wins, not just how
+accurate each one is. It's written up as its own paper: [`manuscript/main.tex`](manuscript/main.tex).
+
+| What | Where |
+|---|---|
+| Final experiment script (single command, no client data, no API keys) | `python scripts/experiments/exp1/run_final.py` |
+| Frozen configuration (targets, seeds, thresholds) | `data/outputs/experiments/exp1/final/final_frozen_config.json` |
+| Seed manifest (20 seeds × 6 targets × 2 lexical conditions = 240) | `data/outputs/experiments/exp1/final/final_seed_manifest.csv` |
+| Frozen raw results (the manuscript's primary evidence artifact) | `data/outputs/experiments/exp1/final/final_condition_results.csv` |
+| Headline statistics (agreement rate, Wilson CI, binomial p-value) regenerated from that CSV | `python scripts/experiments/exp1/analyze_posthoc.py` (or `--demo` for a fast self-check) |
+| Figure generation (draft; requires `matplotlib`, see `requirements.txt`) | `manuscript/figures/generate_figures.py` |
+| Manuscript source | `manuscript/main.tex`, `manuscript/references.bib` |
+
+Requires Python 3.11+ (the one version floor enforced anywhere in this repository, via
+`prerun_check.py`) and `rapidfuzz` (in `requirements.txt`). No client data, no API keys, no cost.
+
+---
+
 ## Folder map
 
 ```
 TECHNICAL_REPORT.md  the paper: problem, method, evaluation, limitations
 METHODOLOGY.md        what is public versus confidential, and the real-vs-synthetic comparison
+manuscript/            the Experiment 1 paper: main.tex, references.bib, figures/
 docs/                  demo/, INDEX.md, PHASE2_PLAN.md, Context.md, Phases.md
 STATE.md               living status, how to run, resume prompt
 architecture/          Phase 2 solution architecture: 17 docs, 16 ADRs, open questions
-scripts/               Phase 1 pipeline (01-04) and Phase 2 (phase2/: p2_01...p2_06 plus p2lib/)
+scripts/               Phase 1 pipeline (01-04), Phase 2 (phase2/: p2_01...p2_06 plus p2lib/),
+                       and Experiment 1 (experiments/exp1/ -- see "Experiment 1" section above)
 reports/               Phase 1 findings and architecture decision report
-data/                  source-of-truth manifest plus outputs/ (synthetic results, incl. phase2/)
+data/                  source-of-truth manifest plus outputs/ (synthetic results, incl. phase2/
+                       and experiments/exp1/, the Experiment 1 frozen evidence)
+research/              Experiment 1 research/audit trail (evidence review, contribution lock,
+                       manuscript drafting checkpoints) -- internal working documents, not needed
+                       to reproduce the results, only to see how the manuscript's claims were derived
 config/  utils/        shared settings and helpers
 AGENTS.md              working conventions
-requirements.txt       Python dependencies (standard library first; rapidfuzz, requests, boto3, pypdf)
+requirements.txt       Python dependencies (standard library first; pandas, requests, tqdm, rapidfuzz)
 ```
 
 ---

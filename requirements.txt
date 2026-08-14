@@ -7,6 +7,14 @@ pandas==2.2.2
 requests==2.32.5
 tqdm==4.67.3
 
+# Experiment 1 (scripts/experiments/exp1/) — retrieval mechanism (mechanisms.py ->
+# p2lib/retrieval.py). No version pin: the frozen final run's own metadata
+# (data/outputs/experiments/exp1/final/final_run_metadata.json) does not record which
+# rapidfuzz version produced it, so none is asserted here rather than guessed.
+rapidfuzz
+
 # Uncomment as pipeline steps are implemented:
 # lxml==5.2.2       # XML parsing (steps 2, 3)
 # openpyxl==3.1.2   # Excel report export (step 4)
+# matplotlib        # manuscript/figures/generate_figures.py (F1-F4); not required to
+#                   # reproduce Experiment 1's own results, only to render its figures
