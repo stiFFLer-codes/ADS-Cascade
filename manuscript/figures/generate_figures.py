@@ -5,16 +5,16 @@ no new experiments, no re-computation of any statistic beyond what those
 artifacts already report. Uses the stdlib csv module (not pandas) and
 matplotlib, consistent with this repository's stdlib-first convention.
 
-NOTE (Phase E3): this script was written but could not be executed in the
-current environment -- matplotlib is not installed here (verified via
-`python -c "import matplotlib"`, ModuleNotFoundError). This mirrors the
-project's existing, previously-reported substitution pattern for the missing
-pdflatex/bibtex toolchain (research/MANUSCRIPT_SKELETON_AUDIT.md): the gap is
-reported explicitly rather than faked. Run this script in an environment with
-matplotlib installed to produce manuscript/figures/f1.pdf .. f4.pdf; main.tex
-currently references these paths in captioned figure placeholders (per the E3
-definition of done, a captioned placeholder without a rendered image is a
-valid slot -- research/PAPER_CONTRACT.md Sec.11).
+NOTE (Phase E5.4): matplotlib is not installed in this repository's own
+environment (verified via `python -c "import matplotlib"`, ModuleNotFoundError)
+-- requirements.txt intentionally leaves it commented out (see that file) since
+it is needed only for this figure-generation step, not for reproducing
+Experiment 1's results. This script was executed in an isolated,
+scratchpad-only virtualenv with matplotlib installed (mirroring the
+verification pattern used for rapidfuzz in E5.3,
+research/E5_3_CORRECTION_AUDIT.md Sec.3) to render the committed
+manuscript/figures/f1_design_flow.pdf .. f4_ranking_constancy.pdf, which
+main.tex now includes via \includegraphics.
 
 Usage:
     pip install matplotlib
@@ -97,7 +97,16 @@ def make_f2(plt, rows):
 
 def make_f3(plt, rows):
     """F3 -- R3 agreement by realized-ADS region, VARIED only (CLEAN has no
-    defined comparisons -- see main.tex Sec.5.1/5.3)."""
+    defined comparisons -- see main.tex Sec.5.1/5.3).
+
+    The <0.70 band has zero defined R3-vs-empirical comparisons: R3 selects
+    llm_required there (excluded from the primary comparison), never
+    rules/retrieval, so r3_agrees_with_empirical is blank for all 70 rows.
+    That is rendered as an explicit N/A marker, not a 0%-height bar -- a bare
+    0% bar would be visually indistinguishable from the >=0.90 band's
+    genuine, defined, exceptionless 0/18 disagreement, collapsing
+    "structurally not evaluated" and "evaluated and failed" into the same
+    mark (research/PAPER_CONTRACT.md Sec.6/Sec.7 numerical-rule concern)."""
     bands = ["<0.70", "0.70-0.90", ">=0.90"]
     varied = [r for r in rows if r["lexical_variation"]]
     counts = {b: {"agree": 0, "n": 0} for b in bands}
@@ -108,9 +117,20 @@ def make_f3(plt, rows):
             counts[b]["n"] += 1
             if flag == "True":
                 counts[b]["agree"] += 1
-    rates = [100.0 * counts[b]["agree"] / counts[b]["n"] if counts[b]["n"] else 0.0 for b in bands]
+
     fig, ax = plt.subplots(figsize=(5, 4))
-    ax.bar(bands, rates)
+    for i, b in enumerate(bands):
+        n, agree = counts[b]["n"], counts[b]["agree"]
+        if n:
+            rate = 100.0 * agree / n
+            ax.bar(i, rate, color="tab:blue")
+            ax.text(i, rate + 2, f"{agree}/{n}", ha="center", va="bottom", fontsize=9)
+        else:
+            ax.bar(i, 100, facecolor="none", edgecolor="gray", hatch="//", linewidth=0.8)
+            ax.text(i, 50, "N/A\n(R3 excludes\nthis band)", ha="center", va="center",
+                    fontsize=8, color="gray")
+    ax.set_xticks(range(len(bands)))
+    ax.set_xticklabels(bands)
     ax.set_ylabel("R3 agreement rate (%)")
     ax.set_xlabel("realized-ADS band (VARIED)")
     ax.set_ylim(0, 100)
