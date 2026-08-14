@@ -381,7 +381,10 @@ Experiment~1 (Section~4.1) -- and both are cited only for completeness of the
 design-time/runtime distinction this paper's framing depends on.
 
 % EVIDENCE:
-% - research/literature/citation_ledger.csv rows B3-02, B6-02
+% - research/literature/citation_ledger.csv row B3-02 (FrugalGPT)
+% - research/literature/llm_advisory_prior_art.csv row G2-01 (RankGPT -- corrected at E5.2;
+%   previously misattributed to citation_ledger.csv row B6-02, the Dekoninck et al. unified
+%   routing/cascading paper, a different source not cited in this sentence)
 % - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.10 (LLM exclusion rationale)
 
 \subsection{Domain-Specific Practice}
@@ -392,11 +395,11 @@ classifier generalizes far worse across companies than per-company models --
 the same phenomenon the production system's own cross-company-consistency
 threshold encodes, though reported there as a direct accuracy gap rather than
 formalized into a named metric. Independent industry sources (accounts-payable
-automation vendors, not peer-reviewed) describe similar informal
-historical-consistency-audit practice already in production use. We do not
+automation vendors, not peer-reviewed) \citep{kenfromfinance2025,peakflo2025,ramp2025} describe
+similar informal historical-consistency-audit practice already in production use. We do not
 claim that the application domain itself is unprecedented, or that no vendor
 measures historical consistency before choosing a mechanism -- at least one
-industry source directly contradicts that framing, and a corresponding
+industry source \citep{kenfromfinance2025} (not peer-reviewed) directly contradicts that framing, and a corresponding
 sentence in this project's companion technical report remains an open,
 still-uncorrected item tracked outside this manuscript
 (research/MANUSCRIPT\_CLAIM\_EVIDENCE\_MAP.md \S4). The narrow delta that
