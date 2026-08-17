@@ -89,7 +89,7 @@ stability -- a direction for future work, not something built or tested here.
 % - research/MANUSCRIPT_ARCHITECTURE.md Sec.2
 
 \noindent\textbf{Keywords:} classification-mechanism selection; historical
-label consistency; algorithm selection; selective classification;
+label consistency; algorithm selection; design-time selection;
 representation stability.
 
 % =============================================================================
@@ -166,7 +166,8 @@ qualitatively different classification mechanisms (exact-match rules versus
 retrieval-based fuzzy matching)? Answering it requires four preconditions to
 hold in the target setting: a history of repeated decisions on the same or
 similar items, observable ground-truth labels for those decisions, a
-consistency statistic that can be measured from them, and sufficient
+consistency statistic that can be measured from them (formalized in
+Section~3.2 as the Automated Determinism Score, ADS), and sufficient
 historical coverage for that statistic to be estimated reliably. This paper's
 experiment is constructed to satisfy all four by design; where a real system
 does not, the question this paper answers does not directly apply to it.
@@ -230,8 +231,8 @@ new metric, a new architecture, or a validated selection method. Formally: in
 this synthetic product-classification generator, realized historical decision
 consistency is strongly predictive of each classification mechanism's own
 accuracy (exact-match rules and fuzzy retrieval alike; Pearson $r\approx
-0.91$--$0.96$ in both lexical conditions), but it is \emph{not} predictive of
-which of the two mechanisms will outperform the other: under a controlled
+0.91$--$0.96$ in both lexical conditions). It is \emph{not}, however,
+predictive of which of the two mechanisms will outperform the other: under a controlled
 lexical perturbation, retrieval wins on whole-set accuracy in every tested
 noisy condition, and the two mechanisms are statistically indistinguishable
 in every tested noise-free condition, in both cases independent of realized
@@ -761,11 +762,13 @@ one-third. Agreement rates are tested against this chance baseline with an
 exact two-sided binomial test, and reported with a Wilson 95\% confidence
 interval.
 
-The frozen decision rule R3 itself, reused unmodified from the production
-system's own architecture-decision procedure and not re-derived or re-tuned
-for this experiment, maps realized ADS to a mechanism recommendation by a
-fixed threshold: at or above 0.90, rules; between 0.70 and 0.90, retrieval;
-below 0.70, the excluded LLM band.
+The frozen decision rule R3 -- so named in the production system's own
+internal rule taxonomy, not an alternative considered within this
+experiment -- is reused unmodified from that system's architecture-decision
+procedure and is not re-derived or re-tuned for this experiment. It maps
+realized ADS to a mechanism recommendation by a fixed threshold: at or above
+0.90, rules; between 0.70 and 0.90, retrieval; below 0.70, the excluded LLM
+band.
 
 % EVIDENCE:
 % - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.14
@@ -990,8 +993,7 @@ agreement with the empirical winner comes from the VARIED condition.
 \centering
 \includegraphics[width=0.85\linewidth]{figures/f3_r3_agreement_by_band.pdf}
 \caption{R3 agreement with the empirical winner by realized-ADS region: 100\%
-(32/32) in the 0.70--0.90 band versus 0\% (0/18) in the $\geq0.90$ band. The
-single most important figure in this paper. Source:
+(32/32) in the 0.70--0.90 band versus 0\% (0/18) in the $\geq0.90$ band. Source:
 research/EXPERIMENT\_1\_POSTHOC\_ANALYSIS.md Sec.4-5.}
 \label{fig:f3}
 \end{figure}
@@ -1149,8 +1151,8 @@ The point estimate, 64.0\%, is directionally above chance in the only slice
 where agreement is measurable at all (VARIED), and one full realized-ADS band
 shows perfect, exceptionless agreement (32 of 32, Section~5.4), with the
 corresponding by-nominal-target count independently significant at
-$p=1.9\times10^{-9}$ (Section~5.6). This is not nothing: it is not, however,
-evidence that H1 as originally intended was confirmed.
+$p=1.9\times10^{-9}$ (Section~5.6). This result is not without value, but it
+is not evidence that H1 as originally intended was confirmed.
 
 % EVIDENCE:
 % - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.18
@@ -1275,7 +1277,13 @@ This experiment uses a single synthetic generator family; its 240 conditions
 replicate a seeded random-number generator, not an external population. The
 lexical perturbation used ($P_{\mathrm{TRANSFORM}}=0.3$, five fixed transform
 types) was pilot-tuned to a target corruption-share band, not derived from
-measured real-world OCR or typo error rates.
+measured real-world OCR or typo error rates. The practical-equivalence
+margin ($\delta=0.02$) that defines a tie versus a defined winner
+(Section~4.6) was likewise fixed once at calibration and never varied
+against the frozen outcome data; because this margin is the specific reason
+the CLEAN condition contributes zero defined comparisons (Section~5.6), this
+paper cannot rule out that a different margin would yield defined
+CLEAN-condition comparisons -- a sensitivity this paper does not test.
 
 % EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.9; research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.22
 
