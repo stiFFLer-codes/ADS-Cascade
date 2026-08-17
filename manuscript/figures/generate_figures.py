@@ -63,7 +63,7 @@ def make_f1(plt):
         (0.03, "Generator\n(6 nominal targets\n x 20 seeds)"),
         (0.28, "Lexical condition\nCLEAN / VARIED"),
         (0.53, "Two isolated\nmechanisms\n(rules, retrieval)"),
-        (0.78, "Pre-registered\nfalsification table\n(Sec.4.13)"),
+        (0.78, "Pre-registered\nfalsification table\n(Sec.4.8)"),
     ]
     for x, label in boxes:
         ax.add_patch(plt.Rectangle((x, 0.35), 0.19, 0.3, fill=False))
