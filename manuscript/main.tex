@@ -79,9 +79,11 @@ condition -- a variable the consistency signal is constructed to be blind to.
 This finding is scoped to one synthetic generator, one lexical-perturbation
 model, and one motivating (non-evidentiary) production case study; it is not
 a deployment or generalization claim. We conclude that a design-time selector
-built on historical consistency alone should not be trusted to pick the
-better-performing mechanism without also accounting for representation
-stability -- a direction for future work, not something built or tested here.
+built on historical consistency alone should not be used to predict which
+mechanism will win. Whether a selector that also conditions on a measured
+representation-stability signal would reliably predict which mechanism wins
+is the direct next hypothesis this experiment motivates: no such selector was
+designed, prototyped, or tested here.
 \end{abstract}
 % EVIDENCE:
 % - research/CONTRIBUTION_LOCK.md Sec.6, Sec.11
@@ -102,12 +104,12 @@ A production accounting-classification system applies a frozen,
 pre-specified decision rule to a measured historical-consistency statistic
 before choosing which classification mechanism to build. In one production
 deployment, that statistic was measured at 91.2\% and the rule selected a
-rules-first, exact-match mechanism; in an independently generated synthetic
+rules-first, exact-match mechanism. In an independently generated synthetic
 reproduction of the same pipeline, the analogous statistic was measured at
 87.56\% and the same rule selected its embedding-based branch
 (\texttt{EMBEDDING\_PRIMARY}) instead -- a different mechanism from the
 lexical-similarity \texttt{retrieval} mechanism this paper's Experiment~1
-tests (Section~3.3); no embedding-based mechanism is evaluated anywhere in
+tests (Section~3.3). No embedding-based mechanism is evaluated anywhere in
 this paper. Both figures sit within a few percentage points of the rule's own 90\% threshold,
 so the two runs' decisions differ not because the underlying systems differ
 in kind, but because a small measurement difference happened to fall on
@@ -133,7 +135,7 @@ retrieval index, a trained model -- before any measurement of the data the
 system will actually operate on. A statistic computed from historical
 decisions could, in principle, inform that choice before a system is built
 or deployed. Measuring data properties before choosing a system design is
-itself a long-studied idea, not a contribution of this paper (Section~2); what
+itself a long-studied idea, not a contribution of this paper (Section~2). What
 this paper studies is narrower: whether one specific such statistic --
 historical label consistency -- actually predicts which of two qualitatively
 different mechanisms should be chosen, and under what conditions that
