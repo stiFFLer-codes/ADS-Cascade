@@ -415,8 +415,10 @@ Carried forward, unresolved by this document (not this phase's job to resolve):
    call, not an architecture-time one.
 2. Whether Table T1 (production snapshot) and T6 (limitations summary) are worth including as tables
    versus staying as prose — both marked optional, deferred to E2 skeleton review.
-3. Final title choice among the five ranked candidates (§1) — this document recommends #1 but does
-   not select it unilaterally.
-4. The three open items already carried from `MANUSCRIPT_FORMAT_RESEARCH.md` §3 (endorsement
-   contact, license choice, AI-assistance disclosure wording) remain open and are unaffected by this
-   architecture pass.
+3. **RESOLVED (E7.8.2, 2026-08-18).** Title locked: candidate #1 (§1), as reflected in
+   `manuscript/main.tex`.
+4. Of the three open items carried from `MANUSCRIPT_FORMAT_RESEARCH.md` §3: license choice is
+   **RESOLVED (E7.8.2, 2026-08-18) — CC BY 4.0**, and primary/cross-list category is **RESOLVED
+   (E7.8.2, 2026-08-18) — primary cs.LG, cross-list cs.AI** (per `MANUSCRIPT_FORMAT_RESEARCH.md`
+   §1.11's recommendation, now locked). Endorsement contact and AI-assistance disclosure wording
+   remain open.

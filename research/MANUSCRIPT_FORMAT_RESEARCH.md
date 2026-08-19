@@ -147,6 +147,7 @@ license is applied regardless of which of these is also chosen):
   not now. Given this paper's plan (arXiv now, journal decision later, per `ROADMAP.md` Phase I), the
   safest default is **CC BY** (maximizes reuse/citation visibility, no known conflict with typical
   ML-venue preprint policies) unless a specific target journal is chosen first and requires otherwise.
+- **LOCKED (E7.8.2, 2026-08-18): CC BY 4.0** selected as the arXiv distribution license.
 - Source: [Licenses](https://info.arxiv.org/help/license/index.html) — accessed 2026-08-12.
 
 ### 1.11 Category/subject-class considerations for this paper
@@ -164,6 +165,7 @@ license is applied regardless of which of these is also chosen):
   signal, not about document understanding/OCR, and over-broad cross-listing invites moderation
   friction (a category mismatch is one of the explicit "held for reclassification" triggers, §1.13).
 - Source: [arXiv category taxonomy](https://arxiv.org/category_taxonomy) — accessed 2026-08-12.
+- **LOCKED (E7.8.2, 2026-08-18): primary cs.LG, cross-list cs.AI.**
 
 ### 1.12 Authorship, ORCID, acknowledgements, conflicts
 
@@ -327,8 +329,9 @@ venue-specific format in the first place.
 
 1. **Endorsement (§1.14).** Identify and contact a candidate arXiv endorser in cs.LG/cs.AI. This has
    external lead time and should start early, not at Phase E7.
-2. **License choice (§1.10).** CC BY recommended by default; confirm no specific target journal is
-   already in mind that would prefer a different choice.
+2. **License choice (§1.10). RESOLVED (E7.8.2, 2026-08-18) — CC BY 4.0 locked.**
 3. **AI-assistance disclosure wording (§1.12, §1.13).** The exact Acknowledgements/Comments-field
    sentence disclosing Claude-Code-assisted drafting needs author sign-off before Phase E7 — this
    research pass identifies the requirement, not the wording.
+4. **Category/cross-list (§1.11). RESOLVED (E7.8.2, 2026-08-18) — primary cs.LG, cross-list cs.AI
+   locked.**

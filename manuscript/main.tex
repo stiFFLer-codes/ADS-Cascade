@@ -40,9 +40,9 @@
 Ranking: Evidence from a Controlled Synthetic Study}
 % Candidate #1 of five ranked in research/MANUSCRIPT_ARCHITECTURE.md Sec.1,
 % with "classifier" swapped to "mechanism" per the title decision above.
-% Final human sign-off among the five candidates remains open (a "remaining
-% human decision" per research/MANUSCRIPT_FORMAT_RESEARCH.md Sec.3 and
-% research/MANUSCRIPT_ARCHITECTURE.md Sec.14) -- not resolved by this pass.
+% TITLE LOCKED (E7.8.2, human decision, 2026-08-18): candidate #1 selected as
+% final, per research/MANUSCRIPT_FORMAT_RESEARCH.md Sec.3 and
+% research/MANUSCRIPT_ARCHITECTURE.md Sec.14.
 
 \author{Maitreya Sapariya \\ \small Independent Researcher \\ \small \texttt{maitreyasapariya@gmail.com} \\ \small ORCID: 0009-0003-9346-3775}
 % Author/affiliation/email/ORCID resolved at E7.1 per human decision (this
@@ -315,8 +315,8 @@ selection toward automated, benchmarked-performance-driven workflow
 composition, describing the field as having moved from the algorithm
 selection problem toward the broader challenge of composing an entire
 processing workflow -- the closest terminological echo of this paper's own
-framing found in the surrounding literature. We do not claim that this
-paper's simple, interpretable threshold rule competes with that automated
+framing found in the surrounding literature. This paper's simple,
+interpretable threshold rule is not offered as a competitor to that automated
 search paradigm. The delta is one of evidence type and mechanism, not
 performance: this paper studies a label-consistency signal driving a named,
 interpretable threshold rule, not a benchmarked optimization search over a
@@ -350,8 +350,8 @@ instability), not a defense of the one-shot-gate design pattern in general.
 \citet{chow1970} originates the single-threshold accept/reject decision on
 live posterior confidence, formalized further by \citet{elyaniv2010}'s
 risk-coverage framework and surveyed comprehensively by
-\citet{hendrickx2024}. We make no claim that this experiment introduces a
-new reject-option variant. This literature is not directly engaged by
+\citet{hendrickx2024}. Nothing in this experiment is offered as a new
+reject-option variant. This literature is not directly engaged by
 Experiment~1 at all, because Experiment~1 tests a \emph{design-time}
 selection rule applied once before deployment, not a \emph{runtime} reject
 threshold applied per item at inference time; we cite it only to establish
@@ -381,10 +381,10 @@ surrounding literature to a multi-tier, historically-calibrated cascade of
 classification mechanisms. RankGPT \citep{rankgpt2023} establishes that
 using a large language model to re-rank a pre-fetched candidate list, rather
 than to classify from a blank input, is commodity information-retrieval
-technique. We do not claim that Experiment~1's two-mechanism comparison is
-itself a cascade contribution. Neither family is directly relevant to the
+technique. Experiment~1's two-mechanism comparison is not itself put forward
+as a cascade contribution. Neither family is directly relevant to the
 experiment reported here -- the LLM mechanism is explicitly excluded from
-Experiment~1 (Section~4.1) -- and both are cited only for completeness of the
+Experiment~1 (Section~7.3) -- and both are cited only for completeness of the
 design-time/runtime distinction this paper's framing depends on.
 
 % EVIDENCE:
@@ -406,9 +406,7 @@ automation vendors, not peer-reviewed) \citep{kenfromfinance2025,peakflo2025,ram
 similar informal historical-consistency-audit practice already in production use. We do not
 claim that the application domain itself is unprecedented, or that no vendor
 measures historical consistency before choosing a mechanism -- at least one
-industry source \citep{kenfromfinance2025} (not peer-reviewed) directly contradicts that framing, and a corresponding
-sentence in this project's companion technical report remains an open,
-still-uncorrected item tracked outside this manuscript. The narrow delta that
+industry source \citep{kenfromfinance2025} (not peer-reviewed) directly contradicts that framing. The narrow delta that
 survives is academic, not methodological: no peer-reviewed study of this
 specific document-classification niche was found in the literature search
 this paper's evidence base draws on, which is a modest, honest niche-novelty
@@ -438,7 +436,7 @@ AutoML / workflow composition & Automated, benchmarked-performance-driven search
 Self-designed / instance-optimized systems & Continuous, workload-frequency-driven self-adaptation, explicitly rejecting a one-shot gate & Studies a one-shot, label-consistency signal and its specific representation-stability blind spot \\
 Reject option / selective classification & Single runtime accept/reject threshold on live confidence & Not engaged directly; establishes the design-time/inference-time boundary this paper sits on one side of \\
 Learning to defer & Trained/rule-based per-item deferral informed by historical decisions & Same boundary as above; the production cascade (not tested here) sits closer to this literature \\
-Model cascades / LLM routing & Historically-calibrated multi-tier escalation across models & Not engaged; LLM excluded from Experiment~1 by design (Sec.~4.1) \\
+Model cascades / LLM routing & Historically-calibrated multi-tier escalation across models & Not engaged; LLM excluded from Experiment~1 by design (Sec.~7.3) \\
 Domain-specific practice & Empirically documents the same cross-company phenomenon and similar informal audit practice in the same domain & Domain remains academically under-served; not a methodological novelty claim \\
 \bottomrule
 \end{tabular}
@@ -1194,7 +1192,12 @@ way a fuzzy-matching mechanism is comparatively more robust to. We frame this
 as a property of this specific perturbation model and this specific
 retrieval implementation (rapidfuzz-based lexical similarity), not a claim
 about fuzzy or embedding-based retrieval in general, which this experiment
-does not test.
+does not test. This blindness is a direct consequence of how ADS is defined,
+so the qualitative shape of 6b is partly built into the construction; what is
+not given by that construction is the magnitude and direction actually
+observed -- the empirical winner is constant across all 120 conditions of
+each lexical condition (retrieval under VARIED, tie under CLEAN), and the
+rules-minus-retrieval gap widens, rather than narrows, as realized ADS rises.
 
 % EVIDENCE:
 % - research/EXPERIMENT_1_POSTHOC_ANALYSIS.md Sec.5-6
@@ -1422,6 +1425,7 @@ validated method, and not a new metric or architecture.
 \section*{Reproducibility Statement}
 % =============================================================================
 
+\begin{sloppypar}
 The generator, both mechanisms, the lexical perturbation model, and the
 calibration and analysis code used to produce every number in Section~5 are
 public and offline-reproducible with no client data, no API keys, and no
@@ -1429,9 +1433,12 @@ cost; re-running \texttt{python scripts/experiments/exp1/run\_final.py}
 reproduces \texttt{final\_condition\_results.csv} exactly. The production
 case study discussed in Sections~1.1 and~6.2 is confidential and not
 reproducible from this repository in any sense; only its cited aggregate
-statistics appear in this paper. The raw 240-row results file is linked from
-the paper's public code repository rather than bundled into the arXiv source
-package.
+statistics appear in this paper. That file is committed in the paper's public
+code repository, at
+\texttt{github.com/stiFFLer-codes/ADS-Cascade}, under
+\texttt{data/outputs/experiments/exp1/final/}. It is not bundled into the
+arXiv source package.
+\end{sloppypar}
 
 % EVIDENCE:
 % - research/MANUSCRIPT_ARCHITECTURE.md Sec.12
