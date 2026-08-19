@@ -1,18 +1,18 @@
 # Context — plain English
 
-*Who's doing this, what it is, and the constraints. The client-facing version is
+*What this project is and its constraints. The client-facing version is
 `architecture/01_EXECUTIVE_SUMMARY.md`.*
 
 ---
 
 ## The situation
 
-I'm an **intern** on a long-running project for a **Romanian accounting client** —
-a firm whose product is **live in production with daily users**. My access is
-limited (an IAM role that can see the client's data in S3, but not the deployed
-application's internals). My brief was open-ended: **research how to integrate an
-AI feature** into the existing product. I don't have full visibility into the live
-system, so everything here is designed to *not depend* on facts I can't confirm.
+This project was carried out for a **Romanian accounting client** — a firm whose product is
+**live in production with daily users**. Access to the client's environment was limited to a data
+role (able to see the client's data, but not the deployed application's internals). The brief was
+open-ended: **research how to integrate an AI feature** into the existing product. Without full
+visibility into the live system, everything here is designed to *not depend* on facts that
+couldn't be confirmed.
 
 ## What the product does
 

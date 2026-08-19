@@ -1,12 +1,14 @@
-# ROADMAP — TECHNICAL_REPORT.md → arXiv preprint
+# ROADMAP — TECHNICAL_REPORT.md → arXiv preprint (HISTORICAL)
 
-> Execution plan for turning the existing draft into a submittable preprint. Status/conclusions
-> that motivate these steps live in `STATE.md`; this file is the ordered punch list. Update
-> checkboxes and the "Status" line as steps complete; don't duplicate STATE.md's "why."
->
-> **Status: Phase A not started — awaiting explicit go-ahead.** Everything below Phase A is planned
-> but not begun either. This supersedes the original flat bibliography→positioning→figures→LaTeX
-> list; that plan is preserved in git history if needed.
+> **HISTORICAL / SUPERSEDED.** This was the original Phase A–I execution plan for turning
+> `TECHNICAL_REPORT.md` / the Experiment 1 manuscript into a submittable preprint, drafted
+> 2026-08-11. The manuscript work that actually happened used a different phase-numbering scheme
+> (E0 through E7.9, tracked in `research/RESEARCH_GPS.md` and the dated `research/E*` audit
+> reports) and has since reached a finalized release candidate at commit `464aa1b` — see
+> `STATE.md` for current status. The checkboxes and "Status" line below are kept as a historical
+> record of the original plan and should **not** be read as current; most of what they describe
+> was completed under the E-phase sequence instead. The lone item genuinely still open — arXiv
+> submission itself — is tracked in `STATE.md`'s "Next" section, not here.
 
 ## Why a Research Audit comes first
 

@@ -18,7 +18,8 @@ drifts.
 ## PRD / Requirements
 - `../architecture/02_REQUIREMENTS.md` — business & functional requirements
 - `../architecture/01_EXECUTIVE_SUMMARY.md` — non-technical summary
-- `../Receipts Ai.pdf` — the client's original receipt spec
+- The client's original receipt spec (confidential, not part of this public export) informed
+  `../architecture/02_REQUIREMENTS.md` above; see `../METHODOLOGY.md` for what stays private
 
 ## Architecture
 - `../README.md` — repo map (files & folders)

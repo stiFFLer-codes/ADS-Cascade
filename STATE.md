@@ -3,7 +3,11 @@
 > **Read this first.** Living project state for cheap session handoffs.
 > Pointer-based on purpose — it links canonical docs, it does not copy them.
 >
-> `Last updated: 2026-08-10` · **Current phase: Phase 2 demo COMPLETE; Track A Phase 1 (public research export + synthetic data) COMPLETE; repo published + archived on Zenodo (v1.0.0, DOI 10.5281/zenodo.21644208); arXiv-preprint prep in progress — see ROADMAP.md**
+> `Last updated: 2026-08-19` · **Current phase: Phase 1 (data engineering) and Phase 2 (receipt
+> cascade demo) COMPLETE; repo published + archived on Zenodo (v1.0.0, DOI
+> 10.5281/zenodo.21644208); Experiment 1 manuscript FINALIZED as a release candidate
+> (`manuscript/main.tex`, through Phase E7.9) — see `research/RESEARCH_GPS.md` for the detailed
+> manuscript-phase history. arXiv submission has not yet happened.**
 
 ---
 
@@ -12,187 +16,67 @@
 Paste this into a fresh session to continue with full context:
 
 > I'm continuing the **ADS-Cascade** project. Engineering (Phase 1 D406 pipeline, Phase 2 demo,
-> public export, GitHub + Zenodo publication) is **complete** — read `STATE.md` first for that
-> history, it's not the active work. **The active track is turning `TECHNICAL_REPORT.md` into an
-> arXiv preprint, per `ROADMAP.md`.** Read `ROADMAP.md` next — it has the full Phase A–I plan
-> (Research Audit → Literature Verification → Contribution Positioning → Minimal Validation →
-> Manuscript Rewrite → Figures → LaTeX → Reproducibility Audit → arXiv) and tracks status via
-> checkboxes. As of 2026-08-11: **Phase A (Research Audit) has run three passes** — the initial
-> audit (`research/RESEARCH_AUDIT.md`, `claim_evidence_matrix.csv`, `artifact_inventory.csv`), a
-> follow-up that resolved findings A1-A4 (`research/mapping_count_provenance.md`,
-> `research/determinism_provenance.md`, `research/r3_threshold_analysis.md`,
-> `research/EVIDENCE_BASELINE.md`), and a correction pass that fixed the A5 bug it surfaced
-> (`research/a5_correction_analysis.md`, regression test in `scripts/test_dataset_intelligence.py`).
-> Read `research/EVIDENCE_BASELINE.md` for the current canonical numbers before citing anything in
-> the manuscript — several synthetic ADS/determinism figures changed value on 2026-08-11 (old values
-> now marked `SUPERSEDED — DO NOT CITE`). One item remains genuinely open and needs the human
-> author's decision, not further audit: the ~55,394 mapping-count figure is UNRESOLVED —
-> untraceable anywhere in this repository or its git history, likely only checkable against the
-> private client repo; 76,843 is the verified canonical value regardless. Also outstanding but not
-> blocking: `TECHNICAL_REPORT.md` §3.2/§3.3 still cite the pre-A5-fix synthetic numbers and need
-> updating during the manuscript-rewrite phase (not a research question, just deferred prose work).
-> Don't re-derive the literature-review or positioning conclusions already recorded in STATE.md's
-> "Literature review + paper-positioning conclusions" entry — they're settled, not open questions.
-> **What I want to do next: <fill in>.**
+> public export, GitHub + Zenodo publication) is **complete**. The **Experiment 1 manuscript**
+> (`manuscript/main.tex`) is also **complete** — it went through a full audited drafting sequence
+> (Phase A research audit → literature verification → contribution lock → experiment →
+> manuscript draft → E4 adversarial audit → E5 refinement/citation/reproducibility passes → E6
+> final review → E7 release-candidate hardening), finalized at commit `464aa1b` ("Phase E7.9:
+> finalize final manuscript release candidate"). Full phase-by-phase detail and the audit trail
+> live in `research/` (see `research/RESEARCH_GPS.md` as the entry point; note it was last updated
+> mid-sequence and its own "CURRENT GATE" section is stale — trust `git log` and this file over it
+> for current status). **The next real step, if resumed, is preparing and submitting the arXiv
+> version** (category selection, source-package assembly, cross-linking Zenodo/ORCID/Scholar) —
+> not yet started. **What I want to do next: <fill in>.**
 
 ---
 
 ## Where we are
 
-Phase 1 (data engineering) and Phase 2 (receipt-classification demo) are both **complete and
-committed**. The interactive stakeholder demo is built (`docs/demo/index.html`). This folder is
-being finalized as the delivery package. No open implementation work — remaining items are optional
-(larger OCR benchmark, production pieces awaiting manager decisions).
+Phase 1 (data engineering), Phase 2 (receipt-classification demo), and the Experiment 1 manuscript
+are all **complete and committed**. The interactive stakeholder demo is built
+(`docs/demo/index.html`). No open implementation work remains for any of the three tracks; what's
+left is publication logistics (arXiv submission) and optional repository-hygiene polish.
 
 ## Done
 
 - **Phase 1 — Data Engineering pipeline.** 6 scripts (`scripts/`), stdlib-only.
   296,648 invoice lines · 169 companies · weighted ADS 0.847 · 91.2% products
-  deterministic · 76,843 product→account mappings. Committed.
+  deterministic · 76,843 product→account mappings.
   → `reports/phase1_final_report.md`
-- **Phase 2 — Solution Architecture.** 17 docs (`architecture/`): scope, requirements,
-  NFRs, domain model, services, event workflow, data schema, confidence cascade,
-  AI orchestration, API contracts, sequences, security, observability, cost, plus
-  16 ADRs and 20 open questions. **Tracked in git since the initial commit
-  (`81fb74e`, 2026-07-28); public.** (Corrected 2026-08-10 — the prior "written but
-  untracked" note was stale; see `research/RESEARCH_AUDIT.md` finding A1.)
-  → `architecture/00_SCOPE.md`
-- **Entry docs** (this file + `docs/`).
+- **Phase 2 — Solution Architecture + cascade demo.** 17 docs (`architecture/`): scope,
+  requirements, NFRs, domain model, services, event workflow, data schema, confidence cascade,
+  AI orchestration, API contracts, sequences, security, observability, cost, plus 16 ADRs and 20
+  open questions. Cascade validated end-to-end: Tier-1 held-out accuracy 98.4% @ 42% coverage;
+  full-cascade auto-apply 42.8% coverage @ 98.1% accuracy.
+  → `architecture/00_SCOPE.md`, `docs/demo/index.html`
+- **Public research export + synthetic reproduction (2026-07-28).**
+  `scripts/00_generate_synthetic.py` generates synthetic companies/products/invoice lines from
+  documented target distributions (no real data read); the full pipeline reproduces the same
+  qualitative structure on synthetic data, including one documented architecture-decision flip
+  (R3) at smaller scale. Real data, real-derived intermediate files, and real-named worked
+  examples were stripped or anonymized. → `METHODOLOGY.md`
+- **GitHub + Zenodo publication (2026-07-28).** Repo renamed `stiFFLer-codes/ADS-Cascade`,
+  `TECHNICAL_REPORT.md` written, `LICENSE` (MIT) and `CITATION.cff` (ORCID-linked) added,
+  GitHub-Zenodo integration connected, `v1.0.0` release published, DOI
+  `10.5281/zenodo.21644208` minted.
+- **Experiment 1 — controlled mechanism-selection study, through manuscript finalization
+  (2026-08-11 → 2026-08-19).** Research audit → literature verification → contribution lock
+  (Formulation #2 adopted) → 240-condition frozen experiment
+  (`data/outputs/experiments/exp1/final/`) → post-hoc analysis → first complete manuscript draft
+  → independent adversarial audit → readability pass → citation/claim audit → public
+  reproducibility audit → figure generation → final prose polish → final adversarial review →
+  release-candidate hardening (author metadata, AI-assistance disclosure, bibliography
+  corrections, release-boundary fixes, editorial refinement). Finalized at `464aa1b`.
+  Full audit trail: `research/` (70+ dated audit/evidence documents); phase-by-phase log:
+  `research/RESEARCH_GPS.md`.
 
-## Next (immediate)
+## Next
 
-**DONE (2026-07-28): Track A Phase 1 — public research export + synthetic data.**
-`scripts/00_generate_synthetic.py` generates synthetic companies/products/invoice lines from the
-documented target distributions (no real data read). Full pipeline (03_5 → 04 → phase2
-p2_01/p2_02/p2_05) re-run end-to-end on synthetic data. All real data, stale real-derived
-files, and real-named worked examples in architecture/reports stripped or anonymized — see
-`METHODOLOGY.md` for the honest real-vs-synthetic comparison (including a boundary-case R3
-architecture-decision flip at the smaller synthetic scale, documented not tuned away).
-
-**Resolved:** this repository was created fresh on 2026-07-28 specifically so its git history
-would never contain the client-repo commits that predate the cleanup — no orphan-branch/squash/
-history-scrub step is needed before pushing. (That history-scrubbing caveat applies only to the
-original private client repo, if a `research` branch there is ever pushed instead of this
-standalone export.)
-
-**DONE (2026-07-28): Renamed project ADS-Cascade, published to GitHub, archived on Zenodo.**
-Repo renamed `stiFFLer-codes/ADS-Cascade` (was a temporary placeholder name). `TECHNICAL_REPORT.md`
-written (problem/method/evaluation/limitations, including an explicit "validated on a single
-domain" limitation and a rewritten README that leads with the general determinism-first method
-rather than the Romanian-fiscal-documents case study, matching the report's own framing). Two
-pre-publication leaks found and fixed: `METHODOLOGY.md` had named the real client companies in its
-own anonymization changelog, and `data_verification_audit.md` had `file://` links into the local
-confidential client repo. `CONTINUATION_PROMPT.md` and a superseded `REFINED_REPORT.md` draft were
-removed (internal-only, not part of the public package). Added `LICENSE` (MIT) and `CITATION.cff`
-(ORCID-linked). GitHub-Zenodo integration connected; `v1.0.0` GitHub release published; Zenodo
-minted **DOI 10.5281/zenodo.21644208** (badge + citation identifier committed).
-
-**Track A remaining (must-do): Independent Researcher Footprint & EDISS EMJM Prep (Jan 2027)**
-To strongly justify the framing of an independent researcher *and* build a rock-solid portfolio for the EDISS EMJM application (due Jan 2027), we must solidify the public research footprint and prep local materials:
-1. **Clean GitHub Repository:** Polish the repo (`stiFFLer-codes/ADS-Cascade`) so it stands alone perfectly as a professional research artifact.
-2. **Zenodo & ORCID:** Ensure the minted Zenodo DOI (10.5281/zenodo.21644208) is prominent ("This repository is archived on Zenodo with a citable DOI") and linked directly to your ORCID profile.
-3. **arXiv Preprint:** Adapt `TECHNICAL_REPORT.md` into a formal arXiv preprint to gain standard academic distribution.
-4. **Google Scholar:** Ensure metadata across Zenodo and arXiv is properly structured so the research is indexed by Google Scholar.
-5. **General Improvements & Further Work:** Continuously iterate on the research, adding polish and expanding on findings to demonstrate ongoing independent inquiry.
-6. **EDISS EMJM Personal Target (Local Only):** Draft CV entry (~150 words) and motivational video talking points (3–4 on rules-first + human feedback) specifically tailored to the EDISS application. The Zenodo/arXiv/GitHub footprint directly supports "Criterion 2 — Previous Relevant Experience".
-
-**Track B (stretch, no deadline):** Once preprint exists, optionally prep for next-year workshop cycles (DocInsights 2027, FinanSE 2027, PAKDD finance 2027). Aug 2, 2026 DocInsights is off the table (only 5 days; too risky to compromise Track A).
-
-**Numbers discipline:** Any metric in the report must trace to `data_verification_audit.md` "Authoritative Value" column (e.g., 91.2% deterministic not 85%, 0.695 consistency not 0.694).
-
-**DONE (2026-08-10): Literature review + paper-positioning conclusions.** Standard-depth Consensus
-review (10 searches) plus a targeted expanded pass (5 more, aimed at gaps a `/grill-me` interview
-surfaced) produced ~28 candidate citations, none yet in a `.bib` file. Concrete conclusions —
-see `ROADMAP.md` for the execution plan these feed into:
-
-- **Novelty framing (settled):** not a new field. ADS-Cascade's architecture-decision procedure is
-  an instance of Rice's Algorithm Selection Problem (1976) / meta-learning (Smith-Miles 2009,
-  ACM Comput. Surv.) — specifically the *design-time workflow-composition* variant AutoML has been
-  shifting toward (Barbudo et al. 2023, Knowl. Inf. Syst., explicitly note ASP being "superseded by
-  workflow composition"). Closest non-ML analog: self-designed/learned data systems that measure
-  workload and auto-design physical structure (Idreos et al. 2019, SIGMOD). Closest ML analog:
-  reject-option / two-stage classifiers (Hendrickx et al. 2021 survey, Machine Learning; Franc et al.
-  2021, JMLR; Vernon et al. 2022) — but that literature gates *inference-time* per-item abstention,
-  not *design-time* whole-architecture selection, which is the distinction the paper now leans on
-  instead of an "under-explored" claim.
-- **Evidence hierarchy (settled):** the fully-reproducible synthetic pipeline is the paper's primary
-  evidence; the cited production deployment is a motivating case study, not proof — because it's the
-  only independently-checkable result and it already surfaces one real disagreement (the R3 flip).
-- **Pitch (settled):** question-first, not claim-first, and scoped to match the evidence — not
-  "enterprise AI" broadly. Working page-one question: *"Can historical decision consistency be used
-  to guide AI system composition for classification problems that possess large amounts of historical
-  supervisory data?"* Explicit preconditions to state in the paper: (1) a history of repeated
-  decisions, (2) observable labels, (3) measurable consistency, (4) sufficient historical coverage to
-  estimate determinism. Explicitly out of scope (state as such, don't imply): generative writing,
-  open-ended reasoning, planning, creative design, negotiation, exploratory analysis. Broader
-  "enterprise AI" applicability is future-work language, not a conclusion of this paper.
-- **Not yet done:** verify each candidate citation's real metadata (DOI/venue — Consensus abstracts
-  aren't trusted blindly), compile `references.bib`, rewrite `TECHNICAL_REPORT.md` §5 and the
-  Abstract/Introduction to match the above.
-
----
-
-### Phase 2 demo (for reference — COMPLETE)
-
-Phase 2 demo plan approved → `docs/PHASE2_PLAN.md`. Already DONE:
-
-- **DONE — Stage B2 (OCR cache):** all 10 `Receipts Examples/` run through AWS Textract
-  AnalyzeExpense, cached to `data/outputs/phase2/textract_raw/*.json` via
-  `scripts/phase2/p2_03_extract.py` (idempotent, one call ever per receipt). AWS IAM user
-  `contai-textract`, region ap-south-1. Finding: AnalyzeExpense returns vendor, CIF
-  (TAX_PAYER_ID), date, totals, tax, line items; the VAT bracket letter (A/B) rides in
-  each line's `EXPENSE_ROW` — no separate raw-text pass needed. `TOTAL` is ambiguous
-  (real total vs "TVA BON") → structuring must disambiguate.
-
-- **DONE — Stage A (classification cascade):** `scripts/phase2/p2lib/*` + `p2_01_build_kb.py`,
-  `p2_02_classify_eval.py`, `test_cascade.py`. Held-out eval (63,048 test lines, 80/20 split):
-  **Tier-1 deterministic = 98.4% accuracy at 42% coverage**; after calibrating fuzzy/low-evidence
-  to review (measured ~45-49% → unsafe to auto-apply), **auto-apply = 42.8% coverage @ 98.1%
-  accuracy**, 57% routed to review. Overall 66.7% is pessimistic by construction — a random split
-  makes 36% of test lines "cold" (no exact precedent); production seeds the full-history KB so
-  cold-start is far smaller. The fuzzy/cold tail (~27% acc) is where embeddings + LLM must earn
-  their place. Artifacts: `data/outputs/phase2/{kb/,classification_eval,tier_distribution,per_company_accuracy}.csv`.
-
-- **DONE — Stage B3 + Stage C (structuring + end-to-end):** `p2lib/{structure,normalize}.py`,
-  `p2_05_end_to_end.py`. Structured the 10 cached receipts, validated (café Σ=37 PASS, VAT A/B
-  from bracket letters; a fuel-retailer receipt's discount lines correctly flagged sum-REVIEW), and routed 22 line
-  items through the cascade as a cold-start NEW client (global KB, PURCHASE-strict).
-  Result: **0 auto / 8 Tier-3 / 14 Tier-4** — the honest cold-start extreme. KEY FINDING
-  (`e2e_classification.csv` nearest_global): most "no precedent" products ARE in the KB at
-  fuzzy 90-100 ("rovinieta a autoturisme"→"rovinieta", "4 omv maxxmotion 95"→"omv maxxmotion 95",
-  "robineti trecere"→"robinet trecere") — exact lookup missed only on OCR formatting. So the tail
-  is mostly a RETRIEVAL-bridge problem, not an LLM problem. Cross-company account signal is weak
-  and sometimes wrong (caffee latte→6022 fuel) → confirms everything must go to review.
-
-- **DONE — retrieval bridge in cascade:** `cascade.classify(global_pool=...)` fuzzy-bridges the
-  OCR-formatting gap (review only, cutoff 88). Stage C re-run: T4 dropped **14→2**, T3 **8→20** —
-  20/22 lines now carry a concrete account candidate; only 2 are genuinely novel.
-- **DONE — model-agnostic LLM adapter (Groq):** `p2lib/ai/adapter.py` (uses `requests`, no new dep;
-  reads `GROQ_API_KEY` from env; caches to `data/outputs/phase2/llm_cache/`) + `p2_06_llm_tail.py`
-  (runs on review tail only, output always REVIEW). No-key path exits cleanly. `.gitignore` added.
-
-- **DONE — LLM tail (Groq live, grounded):** `p2lib/ai/adapter.py` (requests, no python-dotenv;
-  `.env` auto-loaded; `parents[4]`; UTF-8; 30 RPM throttle + 429 backoff; caches to `llm_cache/`) +
-  `p2_06_llm_tail.py`. Now feeds each product the **cascade's retrieved candidate accounts** (Stage C
-  writes them to `e2e_classification.csv:candidate_accounts`); the LLM re-ranks precedent instead of
-  guessing. Result flipped from "3717 for everything" to correct accounts (fuel→6022, discount→609,
-  cigarettes→371, parking/rovinieta→628). Confirms the architecture: **LLM = re-ranker over retrieval,
-  not an autonomous classifier**; output always REVIEW. `llm_tail_proposals.csv`.
-- **DONE — committed** Phase 2 + architecture + docs at `a0e013f`. `.env` gitignored; `.claude/`,`.ua/` ignored.
-
-- **DONE — stakeholder demo** (`docs/demo/index.html`): single self-contained HTML (no server, no deps,
-  opens by double-click), "Bon Fiscal" design, scroll narrative + animated flowcharts + receipt-scan.
-  12 sections: problem → 91% idea → Phase 1 pipeline → 4-tier cascade → live café-receipt trace (with AWS
-  & Groq disclosure callouts) → 10 receipts routed → where-AI-belongs funnel → shared-brain loop → CAEN
-  cold-start prior → why-it-scales → honest limits. All numbers baked from committed artifacts; verified
-  by headless render. Mixed audience (plain-English + "under the hood" expanders).
-
-**Phase 2 demo pipeline is COMPLETE end-to-end** (photo → Textract cache → structure → validate →
-cascade → retrieval bridge → grounded LLM tail). Remaining (all optional):
-
-1. **Stage B1/B2:** hand-label the 10 (gold → `data/receipts/gold/`) to put a number on OCR accuracy.
-2. Manager-facing write-up of the demo + numbers.
-3. Blocked/deferred: WhatsApp ingestion, review UI, ERP export (need manager answers — `OPEN_QUESTIONS.md`).
+**arXiv submission of `manuscript/main.tex`** — not yet started. Per
+`research/RESEARCH_GPS.md`'s Gate 6 (public release), remaining items are: pick an arXiv category,
+assemble the source package, confirm Google Scholar indexing once live, cross-link the Zenodo
+record / GitHub README / ORCID profile to the arXiv identifier. No further scientific or drafting
+work is planned — the manuscript is content-frozen at the E7.9 release candidate.
 
 ## How to run / resume (any session or AI)
 
@@ -204,6 +88,8 @@ python scripts/phase2/p2_03_extract.py         # Textract OCR (idempotent; 0 new
 python scripts/phase2/p2_05_end_to_end.py      # 10 receipts -> per-line tier + candidates
 python scripts/phase2/p2_06_llm_tail.py        # LLM re-rank on review tail (needs GROQ_API_KEY)
 python scripts/phase2/test_cascade.py          # fast self-checks
+python scripts/experiments/exp1/run_final.py   # Experiment 1 (single command, no keys)
+python scripts/experiments/exp1/analyze_posthoc.py --demo   # fast self-check of Exp. 1 stats
 ```
 - **Groq key:** put `GROQ_API_KEY=gsk_...` in `.env` at repo root (gitignored). No key → p2_06 skips cleanly.
 - **Groq free-tier limits (llama-3.3-70b-versatile): 30 RPM / 12K TPM.** Adapter throttles to ~27 RPM +
@@ -220,6 +106,7 @@ Headline items (full list → `architecture/OPEN_QUESTIONS.md`):
 - **ERP export format** — target accounting system's import XML schema.
 - **Receipt volumes** — per company/month; drives cost model and batching.
 - Confidence thresholds (0.95 / 0.85) are Phase 1-derived starting points — pilot must calibrate.
+- **arXiv category and submission logistics** — not yet decided (see "Next" above).
 
 ## Where things live
 
@@ -227,13 +114,14 @@ Headline items (full list → `architecture/OPEN_QUESTIONS.md`):
 |---|---|
 | Pipeline scripts | `scripts/` |
 | Pipeline outputs (ground truth) | `data/outputs/` |
-| Source dataset | `data/source_of_truth/Dev-D406-Dataset.json` |
 | Phase 2 design (source of truth) | `architecture/` |
 | Phase 1 reports | `reports/` |
 | Entry / navigation docs | `docs/` (start at `docs/INDEX.md`) |
 | Repo map | `README.md` |
 | Working rules | `AGENTS.md` |
-| Paper-publication roadmap (arXiv prep) | `ROADMAP.md` |
+| Experiment 1 manuscript | `manuscript/main.tex`, `manuscript/references.bib` |
+| Experiment 1 research/audit trail | `research/` (see `research/RESEARCH_GPS.md` for the phase log) |
+| Prior arXiv-prep execution plan (historical, superseded by the actual E-phase sequence in `research/`) | `ROADMAP.md` |
 
 ## Update protocol
 
@@ -247,3 +135,5 @@ and points here; nothing else should carry "current status" prose, to avoid the 
 status file caused before (`CONTINUATION_PROMPT.md`, removed during the public-cleanup pass). This
 file is the committed counterpart to Claude Code's private per-machine memory
 (`.claude/.../memory/MEMORY.md`), which is local-only and not portable across machines or clones.
+Personal, non-repository planning (application prep, career notes, etc.) does not belong in this
+file — it should stay in private, non-tracked notes.

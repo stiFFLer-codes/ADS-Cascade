@@ -5,6 +5,10 @@ Draft technical report — companion to the public repository at [this project's
 code, and architecture decision records referenced below are public in this repository; the underlying
 client data is not (see *Reproducibility* and `METHODOLOGY.md`).
 
+**Phase 1/2 Engineering Report.** This document covers the broader ADS-Cascade data-engineering and
+receipt-classification pipeline. For the separate Experiment 1 Research Paper — a controlled
+mechanism-selection study motivated by this pipeline — see [`manuscript/main.tex`](manuscript/main.tex).
+
 ---
 
 ## Abstract
