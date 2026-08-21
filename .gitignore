@@ -24,3 +24,7 @@ RESEARCH_NOTEBOOK.md
 .agents/
 .commandcode/
 graphify-out/
+
+# arXiv build artifacts — regenerate with scripts/r10_9_final_pass.py
+arxiv_build/
+arxiv_submission.tar.gz

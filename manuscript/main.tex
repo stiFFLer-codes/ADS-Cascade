@@ -1,33 +1,15 @@
-% =============================================================================
-% main.tex -- Phase E3 first complete manuscript draft.
-% =============================================================================
-% Governed by, in this order of authority: research/PAPER_CONTRACT.md (binding
-% anti-drift contract) > research/CONTRIBUTION_LOCK.md (locked contribution,
-% Formulation #2) > research/MANUSCRIPT_ARCHITECTURE.md (E1 architecture) >
-% the Phase E2 skeleton this file replaces section-for-section.
+% Historical Consistency Predicts Mechanism Accuracy, Not Mechanism Ranking:
+% Evidence from a Controlled Synthetic Study
 %
-% E3 replaces every draftnote block from the E2 skeleton with real prose.
-% Every subsection retains its % EVIDENCE: comment anchor from E2 so that a
-% reader auditing this draft can trace any sentence back to the source
-% artifact it is drawn from, per research/MANUSCRIPT_CLAIM_EVIDENCE_MAP.md.
-% No claim below is stronger than what its EVIDENCE anchor supports; no new
-% experiment, dataset, statistic, or citation was introduced to write this
-% prose beyond what research/PAPER_CONTRACT.md Sec.2 already permits.
+% Compiles with pdfLaTeX + BibTeX. Requires: amsmath, amssymb, graphicx,
+% booktabs, natbib. Figures are in figures/ as PDF.
 %
-% TITLE DECISION (unchanged from E2, recorded here and in the E2 final
-% report): "Mechanism" was chosen over "classifier". Every locked evidence
-% document exclusively calls the two compared units "mechanisms"
-% (rules_only / retrieval_only); the rules mechanism is an exact-match
-% lookup, not a trained classifier. No third conceptual framing was
-% introduced at E3.
+% Code and data: github.com/stiFFLer-codes/ADS-Cascade
 %
-% LATEX FORMAT (E0 decision, research/MANUSCRIPT_FORMAT_RESEARCH.md Sec.2.3):
-% generic article class, pdfLaTeX-compatible, natbib + BibTeX, no venue-
-% specific template. No package was added at E3 beyond what E3's four
-% figure/table slots require (graphicx, booktabs) -- nothing added "for
-% later."
-% =============================================================================
-
+% Note: the two \section* units near the end carry no \label, because a
+% \label after \section* captures the last stepped counter and would
+% resolve to the wrong number. Adding one requires \phantomsection
+% (hyperref), which this document does not load.
 \documentclass[11pt]{article}
 
 \usepackage{amsmath}
@@ -38,22 +20,10 @@
 
 \title{Historical Consistency Predicts Mechanism Accuracy, Not Mechanism
 Ranking: Evidence from a Controlled Synthetic Study}
-% Candidate #1 of five ranked in research/MANUSCRIPT_ARCHITECTURE.md Sec.1,
-% with "classifier" swapped to "mechanism" per the title decision above.
-% TITLE LOCKED (E7.8.2, human decision, 2026-08-18): candidate #1 selected as
-% final, per research/MANUSCRIPT_FORMAT_RESEARCH.md Sec.3 and
-% research/MANUSCRIPT_ARCHITECTURE.md Sec.14.
 
 \author{Maitreya Sapariya \\ \small Independent Researcher \\ \small \texttt{maitreyasapariya@gmail.com} \\ \small ORCID: 0009-0003-9346-3775}
-% Author/affiliation/email/ORCID resolved at E7.1 per human decision (this
-% pass). Endorsement remains a separate, unresolved arXiv-submission-time
-% item (research/MANUSCRIPT_FORMAT_RESEARCH.md Sec.3, item 1) -- not this
-% pass's job.
 
 \date{}
-% Intentionally empty, not \today: no submission date is known yet, and
-% \today would silently re-stamp on every future recompile. arXiv applies
-% its own submission/version date automatically once actually submitted.
 
 \begin{document}
 
@@ -88,19 +58,13 @@ representation-stability signal would reliably predict which mechanism wins
 is the direct next hypothesis this experiment motivates: no such selector was
 designed, prototyped, or tested here.
 \end{abstract}
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.6, Sec.11
-% - research/PAPER_CONTRACT.md Sec.2, Sec.7
-% - research/MANUSCRIPT_ARCHITECTURE.md Sec.2
 
 \noindent\textbf{Keywords:} classification-mechanism selection; historical
 label consistency; algorithm selection; design-time selection;
 representation stability.
 
-% =============================================================================
 \section{Introduction}
 \label{sec:introduction}
-% =============================================================================
 
 \subsection{Real-World Motivation and General Problem}
 \label{sec:motivation}
@@ -124,16 +88,6 @@ run measured whether the mechanism it selected actually performed best, and
 the production figures cited here are drawn from a confidential engagement,
 not independently reproducible from this repository.
 
-% EVIDENCE:
-% - METHODOLOGY.md (real-vs-synthetic table)
-% - research/EVIDENCE_BASELINE.md Sec.1
-% - research/r3_threshold_analysis.md
-
-% TABLE T1 (production case study snapshot) -- not included as a separate
-% table in this draft; the two cited figures (91.2\%, 87.56\%) above already
-% carry an explicit "cited"/"computed here" distinction in prose. Deferred,
-% per research/MANUSCRIPT_ARCHITECTURE.md Sec.14 item 2, as optional.
-
 This single observation is an instance of a general pattern: classification
 systems typically fix a mechanism class (an exact-match lookup, a fuzzy
 retrieval index, a trained model) before any measurement of the data the
@@ -145,10 +99,6 @@ this paper studies is narrower: whether one specific such statistic,
 historical label consistency, actually predicts which of two qualitatively
 different mechanisms should be chosen, and under what conditions that
 prediction holds.
-
-% EVIDENCE:
-% - research/literature/contribution_status.md (C2)
-% - research/contribution_lock.csv row C2
 
 \subsection{Research Question}
 \label{sec:research-question}
@@ -164,10 +114,6 @@ develops this positioning fully; here we note only that the problem this
 paper studies is a specific, narrower instance of a well-established research
 question, not a new one.
 
-% EVIDENCE:
-% - research/literature/terminology_map.md
-% - research/literature/prior_art_map.md
-
 The question this paper asks, precisely, is: can historical decision
 consistency, measured before deployment, be used to select between
 qualitatively different classification mechanisms (exact-match rules versus
@@ -180,10 +126,6 @@ historical coverage for that statistic to be estimated reliably. This paper's
 experiment is constructed to satisfy all four by design; where a real system
 does not, the question this paper answers does not directly apply to it.
 
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.11.A
-% - STATE.md ("Literature review + paper-positioning conclusions")
-
 The intuition motivating this question is straightforward. If a product has
 almost always been booked to the same account historically, that looks like
 strong evidence the mapping is already solved, and a simple, precedent-based
@@ -193,10 +135,6 @@ be needed. The natural hypothesis this suggests is that higher historical
 consistency should favor a simpler, precedent-based mechanism over a more
 flexible one. This is exactly the hypothesis this paper tests, and, as
 Section~5 reports, partly falsifies.
-
-% EVIDENCE:
-% - TECHNICAL_REPORT.md Sec.2.2 (framing only, not numbers)
-% - research/CONTRIBUTION_LOCK.md Sec.2 step 3
 
 \subsection{Experimental Approach and Main Findings}
 \label{sec:approach-and-findings}
@@ -214,9 +152,6 @@ synthetic generator's product string carries no signal predictive of the
 true label, which would make any LLM result uninterpretable as evidence about
 historical consistency.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.2, Sec.6, Sec.10
-
 The experiment produces a two-part finding that this paper keeps explicitly
 separate throughout. First, realized historical consistency strongly predicts
 each mechanism's own accuracy: both the rules and the retrieval mechanism
@@ -228,9 +163,6 @@ lexical condition, unrelated to how consistent the underlying data is. These
 are two different claims with two different answers. Here the answers are
 opposite. This paper never merges them into a single statement about whether
 "historical consistency works."
-
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.4, Sec.6
 
 \subsection{Contribution Statement and Paper Roadmap}
 \label{sec:contribution-roadmap}
@@ -255,10 +187,6 @@ instability that actually determines the outcome here. This is not a new
 metric (Section~2), not a new architecture, and not a method we claim
 selects the right mechanism. It is a bounded empirical finding about where
 one specific, already-used signal succeeds and where it fails.
-
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.6 (exact wording to reuse)
-% - research/PAPER_CONTRACT.md Sec.8
 
 \subsection{Scope and Non-Novelty}
 \label{sec:scope-non-novelty}
@@ -292,10 +220,8 @@ production case study's proper (non-evidentiary) role. Section~7 states the
 experiment's limitations; Section~8 names, without building or testing, the
 natural next research direction; Section~9 concludes.
 
-% =============================================================================
 \section{Related Work}
 \label{sec:related-work}
-% =============================================================================
 
 \subsection{Cluster Purity and Majority-Vote Agreement}
 \label{sec:cluster-purity}
@@ -314,11 +240,6 @@ a different name, applied to the same kind of repeated-labeling data. The
 paper's contribution lies in what this already-known metric is used for, not
 in its formula.
 
-% EVIDENCE:
-% - research/literature/ads_metric_prior_art.md
-% - research/literature/ads_metric_prior_art.csv rows G1-01..G1-04
-% - research/CONTRIBUTION_LOCK.md Sec.3 (C1)
-
 \subsection{Design-Time Algorithm and Architecture Selection}
 \label{sec:design-time-selection}
 
@@ -335,10 +256,6 @@ performance search, predicts a \emph{qualitative mechanism-class} choice
 (rules versus retrieval, not one machine-learning algorithm versus another),
 and it reports precisely where that narrower claim holds and where it fails.
 
-% EVIDENCE:
-% - research/literature/citation_ledger.csv rows B1-01..B1-05, B2-01, B2-10, B2-11
-% - research/literature/contribution_status.md (C2, C2b)
-
 \citet{barbudo2023} documents the field's shift from single-algorithm
 selection toward automated, benchmarked-performance-driven workflow
 composition, describing the field as having moved from the algorithm
@@ -349,10 +266,6 @@ type and mechanism, not performance: this paper studies a label-consistency sign
 interpretable threshold rule, not a benchmarked optimization search over a
 combinatorial pipeline space, a difference in kind rather than a claim of
 superiority.
-
-% EVIDENCE:
-% - research/literature/citation_ledger.csv row B2-02
-% - research/literature/prior_art_map.md (Tier 2, "Design-time architecture selection")
 
 \citet{idreoskraska2019} describes the strongest non-machine-learning
 structural analog to this paper's design-time framing: measure historical
@@ -367,10 +280,6 @@ This paper's experiment is about a specific signal type
 (label consistency) and its specific limitation (blindness to representation
 instability), not a defense of the one-shot-gate design pattern in general.
 
-% EVIDENCE:
-% - research/literature/citation_ledger.csv rows B7-01, B7-05, B7-06
-% - research/literature/terminology_map.md ("Design-time architecture selection")
-
 \subsection{Inference-Time Selection and Escalation}
 \label{sec:inference-time-selection}
 
@@ -384,10 +293,6 @@ threshold applied per item at inference time; we cite it only to establish
 that distinction, which this paper's scope sits firmly on the design-time
 side of.
 
-% EVIDENCE:
-% - research/literature/citation_ledger.csv rows B4-01, B4-02, B4-05
-% - STATE.md (settled design-time/inference-time positioning)
-
 \citet{mozannarsontag2020} establishes the modern learning-to-defer
 framework: a trained or rule-based function decides, per item, whether to
 defer to a human, informed by historical decision data. As with
@@ -396,10 +301,6 @@ design-time/inference-time boundary this paper's scope sits on the design-time
 side of; the production system's runtime human-escalation cascade sits closer
 to this literature, but that cascade is not evaluated in Experiment~1, which
 studies only the isolated rules and retrieval mechanisms.
-
-% EVIDENCE:
-% - research/literature/citation_ledger.csv rows B5-01, B5-02
-% - research/literature/terminology_map.md ("Runtime confidence cascade")
 
 FrugalGPT \citep{frugalgpt2023} is the closest structural match in the
 surrounding literature to a multi-tier, historically-calibrated cascade of
@@ -410,13 +311,6 @@ technique. Neither family is directly relevant to the
 experiment reported here (the LLM mechanism is explicitly excluded from
 Experiment~1, Section~7.3), and both are cited only for completeness of the
 design-time/runtime distinction this paper's framing depends on.
-
-% EVIDENCE:
-% - research/literature/citation_ledger.csv row B3-02 (FrugalGPT)
-% - research/literature/llm_advisory_prior_art.csv row G2-01 (RankGPT -- corrected at E5.2;
-%   previously misattributed to citation_ledger.csv row B6-02, the Dekoninck et al. unified
-%   routing/cascading paper, a different source not cited in this sentence)
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.10 (LLM exclusion rationale)
 
 \subsection{Domain-Specific Practice}
 \label{sec:domain-practice}
@@ -436,11 +330,6 @@ in the literature search this paper's evidence base draws on. That is a
 modest niche-novelty observation, much weaker than any claim of
 methodological novelty, and not
 this paper's scientific contribution.
-
-% EVIDENCE:
-% - research/literature/citation_ledger.csv rows B8-01, B8-04, B8-05, B8-06
-% - research/literature/contribution_status.md (C8)
-% - research/MANUSCRIPT_CLAIM_EVIDENCE_MAP.md Sec.4
 
 \begin{table}[htbp]
 \centering
@@ -465,14 +354,9 @@ Domain-specific practice & Empirically documents the same cross-company phenomen
 \bottomrule
 \end{tabular}
 \end{table}
-% TABLE T2 -- transcribed from research/MANUSCRIPT_ARCHITECTURE.md Sec.10's
-% 8-row positioning table (not re-derived).
 
-
-% =============================================================================
 \section{Problem Setting and Signal Definition}
 \label{sec:problem-setting}
-% =============================================================================
 
 \subsection{Historical Product-Level Decisions and Account Labels}
 \label{sec:historical-decisions}
@@ -488,10 +372,6 @@ requires the four preconditions named in Section~1.2 to hold: a history of
 repeated decisions, observable labels for those decisions, a consistency
 statistic that can be measured from them, and sufficient historical coverage
 for that statistic to be estimated reliably.
-
-% EVIDENCE:
-% - research/EXPERIMENT_1_DATA_DICTIONARY.md ("Unit of observation")
-% - STATE.md (four preconditions)
 
 \subsection{The Automated Determinism Score (ADS)}
 \label{sec:ads-definition}
@@ -518,16 +398,6 @@ catalog's intrinsic learnability). The primary independent variable
 throughout Sections~\ref{sec:experimental-design} and~\ref{sec:results} is a third quantity, \emph{realized} ADS,
 introduced precisely in Section~4.3.
 
-% EVIDENCE:
-% - TECHNICAL_REPORT.md Sec.2.2 (formula)
-% - research/literature/ads_metric_prior_art.md
-% - research/PAPER_CONTRACT.md Sec.3 row 1
-
-% EQUATION E1 -- ADS definition. c_1,...,c_k are the historical occurrence
-% counts of item p across its k observed labels. Not presented as a novel
-% mathematical contribution (Section 2.1 above; research/MANUSCRIPT_ARCHITECTURE.md
-% Sec.9, row E1).
-
 \subsection{Two Compared Mechanisms: Exact-Match Rules and Fuzzy Retrieval}
 \label{sec:mechanisms}
 
@@ -547,10 +417,6 @@ shipped production cascade's first tier, which additionally applies
 confidence gating and human-review escalation logic outside this
 experiment's scope.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.11
-% - research/EXPERIMENT_1_DATA_DICTIONARY.md (rules_* columns)
-
 The second mechanism, \texttt{retrieval}, applies a rapidfuzz-based
 lexical-similarity match (the \texttt{WRatio} scorer), company-scoped then
 global, as the \emph{primary} mechanism for every test item, rather than as a
@@ -564,10 +430,6 @@ because it is a lexical-similarity match over surface strings, not a
 semantic embedding model: no embedding model was trained, downloaded, or
 evaluated anywhere in this experiment, and describing it as
 "embedding-primary" would misstate what was actually tested.
-
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.9, Sec.11
-% - research/EXPERIMENT_1_DATA_DICTIONARY.md (retrieval_* columns)
 
 \subsection{Mechanism Accuracy vs. Mechanism Ranking}
 \label{sec:accuracy-vs-ranking}
@@ -584,15 +446,8 @@ carrying no information about the second, precisely if the quantity that
 determines relative ranking is one the signal cannot observe, which is
 exactly what Section~5 reports.
 
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.4
-% - research/PAPER_CONTRACT.md Sec.2 rows 3-4
-
-
-% =============================================================================
 \section{Experimental Design}
 \label{sec:experimental-design}
-% =============================================================================
 
 \subsection{Research Hypothesis}
 \label{sec:research-hypothesis}
@@ -607,9 +462,6 @@ best-performing mechanism more often than chance. This phrasing is
 deliberately weaker than an earlier draft that required monotonic dominance
 in every consistency band; H1 claims only better-than-chance agreement, with
 falsification criteria fixed in advance (Section~4.8).
-
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.2
 
 \subsection{Synthetic Generator and Factorial Design}
 \label{sec:generator-design}
@@ -627,9 +479,6 @@ that it does not become a second, uncontrolled independent variable
 alongside the consistency sweep itself. This generator is not calibrated against real invoice or OCR error
 data; Section~7 states this limitation explicitly.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.4, Sec.5
-
 Two factors are varied systematically. The first is the generator's nominal
 target for the share of products intended to be near-deterministic, run at
 six levels: $\{0.00, 0.20, 0.30, 0.50, 0.75, 1.00\}$. The second is the
@@ -639,10 +488,6 @@ run this paper reports. A separate, wider 17-point grid was used only during
 an earlier, mechanism-blind calibration pass (Section~4.8) to characterize
 the generator's realizable range; it is not itself part of the 240-condition
 frozen run and its data does not appear in Section~5.
-
-% EVIDENCE:
-% - research/EXPERIMENT_1_FINAL_RESULTS.md Sec.3
-% - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.3
 
 \subsection{Realized ADS vs. Target Deterministic Share}
 \label{sec:realized-ads}
@@ -669,11 +514,6 @@ standard deviations between the CLEAN and VARIED conditions at every target).
 Every result, table, and figure in Section~5 uses realized ADS, never the
 nominal target, as its independent-variable axis.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.3, Sec.7
-% - research/EXPERIMENT_1_DATA_DICTIONARY.md ("What realized ADS is, precisely")
-% - research/EXPERIMENT_1_POSTHOC_ANALYSIS.md Sec.3
-
 \subsection{Lexical Conditions: CLEAN and VARIED}
 \label{sec:lexical-conditions}
 
@@ -688,10 +528,6 @@ identically specifically when there is no lexical noise for retrieval's
 fuzzy matching to be robust to, for this generator, rather than a general claim
 that the two mechanisms are equivalent.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.8
-% - research/EXPERIMENT_1_FINAL_RESULTS.md Sec.4 (CLEAN rows)
-
 Under VARIED, a fixed, five-transform perturbation algorithm is applied,
 independently per invoice line, only to the display/lookup string; the
 ground-truth product identity used to build the mechanisms' knowledge bases
@@ -705,10 +541,6 @@ from measured real-world OCR or typo error rates and never re-tuned after
 seeing mechanism-accuracy results. The perturbation is fully reproducible: a
 deterministic per-line sub-seed derivation reproduces the identical transform
 decision on any re-run of the same seed.
-
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.8
-% - research/EXPERIMENT_1_CALIBRATION_REPORT.md (P_TRANSFORM calibration)
 
 \subsection{Mechanisms and Retrieval Cutoff}
 \label{sec:retrieval-cutoff}
@@ -725,10 +557,6 @@ selected and frozen for the entire run, never re-tuned per band, per lexical
 condition, or
 after seeing accuracy results.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.12
-% - research/EXPERIMENT_1_CALIBRATION_REPORT.md
-
 \subsection{Seed Structure, Train/Test Separation, and Winner Definition}
 \label{sec:seeds-splits-winner}
 
@@ -736,10 +564,6 @@ Twenty seeds, $\{31001,\ldots,31020\}$, are used identically across every one
 of the twelve (target, lexical) cells, for 240 total conditions. The seed
 range is a documented, deterministic rule, fixed before the run and never
 hand-picked after seeing any result.
-
-% EVIDENCE:
-% - research/EXPERIMENT_1_FINAL_RESULTS.md Sec.3
-% - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.3
 
 Realized ADS is computed exclusively from each condition's train split,
 mirroring real deployment temporal logic: a design-time decision can only see
@@ -750,10 +574,6 @@ exclusively on that condition's test rows. This separation is verified in
 code, not merely asserted: the consistency computation filters to train-split
 rows before any aggregation, and no test-split label ever reaches the
 mechanism-selection rule.
-
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.13
-% - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.11 (integrity checks)
 
 Within a condition, both mechanisms are scored on identical held-out test
 lines: a paired rather than an independent comparison. The empirical winner,
@@ -776,14 +596,6 @@ is not re-examined against the outcome data anywhere in this paper.
 \text{tie} & \text{otherwise}
 \end{cases}
 \end{equation}
-
-% EQUATION E3 -- empirical winner / tie definition. delta = 0.02 (frozen,
-% calibration Gate 3). Standard practical-equivalence testing, not a
-% methodological contribution of this paper.
-
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.14
-% - research/EXPERIMENT_1_DATA_DICTIONARY.md (empirical_winner column)
 
 \subsection{Statistical Analysis}
 \label{sec:statistical-analysis}
@@ -810,11 +622,6 @@ realized ADS to a mechanism recommendation by a fixed threshold: at or above
 0.90, rules; between 0.70 and 0.90, retrieval; below 0.70, the excluded LLM
 band.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.14
-% - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.6
-% - research/r3_threshold_analysis.md
-
 \subsection{Calibration and Preregistration}
 \label{sec:calibration-prereg}
 
@@ -831,9 +638,6 @@ calibration grid is wider than, and distinct from, the six-target grid
 actually used in the 240-condition frozen run (Section~4.2); its own data
 does not appear in Section~5.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_CALIBRATION_REPORT.md Sec.1-2
-
 The falsification table used to classify the experiment's outcome
 (H1~SUPPORTED / PARTIALLY~SUPPORTED / NOT~SUPPORTED / INCONCLUSIVE) was fixed
 in advance of the frozen run. The observed pattern matches the pre-registered
@@ -844,10 +648,6 @@ cutoff, winner definition, or generator parameter was changed after the
 frozen run's results were known; the post-hoc analysis this paper's Results
 section also draws on explains the frozen data, it does not regenerate or
 re-tune it.
-
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.18, Sec.20
-% - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.11 (no post-hoc tuning)
 
 \subsection{Reproducibility}
 \label{sec:design-reproducibility}
@@ -869,12 +669,6 @@ end-to-end from public code with no client data, but cannot reproduce the
 motivating production observation, which is cited, not offered as something
 to re-run.
 
-% EVIDENCE:
-% - research/PHASE_E_PLAN.md Task 6
-% - research/PUBLIC_RELEASE_BOUNDARY.md Sec.3
-% - research/EXPERIMENT_1_FINAL_RESULTS.md Sec.10
-
-% FIGURE F1
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{figures/f1_design_flow.pdf}
@@ -905,23 +699,9 @@ Total conditions & $6 \times 2 \times 20 = 240$ \\
 \bottomrule
 \end{tabular}
 \end{table}
-% TABLE T3 -- values from research/EXPERIMENT_1_FINAL_RESULTS.md Sec.3;
-% research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.5.
 
-
-% =============================================================================
 \section{Results}
 \label{sec:results}
-% =============================================================================
-% MOST IMPORTANT SECTION. Governing rule: (A) ADS -> mechanism accuracy and
-% (B) ADS -> mechanism ranking are NEVER merged (research/CONTRIBUTION_LOCK.md
-% Sec.4; research/PAPER_CONTRACT.md Sec.2 rows 3-4). Leads with the band
-% structure, not the flat aggregate.
-%
-% NOTE ON SUBSECTION COUNT (carried from E2): research/MANUSCRIPT_ARCHITECTURE.md
-% Sec.4 drafted Results as 6 subsections; this file follows the 7-subsection
-% breakdown given explicitly by the E2 kickoff prompt, a deliberate refinement,
-% not undocumented drift -- see the E2 skeleton audit trail.
 
 \subsection{Experimental Completeness and Frozen Design}
 \label{sec:results-completeness}
@@ -934,11 +714,6 @@ harness test suite passed on the code version that produced this data, and
 that code is unmodified (byte-identical to the frozen commit) as of this
 draft.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.3-5, Sec.11
-% - research/EXPERIMENT_1_FINAL_RESULTS.md Sec.2
-% - data/outputs/experiments/exp1/final/final_condition_results.csv (240 rows)
-
 \subsection{ADS Predicts Individual Mechanism Accuracy}
 \label{sec:results-accuracy}
 
@@ -950,12 +725,6 @@ stronger one (Figure~\ref{fig:ads-vs-accuracy}): Pearson $r(\text{realized ADS},
 is a correlational finding about each mechanism's own performance level. It says nothing yet about which mechanism performs better than the other;
 that is the subject of Section~5.3.
 
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.4 (6a)
-% - data/outputs/experiments/exp1/final/final_condition_results.csv
-% - research/AUDIT_REPORT.md (independent re-derivation of these r values)
-
-% FIGURE F2
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{figures/f2_ads_vs_accuracy.pdf}
@@ -981,12 +750,6 @@ the empirical winner is a constant function of the lexical condition, ADS
 structurally cannot track the quantity that actually determines the winner
 in this experiment.
 
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.4 (6b), Sec.2 step 8
-% - research/EXPERIMENT_1_POSTHOC_ANALYSIS.md Sec.6
-% - data/outputs/experiments/exp1/final/final_condition_results.csv
-
-% FIGURE F4
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{figures/f4_ranking_constancy.pdf}
@@ -1029,13 +792,6 @@ with. The CLEAN condition contributes zero defined
 comparisons at any band: every measurable piece of evidence about R3's
 agreement with the empirical winner comes from the VARIED condition.
 
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.2 step 7, Sec.4
-% - research/EXPERIMENT_1_POSTHOC_ANALYSIS.md Sec.4-5
-% - research/EXPERIMENT_1_FINAL_RESULTS.md Sec.5-6
-% - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.6-9
-
-% FIGURE F3
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{figures/f3_r3_agreement_by_band.pdf}
@@ -1066,16 +822,6 @@ By target, target 1.00 (2/20) & 10\% & --- & $4.0\times10^{-4}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
-% TABLE T4 -- overall/by-target values from
-% research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.6-7. Fixed post-audit
-% (research/E3_DRAFT_AUDIT_REPORT.md CONDITIONAL finding): the table
-% previously paired these two by-target p-values with the per-row
-% realized-ADS-band counts (32/32, 0/18) instead of the by-target counts
-% (30/30, 2/20) they were actually computed for -- a misattribution, not a
-% fabricated number. Corrected by re-pairing each p-value with its own
-% source count rather than computing a new statistic for 32/32 / 0/18, per
-% PAPER_CONTRACT.md Sec.7's numerical rule (no new number without a frozen
-% source).
 
 \subsection{ADS $\times$ Representation-Stability Interaction}
 \label{sec:results-interaction}
@@ -1093,10 +839,6 @@ to equal the constant true winner. We report this pattern here; the causal
 account for why it occurs is developed in Section~6.4, not here, since that
 account rests on additional, explicitly post-hoc reasoning this subsection
 does not need.
-
-% EVIDENCE:
-% - research/EXPERIMENT_1_POSTHOC_ANALYSIS.md Sec.5
-% - research/CONTRIBUTION_LOCK.md Sec.2 step 8 (pointer only, not the full account)
 
 \begin{table}[htbp]
 \centering
@@ -1116,8 +858,6 @@ $\geq0.90$ & VARIED & 18 & 0.7130 & 0.8980 & $-0.1851$ \\
 \bottomrule
 \end{tabular}
 \end{table}
-% TABLE T5 -- reproduced verbatim from research/EXPERIMENT_1_POSTHOC_ANALYSIS.md
-% Sec.5, not re-derived.
 
 \subsection{Statistical Interpretation}
 \label{sec:results-statistics}
@@ -1137,10 +877,6 @@ specific reason the CLEAN condition contributes zero defined comparisons; we
 do not relax it or reinterpret the frozen data to reach a different verdict
 anywhere in this paper.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.6-9
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.18 (falsification criteria)
-
 \subsection{Summary of Findings}
 \label{sec:results-summary}
 
@@ -1153,10 +889,8 @@ under-communicates the underlying 100\%-versus-0\% band structure
 discusses; none of them is new information beyond what the preceding
 subsections already established.
 
-% =============================================================================
 \section{Discussion}
 \label{sec:discussion}
-% =============================================================================
 
 \subsection{What the Experiment Supports}
 \label{sec:what-is-supported}
@@ -1169,9 +903,6 @@ This is a narrower, more specific, empirically falsifiable (and partly
 falsified) refinement of the original hypothesis that historical
 consistency alone selects the right mechanism, not a confirmation of that
 hypothesis.
-
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.6
 
 \subsection{The Production Case Study in Light of These Results}
 \label{sec:production-case-study}
@@ -1189,11 +920,6 @@ pipeline and are cited from a confidential engagement, not independently
 reproducible from this repository, a caveat repeated here rather than
 assumed to carry forward for a reader who begins at this section.
 
-% EVIDENCE:
-% - research/EVIDENCE_BASELINE.md Sec.1
-% - research/r3_threshold_analysis.md
-% - research/MANUSCRIPT_ARCHITECTURE.md Sec.6 (production case study placement)
-
 \subsection{What the Original Hypothesis Got Right and Wrong}
 \label{sec:hypothesis-verdict}
 
@@ -1207,10 +933,6 @@ corresponding by-nominal-target count independently significant at
 $p=1.9\times10^{-9}$ (Section~5.6). This result is not without value, but it
 is not evidence that H1 as originally intended was confirmed.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.18
-% - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.9
-
 The unconditional form of the original hypothesis, that ADS thresholds
 alone select the right mechanism, is falsified, exceptionlessly, in the
 realized $\geq0.90$ band. This is not a minor or marginal failure: it is the
@@ -1218,10 +940,6 @@ exact band in which the frozen decision rule is most confident, since higher
 realized consistency produces R3's strongest recommendation for rules, and it
 is precisely there that the rule disagrees with the empirical winner in every
 single one of 18 tested conditions.
-
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.3 (C2b), Sec.4
-% - research/EXPERIMENT_1_FINAL_RESULTS.md Sec.6, Sec.8
 
 \subsection{Mechanistic Explanation: Representation Stability}
 \label{sec:representation-stability}
@@ -1238,10 +956,6 @@ prospective test of this exact causal claim on new data would strengthen it
 further
 (Section~7.1).
 
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.2 step 8
-% - research/EXPERIMENT_1_DATA_DICTIONARY.md ("What realized ADS is, precisely")
-
 Table~\ref{tab:band-behavior}'s widening gap reveals a specific asymmetry: retrieval's
 accuracy cost under lexical noise stays comparatively flat across realized-ADS
 bands, while rules' cost grows with realized ADS. The perturbation degrades
@@ -1257,10 +971,6 @@ observed. The empirical winner is constant across all 120 conditions of
 each lexical condition (retrieval under VARIED, tie under CLEAN), and the
 rules-minus-retrieval gap widens, rather than narrows, as realized ADS rises.
 
-% EVIDENCE:
-% - research/EXPERIMENT_1_POSTHOC_ANALYSIS.md Sec.5-6
-% - research/PAPER_CONTRACT.md Sec.6
-
 \subsection{Relationship to Algorithm Selection and Meta-Learning}
 \label{sec:relation-algorithm-selection}
 
@@ -1272,10 +982,6 @@ mechanism's own expected difficulty while carrying no information about a
 separately governed ranking axis. Nothing here suggests that literature is
 wrong or superseded, only that this narrow selector class has a specific,
 empirically observed blind spot in this experiment.
-
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.5 row 2
-% - research/literature/terminology_map.md
 
 \subsection{Implications for Practice and Future Selector Design}
 \label{sec:implications-practice}
@@ -1292,9 +998,6 @@ that production data confirms this finding: production never ran the
 lexical-noise manipulation this experiment depends on (Section~1.1,
 Section~7.4).
 
-% EVIDENCE:
-% - research/PAPER_CONTRACT.md Sec.3, Sec.6
-
 The natural next step this experiment motivates is a decision rule that
 conditions mechanism selection on both realized consistency and a measured,
 not assumed, representation-stability signal. We name this only as a
@@ -1303,20 +1006,8 @@ and no partial results, because none exists: presenting any implementation
 detail beyond "condition on both signals" would misrepresent an untested idea
 as a scoped method.
 
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.10
-% - research/PAPER_CONTRACT.md Sec.3 row 12
-
-
-% =============================================================================
 \section{Limitations}
 \label{sec:limitations}
-% =============================================================================
-% Every item from research/CONTRIBUTION_LOCK.md Sec.9 and
-% research/PAPER_CONTRACT.md Sec.6, undiluted, grouped as in the E2 skeleton.
-% Leads with the honest PARTIALLY_SUPPORTED verdict (Sec.7.1), not buried --
-% promoted to the first subsection at E5.1 to match this comment's original
-% intent (previously last, contradicting "not buried").
 
 \subsection{H1 Only Partially Supported}
 \label{sec:limits-h1}
@@ -1329,11 +1020,6 @@ post-hoc explanation of already-frozen data, not a fresh prospective
 confirmation. Retrieval's coverage is 1.0 in all 240 conditions, while
 rules' coverage is always below 1.0, a real asymmetry that is part of the
 explanation for the results reported in Section~5, not normalized away.
-
-% EVIDENCE:
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.18 (PARTIALLY SUPPORTED row)
-% - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.9
-% - research/CONTRIBUTION_LOCK.md Sec.9
 
 \subsection{Synthetic Generator and Perturbation Model Scope}
 \label{sec:limits-generator-scope}
@@ -1350,8 +1036,6 @@ the CLEAN condition contributes zero defined comparisons (Section~5.6), this
 paper cannot rule out that a different margin would yield defined
 CLEAN-condition comparisons, a sensitivity this paper does not test.
 
-% EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.9; research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.22
-
 \subsection{Domain and Mechanism Scope}
 \label{sec:domain-mechanism-scope}
 
@@ -1364,10 +1048,6 @@ production cascade was tested. The large-language-model mechanism was excluded f
 for a documented, principled reason (the synthetic product string carries
 no signal predictive of the true label) and was not evaluated at all in
 Experiment~1.
-
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.8
-% - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.10; research/CONTRIBUTION_LOCK.md Sec.9
 
 \subsection{Production Data Limitations}
 \label{sec:limits-production-data}
@@ -1382,10 +1062,6 @@ lexical-noise sweep; only two single-run data points feed the motivating
 validate this experiment's finding, and this paper does not claim that it
 does.
 
-% EVIDENCE:
-% - research/EVIDENCE_BASELINE.md Sec.1; research/CONTRIBUTION_LOCK.md Sec.9
-% - research/CONTRIBUTION_LOCK.md Sec.7 (rejected claim), Sec.8
-
 \subsection{No Selector Fix and Limited Generalization}
 \label{sec:limits-no-selector-fix}
 
@@ -1398,16 +1074,8 @@ was never reachable or tested by this generator. That region is untested, not me
 finding describes this experiment, not a general recommendation for how to
 build classification systems.
 
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.5 row 3-4, Sec.10
-% - research/CONTRIBUTION_LOCK.md Sec.8-9; research/PAPER_CONTRACT.md Sec.6
-
-
-% =============================================================================
 \section{Future Work}
 \label{sec:future-work}
-% =============================================================================
-% Every item below is named, not built. All explicitly hedged as untested.
 
 \subsection{Representation-Stability-Aware Selectors}
 \label{sec:future-selectors}
@@ -1417,8 +1085,6 @@ a measured, not assumed, representation-stability signal is the direct next
 hypothesis this experiment motivates. Nothing of this kind was designed,
 prototyped, or partially tested here; it is named only.
 
-% EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.10 (item 1)
-
 \subsection{Generalization: Additional Domains and Mechanisms}
 \label{sec:future-domains}
 
@@ -1426,14 +1092,10 @@ Re-running the corrected pipeline against a second domain's data would test
 whether the domain-agnostic design of Section~3.1 actually transfers, which
 this paper does not itself test.
 
-% EVIDENCE: TECHNICAL_REPORT.md Sec.4 (domain-transfer limitation, framing only)
-
 Whether the specific pattern reported in Section~5.5 (retrieval's noise
 cost staying flat while rules' noise cost grows with realized ADS) is
 specific to rapidfuzz-style token similarity, or holds for other retrieval
 implementations such as embedding-based retrieval, is untested here.
-
-% EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.10 (item 2); research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.9
 
 \subsection{Real-World Noise Models and Independent Datasets}
 \label{sec:future-noise-models}
@@ -1443,14 +1105,10 @@ actual document corpus would test whether the pattern observed under
 $P_{\mathrm{TRANSFORM}}=0.3$ generalizes beyond this pilot-tuned synthetic
 stand-in.
 
-% EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.10 (item 3)
-
 Re-running this experiment's design against an independently generated
 dataset, not merely a different seed of the same generator, would test
 whether the accuracy/ranking finding is a property of this generator family
 specifically.
-
-% EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.9 (single-generator-family limitation)
 
 \subsection{Broader Architecture-Selection Experiments}
 \label{sec:future-architecture-experiments}
@@ -1461,13 +1119,8 @@ project documentation for upgrading currently weaker claims, but neither is
 required for this paper's narrower, locked contribution and neither is
 planned, scheduled, or begun.
 
-% EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.10 (item 4); research/RESEARCH_GPS.md
-
-
-% =============================================================================
 \section{Conclusion}
 \label{sec:conclusion}
-% =============================================================================
 
 This paper tested, with a pre-registered, 240-condition synthetic factorial
 experiment, whether historical decision consistency predicts which of two
@@ -1488,18 +1141,7 @@ most confident exactly where it is most wrong. In the realized $\geq0.90$
 band, where R3's recommendation for rules is strongest, it disagreed with the
 empirical winner in all 18 tested conditions.
 
-% EVIDENCE:
-% - research/CONTRIBUTION_LOCK.md Sec.11.B, Sec.11.C
-% - research/PAPER_CONTRACT.md Sec.3 row 16 (Formulation #4, rejected)
-
-
-% =============================================================================
 \section*{Reproducibility Statement}
-% No \label here: \section* does not step the section counter, so a \label
-% would capture \@currentlabel from the last numbered section and any \ref
-% to it would render that number. Correct anchoring needs \phantomsection
-% (hyperref), which this manuscript deliberately does not load.
-% =============================================================================
 
 \begin{sloppypar}
 The generator, both mechanisms, the lexical perturbation model, and the
@@ -1517,18 +1159,7 @@ code repository, at
 arXiv source package.
 \end{sloppypar}
 
-% EVIDENCE:
-% - research/MANUSCRIPT_ARCHITECTURE.md Sec.12
-% - research/PUBLIC_RELEASE_BOUNDARY.md Sec.3.B
-
-
-% =============================================================================
 \section*{Acknowledgements}
-% No \label here: \section* does not step the section counter, so a \label
-% would capture \@currentlabel from the last numbered section and any \ref
-% to it would render that number. Correct anchoring needs \phantomsection
-% (hyperref), which this manuscript deliberately does not load.
-% =============================================================================
 
 AI assistance disclosure. Generative AI tools were used during the research
 and manuscript-development process for coding assistance, literature-oriented
@@ -1537,29 +1168,6 @@ made all research decisions, experimental-design decisions, analyses,
 interpretations, and final verification, and assumes full responsibility for
 the manuscript and its contents.
 
-% EVIDENCE:
-% - research/MANUSCRIPT_FORMAT_RESEARCH.md Sec.1.12, Sec.1.13, Sec.3 item 3
-% Placement and wording are an author/editorial decision made at E7.1; arXiv's
-% generative-AI policy (info.arxiv.org/help/moderation/index.html, "Policy for
-% authors' use of generative AI language tools") requires such use to be
-% reported consistent with subject-standards methodology reporting, but does
-% not mandate this exact wording or an Acknowledgements section specifically.
-
-
-% =============================================================================
-% REFERENCES
-% =============================================================================
-% No new literature research performed at E3 (per the E3 brief -- citation
-% gaps, if found, are to be escalated, not resolved unilaterally; none were
-% found). Every \citep{}/\citet{} key above resolves against
-% manuscript/references.bib, itself built only from
-% research/literature/citation_ledger.csv and
-% research/literature/ads_metric_prior_art.csv VERIFIED rows. \nocite{*}
-% forces every bib entry to render in the compiled reference list even before
-% every key is cited in body prose, so an auditor can check the full
-% candidate reference set against the ledger without waiting for a later
-% pass.
-\nocite{*}
 \bibliographystyle{plainnat}
 \bibliography{references}
 
