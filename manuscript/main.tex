@@ -171,8 +171,8 @@ question, not a new one.
 The question this paper asks, precisely, is: can historical decision
 consistency, measured before deployment, be used to select between
 qualitatively different classification mechanisms (exact-match rules versus
-retrieval-based fuzzy matching)? Answering it requires four preconditions to
-hold in the target setting: a history of repeated decisions on the same or
+retrieval-based fuzzy matching)? Four preconditions must hold in the target
+setting. There must be a history of repeated decisions on the same or
 similar items, observable ground-truth labels for those decisions, a
 consistency statistic that can be measured from them (formalized in
 Section~3.2 as the Automated Determinism Score, ADS), and sufficient
@@ -208,9 +208,8 @@ rapidfuzz-based fuzzy retrieval (cutoff calibrated once, before the run, to
 VARIED (a fixed, controlled lexical/surface-form perturbation), are crossed
 with six nominal historical-consistency targets and twenty random seeds. A
 third mechanism, a large language model, is deliberately excluded from the
-primary comparison for a documented, principled reason detailed in
-Section~\ref{sec:domain-mechanism-scope}: not because it was inconvenient to
-include, but because the
+primary comparison. The reason is documented in
+Section~\ref{sec:domain-mechanism-scope}, and it is not convenience. The
 synthetic generator's product string carries no signal predictive of the
 true label, which would make any LLM result uninterpretable as evidence about
 historical consistency.
@@ -226,8 +225,8 @@ Second, realized historical consistency does not predict \emph{which}
 mechanism wins: the mechanism that actually performs best in a given
 condition is instead a constant function of the (separately manipulated)
 lexical condition, unrelated to how consistent the underlying data is. These
-are two different claims, with two different (here, opposite) answers, and
-this paper never merges them into a single statement about whether
+are two different claims with two different answers. Here the answers are
+opposite. This paper never merges them into a single statement about whether
 "historical consistency works."
 
 % EVIDENCE:
@@ -431,10 +430,11 @@ formalized into a named metric. Independent industry sources (accounts-payable
 automation vendors, not peer-reviewed) \citep{kenfromfinance2025,peakflo2025,ramp2025} describe
 similar informal historical-consistency-audit practice already in production
 use. The narrow delta that survives, stated row by row in
-Table~\ref{tab:positioning}, is academic, not methodological: no peer-reviewed study of this
-specific document-classification niche was found in the literature search
-this paper's evidence base draws on, which is a modest, honest niche-novelty
-observation, much weaker than any claim of methodological novelty, and not
+Table~\ref{tab:positioning}, is academic rather than methodological. No
+peer-reviewed study of this specific document-classification niche was found
+in the literature search this paper's evidence base draws on. That is a
+modest niche-novelty observation, much weaker than any claim of
+methodological novelty, and not
 this paper's scientific contribution.
 
 % EVIDENCE:
@@ -597,10 +597,11 @@ exactly what Section~5 reports.
 \subsection{Research Hypothesis}
 \label{sec:research-hypothesis}
 
-H1 (revised), stated and pre-registered before any data from the frozen run
-existed: under controlled synthetic conditions, higher realized historical
-decision consistency will be associated with predictable changes in relative
-mechanism performance, such that a pre-specified, frozen consistency-based
+H1 (revised) was stated and pre-registered before any data from the frozen
+run existed. Under controlled synthetic conditions, higher realized
+historical decision consistency will be associated with predictable changes
+in relative mechanism performance, such that a pre-specified, frozen
+consistency-based
 decision rule (R3, defined in Section~4.7) will agree with the empirically
 best-performing mechanism more often than chance. This phrasing is
 deliberately weaker than an earlier draft that required monotonic dominance
@@ -717,10 +718,11 @@ the rules mechanism has none. The cutoff was calibrated once, on a dedicated
 generation run with its own seed, distinct from every seed used in the
 240-condition frozen sweep, before that sweep was run. Candidate cutoffs
 $\{70,75,80,85,90\}$ were evaluated against a product-identity hit-rate
-criterion (whether the top fuzzy match resolves to the same underlying
-product as the query, rather than whether the resulting account label is
-correct), subject to a minimum coverage floor of 30\%; a cutoff of 75 was selected and
-frozen for the entire run, never re-tuned per band, per lexical condition, or
+criterion, subject to a minimum coverage floor of 30\%. That criterion asks
+whether the top fuzzy match resolves to the same underlying product as the
+query, not whether the resulting account label is correct. A cutoff of 75 was
+selected and frozen for the entire run, never re-tuned per band, per lexical
+condition, or
 after seeing accuracy results.
 
 % EVIDENCE:
@@ -818,10 +820,10 @@ band.
 
 Three calibration gates were closed before the frozen run. First, a
 mechanism-blind ADS calibration swept a dense 17-point target grid with ten
-seeds per target (using no import of, and no reference to, either
-mechanism's code) to characterize the generator's realizable realized-ADS
-range and to choose the six final targets by a mechanism-blind greedy
-furthest-point selection over that curve, so that no target band was chosen
+seeds per target, using no import of and no reference to either mechanism's
+code. It characterized the generator's realizable realized-ADS range and
+chose the six final targets by a greedy furthest-point selection over that
+curve, so that no target band was chosen
 with foreknowledge of mechanism behavior. Second, the retrieval cutoff was
 calibrated as described in Section~4.5. Third, the empirical-winner, tie, and
 confidence-interval definitions (Section~4.6) were fixed. The 17-point
@@ -999,9 +1001,9 @@ data/outputs/experiments/exp1/final/final\_condition\_results.csv.}
 \label{sec:results-band-agreement}
 
 This subsection reports the paper's headline finding, leading with the band
-structure rather than the flat aggregate. Binned by each row's own realized
-ADS against R3's own thresholds (the primary framing, matching the locked
-wording this paper draws on), R3 agrees with the empirical winner
+structure rather than the flat aggregate. The primary framing bins by each
+row's own realized ADS against R3's own thresholds, matching the locked
+wording this paper draws on. Under it, R3 agrees with the empirical winner
 in 100\% (32 of 32) of conditions in the realized 0.70--0.90 band, and in 0\%
 (0 of 18) of conditions in the realized $\geq0.90$ band (Figure~\ref{fig:r3-agreement}). A secondary, also
 valid framing bins by nominal target rather than each row's own realized
@@ -1175,9 +1177,9 @@ hypothesis.
 \label{sec:production-case-study}
 
 The production observation described in Section~1.1 is consistent with
-Section~5.2's positive finding (a real deployment did show a measured
-consistency statistic correlating with something real about its own data),
-but it was never itself a controlled test of Section~5.3's ranking finding,
+Section~5.2's positive finding. A real deployment did show a measured
+consistency statistic correlating with something real about its own data. It
+was never itself a controlled test of Section~5.3's ranking finding, though,
 because production never ran a lexical-noise sweep of the kind this
 experiment's VARIED condition applies. This experiment does not confirm the
 production observation; it investigates the more general question that
@@ -1229,10 +1231,11 @@ is computed on the stable product identity, structurally blind to the
 perturbable surface string; in this experiment, which mechanism wins is a
 constant function of the lexical condition, a variable ADS cannot observe by
 construction. We state this account explicitly as inferred from exhaustive
-but post-hoc inspection of the frozen data and the generator's code, not as
-the result of a second, independently designed confirmatory experiment: the
-pattern holds without exception across all 240 rows, but a fresh, prospective
-test of this exact causal claim on new data would strengthen it further
+but post-hoc inspection of the frozen data and the generator's code. It is
+not the result of a second, independently designed confirmatory experiment.
+The pattern holds without exception across all 240 rows, but a fresh,
+prospective test of this exact causal claim on new data would strengthen it
+further
 (Section~7.1).
 
 % EVIDENCE:
@@ -1248,9 +1251,9 @@ as a property of this specific perturbation model and this specific
 retrieval implementation (rapidfuzz-based lexical similarity), not a claim
 about fuzzy or embedding-based retrieval in general, which this experiment
 does not test. This blindness is a direct consequence of how ADS is defined,
-so the qualitative shape of 6b is partly built into the construction; what is
-not given by that construction is the magnitude and direction actually
-observed: the empirical winner is constant across all 120 conditions of
+so the qualitative shape of 6b is partly built into the construction. What
+that construction does not give is the magnitude and direction actually
+observed. The empirical winner is constant across all 120 conditions of
 each lexical condition (retrieval under VARIED, tie under CLEAN), and the
 rules-minus-retrieval gap widens, rather than narrows, as realized ADS rises.
 
