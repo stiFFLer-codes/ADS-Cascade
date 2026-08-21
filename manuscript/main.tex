@@ -112,7 +112,7 @@ deployment, that statistic was measured at 91.2\% and the rule selected a
 rules-first, exact-match mechanism. In an independently generated synthetic
 reproduction of the same pipeline, the analogous statistic was measured at
 87.56\% and the same rule selected its embedding-based branch
-(\texttt{EMBEDDING\_PRIMARY}) instead -- a different mechanism from the
+(\texttt{EMBEDDING\_PRIMARY}) instead, a different mechanism from the
 lexical-similarity \texttt{retrieval} mechanism this paper's Experiment~1
 tests (Section~3.3). No embedding-based mechanism is evaluated anywhere in
 this paper. Both figures sit within a few percentage points of the rule's own 90\% threshold,
@@ -135,14 +135,14 @@ not independently reproducible from this repository.
 % per research/MANUSCRIPT_ARCHITECTURE.md Sec.14 item 2, as optional.
 
 This single observation is an instance of a general pattern: classification
-systems typically fix a mechanism class -- an exact-match lookup, a fuzzy
-retrieval index, a trained model -- before any measurement of the data the
+systems typically fix a mechanism class (an exact-match lookup, a fuzzy
+retrieval index, a trained model) before any measurement of the data the
 system will actually operate on. A statistic computed from historical
 decisions could, in principle, inform that choice before a system is built
 or deployed. Measuring data properties before choosing a system design is
 itself a long-studied idea, not a contribution of this paper (Section~2). What
-this paper studies is narrower: whether one specific such statistic --
-historical label consistency -- actually predicts which of two qualitatively
+this paper studies is narrower: whether one specific such statistic,
+historical label consistency, actually predicts which of two qualitatively
 different mechanisms should be chosen, and under what conditions that
 prediction holds.
 
@@ -187,7 +187,7 @@ does not, the question this paper answers does not directly apply to it.
 The intuition motivating this question is straightforward. If a product has
 almost always been booked to the same account historically, that looks like
 strong evidence the mapping is already solved, and a simple, precedent-based
-mechanism -- an exact lookup against history -- should suffice; conversely,
+mechanism, an exact lookup against history, should suffice; conversely,
 if the historical mapping is inconsistent, a more flexible mechanism should
 be needed. The natural hypothesis this suggests is that higher historical
 consistency should favor a simpler, precedent-based mechanism over a more
@@ -204,8 +204,8 @@ Section~5 reports, partly falsifies.
 We test this with a pre-registered, 240-condition synthetic factorial
 experiment. Two mechanisms are compared in isolation: exact-match rules and
 rapidfuzz-based fuzzy retrieval (cutoff calibrated once, before the run, to
-75). Two lexical conditions -- CLEAN (no surface-form perturbation) and
-VARIED (a fixed, controlled lexical/surface-form perturbation) -- are crossed
+75). Two lexical conditions, CLEAN (no surface-form perturbation) and
+VARIED (a fixed, controlled lexical/surface-form perturbation), are crossed
 with six nominal historical-consistency targets and twenty random seeds. A
 third mechanism, a large language model, is deliberately excluded from the
 primary comparison for a documented, principled reason detailed in
@@ -254,7 +254,7 @@ to coincide with the constant true winner, because the consistency signal is
 computed from a stable product identity that cannot observe the surface-form
 instability that actually determines the outcome here. This is not a new
 metric (Section~2), not a new architecture, and not a method we claim
-selects the right mechanism -- it is a bounded empirical finding about where
+selects the right mechanism. It is a bounded empirical finding about where
 one specific, already-used signal succeeds and where it fails.
 
 % EVIDENCE:
@@ -306,7 +306,7 @@ Determinism Score (ADS, Section~3), is mathematically identical to an
 existing, well-established quantity. Cluster purity
 \citep{manning2008,amigo2009} is defined as
 $\mathrm{purity}(\mathrm{cluster}_k) = \max_j(\text{count of class }j\text{
-in cluster }k) / |\mathrm{cluster}_k|$ -- the identical closed-form
+in cluster }k) / |\mathrm{cluster}_k|$, the identical closed-form
 expression as ADS under the substitution "cluster" $\leftrightarrow$ "an
 item's historical booking multiset." Independently, the raw majority-vote
 agreement proportion used throughout the crowdsourcing and truth-inference
@@ -344,11 +344,11 @@ and it reports precisely where that narrower claim holds and where it fails.
 selection toward automated, benchmarked-performance-driven workflow
 composition, describing the field as having moved from the algorithm
 selection problem toward the broader challenge of composing an entire
-processing workflow -- the closest terminological echo of this paper's own
+processing workflow, the closest terminological echo of this paper's own
 framing found in the surrounding literature. The delta is one of evidence
 type and mechanism, not performance: this paper studies a label-consistency signal driving a named,
 interpretable threshold rule, not a benchmarked optimization search over a
-combinatorial pipeline space -- a difference in kind, not a claim of
+combinatorial pipeline space, a difference in kind rather than a claim of
 superiority.
 
 % EVIDENCE:
@@ -361,7 +361,7 @@ evidence once, choose system composition before serving traffic. The
 evidence type there is workload or query \emph{frequency}, not label
 \emph{consistency}, and the literature's own thesis is continuous
 self-adaptation, explicitly rejecting a one-time, human-gated design
-decision -- the opposite temporal structure from the one this paper's
+decision, the opposite temporal structure from the one this paper's
 experiment tests. This literature argues against the one-shot gate; it is
 cited here as contrast, not as an unsolved problem this paper addresses.
 This paper's experiment is about a specific signal type
@@ -408,8 +408,8 @@ classification mechanisms. RankGPT \citep{rankgpt2023} establishes that
 using a large language model to re-rank a pre-fetched candidate list, rather
 than to classify from a blank input, is commodity information-retrieval
 technique. Neither family is directly relevant to the
-experiment reported here -- the LLM mechanism is explicitly excluded from
-Experiment~1 (Section~7.3) -- and both are cited only for completeness of the
+experiment reported here (the LLM mechanism is explicitly excluded from
+Experiment~1, Section~7.3), and both are cited only for completeness of the
 design-time/runtime distinction this paper's framing depends on.
 
 % EVIDENCE:
@@ -424,7 +424,7 @@ design-time/runtime distinction this paper's framing depends on.
 
 \citet{jorgensenigel2021} empirically demonstrates, in the same application
 domain (financial transaction-to-account classification), that a global
-classifier generalizes far worse across companies than per-company models --
+classifier generalizes far worse across companies than per-company models,
 the same phenomenon the production system's own cross-company-consistency
 threshold encodes, though reported there as a direct accuracy gap rather than
 formalized into a named metric. Independent industry sources (accounts-payable
@@ -478,8 +478,8 @@ Domain-specific practice & Empirically documents the same cross-company phenomen
 \label{sec:historical-decisions}
 
 The data object every mechanism and every signal in this paper operates on
-is a repeated, historically observed mapping from an item -- a "product" --
-to a label -- an "account" -- together with an occurrence count. This
+is a repeated, historically observed mapping from an item (a "product")
+to a label (an "account"), together with an occurrence count. This
 formulation is domain-agnostic: nothing in the definitions below references
 Romania, fiscal documents, or invoices specifically, even though the
 motivating case study (Section~1.1) and the synthetic generator (Section~4)
@@ -535,11 +535,11 @@ The first of the two mechanisms this paper compares, \texttt{rules}, is an
 exact company-scoped string lookup against the historical training data,
 falling back to an exact global lookup if no company-scoped match exists; any
 hit is returned as the mechanism's answer, and no hit results in abstention.
-There is no confidence threshold to calibrate for this mechanism -- matching
+There is no confidence threshold to calibrate for this mechanism: matching
 is binary, exact-match or no-match. Under the whole-set-accuracy metric used
 throughout this paper (Section~4.7), an abstention counts as incorrect, with
-no partial credit. Coverage -- the share of test items for which the
-mechanism does not abstain -- is below 1.0 in every one of the 240 conditions
+no partial credit. Coverage, the share of test items for which the
+mechanism does not abstain, is below 1.0 in every one of the 240 conditions
 reported in Section~5, a real, reported asymmetry with the retrieval
 mechanism below, not one this paper normalizes away. This isolated mechanism
 is a simplified test-harness component built for Experiment~1; it is not the
@@ -553,12 +553,12 @@ experiment's scope.
 
 The second mechanism, \texttt{retrieval}, applies a rapidfuzz-based
 lexical-similarity match (the \texttt{WRatio} scorer), company-scoped then
-global, as the \emph{primary} mechanism for every test item -- not as a
+global, as the \emph{primary} mechanism for every test item, rather than as a
 fallback gated behind a rules-miss. A match is accepted if its similarity
 score meets a cutoff calibrated once, before the frozen run, on a dedicated
 calibration dataset disjoint from every condition reported in Section~5
 (Section~4.5); items below the cutoff abstain. Coverage is 1.0 in every one
-of the 240 conditions -- this mechanism never abstains at the calibrated
+of the 240 conditions: this mechanism never abstains at the calibrated
 cutoff. We deliberately call this mechanism "retrieval," not "embedding,"
 because it is a lexical-similarity match over surface strings, not a
 semantic embedding model: no embedding model was trained, downloaded, or
@@ -581,7 +581,7 @@ realized consistency varies (Section~5.2); the second is a claim about
 \emph{which} of the two mechanisms wins a head-to-head comparison
 (Section~5.3). A signal can be strongly informative about the first while
 carrying no information about the second, precisely if the quantity that
-determines relative ranking is one the signal cannot observe -- which is
+determines relative ranking is one the signal cannot observe, which is
 exactly what Section~5 reports.
 
 % EVIDENCE:
@@ -618,10 +618,10 @@ generator spanning 60 companies and a 1,200-product vocabulary, fixed across
 every condition. Each generation call draws its own independent,
 reproducible random stream (\texttt{random.Random(seed)}) rather than
 mutating one shared global generator, so that a 20-seed sweep produces
-statistically independent replicates. Cross-company alignment -- the rate at
-which different companies agree on a shared product's dominant account -- is
-fixed at 0.695 -- the production-observed value, cited from a confidential
-engagement and not independently reproducible from this repository -- so
+statistically independent replicates. Cross-company alignment, the rate at
+which different companies agree on a shared product's dominant account, is
+fixed at 0.695 (the production-observed value, cited from a confidential
+engagement and not independently reproducible from this repository), so
 that it does not become a second, uncontrolled independent variable
 alongside the consistency sweep itself. This generator is not calibrated against real invoice or OCR error
 data; Section~7 states this limitation explicitly.
@@ -649,7 +649,7 @@ frozen run and its data does not appear in Section~5.
 The generator's nominal target is an input knob at generation time, not
 itself the scientific independent variable. The independent variable this
 paper actually reports against, throughout Section~5, is \emph{realized}
-ADS -- the measured, train-only share of products whose per-product
+ADS: the measured, train-only share of products whose per-product
 determinism score exceeds 0.95, computed after generation, grouped by the
 stable product identity. Realized ADS is the exact quantity the frozen
 decision rule R3 (Section~4.7) thresholds; the two usually, but do not
@@ -662,7 +662,7 @@ fixed cross-company-alignment parameter (Section~4.2): the region of
 realized ADS at or above roughly 0.93 was never reachable by this generator
 and is therefore untested, not merely unfavorable. Realized ADS is invariant
 to the lexical condition by construction, since it is computed by grouping on
-the stable product identity, never on the perturbable surface string -- this
+the stable product identity, never on the perturbable surface string. This
 is confirmed directly in the data (byte-identical realized-ADS means and
 standard deviations between the CLEAN and VARIED conditions at every target).
 Every result, table, and figure in Section~5 uses realized ADS, never the
@@ -677,14 +677,14 @@ nominal target, as its independent-variable axis.
 \label{sec:lexical-conditions}
 
 Under CLEAN, the generator's product surface strings are emitted without any
-lexical perturbation -- the existing generator's unmodified default output.
+lexical perturbation, the existing generator's unmodified default output.
 Under this condition, the rules and retrieval mechanisms are statistically
 indistinguishable (within a pre-registered practical-equivalence margin of
 $\delta=0.02$ whole-set-accuracy points) at every one of the six targets:
 zero of the 120 CLEAN conditions produce a defined empirical winner
 (Section~5.3). This is evidence that the two mechanisms perform almost
 identically specifically when there is no lexical noise for retrieval's
-fuzzy matching to be robust to, for this generator -- not a general claim
+fuzzy matching to be robust to, for this generator, rather than a general claim
 that the two mechanisms are equivalent.
 
 % EVIDENCE:
@@ -717,9 +717,9 @@ the rules mechanism has none. The cutoff was calibrated once, on a dedicated
 generation run with its own seed, distinct from every seed used in the
 240-condition frozen sweep, before that sweep was run. Candidate cutoffs
 $\{70,75,80,85,90\}$ were evaluated against a product-identity hit-rate
-criterion -- whether the top fuzzy match resolves to the same underlying
-product as the query, not whether the resulting account label is correct --
-subject to a minimum coverage floor of 30\%; a cutoff of 75 was selected and
+criterion (whether the top fuzzy match resolves to the same underlying
+product as the query, rather than whether the resulting account label is
+correct), subject to a minimum coverage floor of 30\%; a cutoff of 75 was selected and
 frozen for the entire run, never re-tuned per band, per lexical condition, or
 after seeing accuracy results.
 
@@ -754,7 +754,7 @@ mechanism-selection rule.
 % - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.11 (integrity checks)
 
 Within a condition, both mechanisms are scored on identical held-out test
-lines -- a paired, not an independent, comparison. The empirical winner,
+lines: a paired rather than an independent comparison. The empirical winner,
 stated formally in Equation~\eqref{eq:winner}, is
 defined by a paired bootstrap on the accuracy difference
 $\mathrm{acc}_{\mathrm{rules}}-\mathrm{acc}_{\mathrm{retrieval}}$ (2{,}000
@@ -792,7 +792,7 @@ right, with abstention counted as incorrect and no partial credit. The
 agreement rate between the frozen decision rule R3 (below) and the empirical
 winner is the number of conditions where R3's selected mechanism equals the
 empirical winner, divided by the number of conditions with a \emph{defined}
-comparison -- excluding ties and conditions where R3 selects the excluded
+comparison, excluding ties and conditions where R3 selects the excluded
 LLM band. Because the LLM mechanism is excluded from the primary comparison,
 R3 discriminates between exactly two mechanisms wherever a comparison is
 defined, so the chance baseline used throughout this paper is 0.5, not
@@ -800,9 +800,9 @@ one-third. Agreement rates are tested against this chance baseline with an
 exact two-sided binomial test, and reported with a Wilson 95\% confidence
 interval.
 
-The frozen decision rule R3 -- so named in the production system's own
-internal rule taxonomy, not an alternative considered within this
-experiment -- is reused unmodified from that system's architecture-decision
+The frozen decision rule R3, so named in the production system's own
+internal rule taxonomy rather than an alternative considered within this
+experiment, is reused unmodified from that system's architecture-decision
 procedure and is not re-derived or re-tuned for this experiment. It maps
 realized ADS to a mechanism recommendation by a fixed threshold: at or above
 0.90, rules; between 0.70 and 0.90, retrieval; below 0.70, the excluded LLM
@@ -818,8 +818,8 @@ band.
 
 Three calibration gates were closed before the frozen run. First, a
 mechanism-blind ADS calibration swept a dense 17-point target grid with ten
-seeds per target -- using no import of, and no reference to, either
-mechanism's code -- to characterize the generator's realizable realized-ADS
+seeds per target (using no import of, and no reference to, either
+mechanism's code) to characterize the generator's realizable realized-ADS
 range and to choose the six final targets by a mechanism-blind greedy
 furthest-point selection over that curve, so that no target band was chosen
 with foreknowledge of mechanism behavior. Second, the retrieval cutoff was
@@ -945,8 +945,7 @@ both lexical conditions and reported for both mechanisms rather than only the
 stronger one (Figure~\ref{fig:ads-vs-accuracy}): Pearson $r(\text{realized ADS}, \text{rules accuracy})
 \approx 0.909$ (VARIED) and $0.959$ (CLEAN); $r(\text{realized ADS},
 \text{retrieval accuracy}) \approx 0.948$ (VARIED) and $0.955$ (CLEAN). This
-is a correlational finding about each mechanism's own performance level --
-it says nothing yet about which mechanism performs better than the other;
+is a correlational finding about each mechanism's own performance level. It says nothing yet about which mechanism performs better than the other;
 that is the subject of Section~5.3.
 
 % EVIDENCE:
@@ -968,10 +967,10 @@ data/outputs/experiments/exp1/final/final\_condition\_results.csv.}
 \label{sec:results-ranking}
 
 Realized ADS does not predict which mechanism wins. Under VARIED, the
-empirical winner is retrieval in all 120 of 120 conditions -- exceptionless,
+empirical winner is retrieval in all 120 of 120 conditions, exceptionless and
 unconditional on realized ADS across its full observed range (0.44--0.93).
-Under CLEAN, the empirical winner is a tie in all 120 of 120 conditions --
-also exceptionless (Figure~\ref{fig:ranking-constancy}). The lexical condition here is a manipulated, controlled
+Under CLEAN, the empirical winner is a tie in all 120 of 120 conditions, also
+exceptionless (Figure~\ref{fig:ranking-constancy}). The lexical condition here is a manipulated, controlled
 experimental factor, not merely an observational correlate, which is what
 licenses describing the empirical winner as \emph{governed by} the lexical
 condition in Section~6, rather than only correlated with it. Because realized
@@ -1001,8 +1000,8 @@ data/outputs/experiments/exp1/final/final\_condition\_results.csv.}
 
 This subsection reports the paper's headline finding, leading with the band
 structure rather than the flat aggregate. Binned by each row's own realized
-ADS against R3's own thresholds -- the primary framing, matching the locked
-wording this paper draws on -- R3 agrees with the empirical winner
+ADS against R3's own thresholds (the primary framing, matching the locked
+wording this paper draws on), R3 agrees with the empirical winner
 in 100\% (32 of 32) of conditions in the realized 0.70--0.90 band, and in 0\%
 (0 of 18) of conditions in the realized $\geq0.90$ band (Figure~\ref{fig:r3-agreement}). A secondary, also
 valid framing bins by nominal target rather than each row's own realized
@@ -1017,15 +1016,15 @@ explicitly labeled, rather than silently switching between them.
 Only after this band structure do we report the flat aggregate: 32 of 50
 defined comparisons agree (64.0\%), Wilson 95\% confidence interval
 $[50.14\%, 75.86\%]$, exact binomial $p=0.0649$ against a 50\% chance
-baseline -- not significant at $\alpha=0.05$ (Table~\ref{tab:main-results}). This aggregate is a
+baseline, which is not significant at $\alpha=0.05$ (Table~\ref{tab:main-results}). This aggregate is a
 near-cancellation of two individually far more decisive, opposite patterns:
 the per-row realized-ADS bands are exceptionless (32 of 32 and 0 of 18), and
 the corresponding by-nominal-target counts are independently significant at
 exact binomial $p=1.9\times10^{-9}$ (30 of 30) and $p=4.0\times10^{-4}$ (2 of
-20) respectively (Section~5.6) -- not a single moderate effect, and reporting
+20) respectively (Section~5.6). This is not a single moderate effect, and reporting
 the aggregate alone would obscure exactly the structure this subsection leads
 with. The CLEAN condition contributes zero defined
-comparisons at any band -- every measurable piece of evidence about R3's
+comparisons at any band: every measurable piece of evidence about R3's
 agreement with the empirical winner comes from the VARIED condition.
 
 % EVIDENCE:
@@ -1082,7 +1081,7 @@ By target, target 1.00 (2/20) & 10\% & --- & $4.0\times10^{-4}$ \\
 Table~\ref{tab:band-behavior} shows the mechanistic pattern behind Section~5.4's
 reversal. Under VARIED, the rules-minus-retrieval accuracy gap widens as
 realized ADS rises, from $-0.137$ in the $<0.70$ band to $-0.168$ in the
-0.70--0.90 band to $-0.185$ in the $\geq0.90$ band -- the opposite of what
+0.70--0.90 band to $-0.185$ in the $\geq0.90$ band, the opposite of what
 R3's threshold design assumes. Under CLEAN, the gap stays small and
 positive, $+0.005$ to $+0.006$, across all three bands: near-equivalence
 throughout, absent lexical noise. This table is the direct mechanical
@@ -1164,8 +1163,8 @@ In this synthetic experiment, historical decision consistency is informative
 about classification-mechanism \emph{difficulty}, not mechanism
 \emph{ranking}, when, as observed here, ranking is governed by a
 representation-stability property the consistency signal does not observe.
-This is a narrower, more specific, empirically falsifiable -- and partly
-falsified -- refinement of the original hypothesis that historical
+This is a narrower, more specific, empirically falsifiable (and partly
+falsified) refinement of the original hypothesis that historical
 consistency alone selects the right mechanism, not a confirmation of that
 hypothesis.
 
@@ -1176,8 +1175,8 @@ hypothesis.
 \label{sec:production-case-study}
 
 The production observation described in Section~1.1 is consistent with
-Section~5.2's positive finding -- a real deployment did show a measured
-consistency statistic correlating with something real about its own data --
+Section~5.2's positive finding (a real deployment did show a measured
+consistency statistic correlating with something real about its own data),
 but it was never itself a controlled test of Section~5.3's ranking finding,
 because production never ran a lexical-noise sweep of the kind this
 experiment's VARIED condition applies. This experiment does not confirm the
@@ -1185,7 +1184,7 @@ production observation; it investigates the more general question that
 observation raised. The production consistency figures cited in Section~1.1
 remain, as stated there, generated by an earlier version of the measurement
 pipeline and are cited from a confidential engagement, not independently
-reproducible from this repository -- a caveat repeated here rather than
+reproducible from this repository, a caveat repeated here rather than
 assumed to carry forward for a reader who begins at this section.
 
 % EVIDENCE:
@@ -1196,8 +1195,8 @@ assumed to carry forward for a reader who begins at this section.
 \subsection{What the Original Hypothesis Got Right and Wrong}
 \label{sec:hypothesis-verdict}
 
-H1's deliberately weaker form -- better-than-chance agreement, not monotonic
-dominance in every band -- is exactly why a PARTIALLY\_SUPPORTED verdict was
+H1's deliberately weaker form (better-than-chance agreement rather than monotonic
+dominance in every band) is exactly why a PARTIALLY\_SUPPORTED verdict was
 a coherent, pre-registered possible outcome rather than a post-hoc excuse.
 The point estimate, 64.0\%, is directionally above chance in the only slice
 where agreement is measurable at all (VARIED), and one full realized-ADS band
@@ -1210,8 +1209,8 @@ is not evidence that H1 as originally intended was confirmed.
 % - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.18
 % - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.9
 
-The unconditional form of the original hypothesis -- that ADS thresholds
-alone select the right mechanism -- is falsified, exceptionlessly, in the
+The unconditional form of the original hypothesis, that ADS thresholds
+alone select the right mechanism, is falsified, exceptionlessly, in the
 realized $\geq0.90$ band. This is not a minor or marginal failure: it is the
 exact band in which the frozen decision rule is most confident, since higher
 realized consistency produces R3's strongest recommendation for rules, and it
@@ -1243,7 +1242,7 @@ test of this exact causal claim on new data would strengthen it further
 Table~\ref{tab:band-behavior}'s widening gap reveals a specific asymmetry: retrieval's
 accuracy cost under lexical noise stays comparatively flat across realized-ADS
 bands, while rules' cost grows with realized ADS. The perturbation degrades
-an exact-match mechanism's precondition -- identical surface strings -- in a
+an exact-match mechanism's precondition, identical surface strings, in a
 way a fuzzy-matching mechanism is comparatively more robust to. We frame this
 as a property of this specific perturbation model and this specific
 retrieval implementation (rapidfuzz-based lexical similarity), not a claim
@@ -1251,7 +1250,7 @@ about fuzzy or embedding-based retrieval in general, which this experiment
 does not test. This blindness is a direct consequence of how ADS is defined,
 so the qualitative shape of 6b is partly built into the construction; what is
 not given by that construction is the magnitude and direction actually
-observed -- the empirical winner is constant across all 120 conditions of
+observed: the empirical winner is constant across all 120 conditions of
 each lexical condition (retrieval under VARIED, tie under CLEAN), and the
 rules-minus-retrieval gap widens, rather than narrows, as realized ADS rises.
 
@@ -1280,7 +1279,7 @@ empirically observed blind spot in this experiment.
 
 Four inferences this experiment does not license, stated explicitly rather
 than left implicit. It does not follow that consistency-style signals are
-useless -- the accuracy-prediction finding (Section~5.2) still holds. It
+useless: the accuracy-prediction finding (Section~5.2) still holds. It
 does not follow that this result generalizes to other lexical-noise models or
 other retrieval implementations, neither of which was tested here. It does
 not follow that a fix exists: no decision rule conditioning on both
@@ -1320,12 +1319,12 @@ as a scoped method.
 \label{sec:limits-h1}
 
 H1 (revised) is only partially supported, matching the pre-registered
-PARTIALLY\_SUPPORTED row of the falsification table exactly -- stated here as
+PARTIALLY\_SUPPORTED row of the falsification table exactly, stated here as
 the honest verdict, not softened toward either "confirmed" or "refuted." The
 mechanistic account in Section~6.4 is a well-evidenced, exhaustive, but
 post-hoc explanation of already-frozen data, not a fresh prospective
 confirmation. Retrieval's coverage is 1.0 in all 240 conditions, while
-rules' coverage is always below 1.0 -- a real asymmetry that is part of the
+rules' coverage is always below 1.0, a real asymmetry that is part of the
 explanation for the results reported in Section~5, not normalized away.
 
 % EVIDENCE:
@@ -1346,7 +1345,7 @@ margin ($\delta=0.02$) that defines a tie versus a defined winner
 against the frozen outcome data; because this margin is the specific reason
 the CLEAN condition contributes zero defined comparisons (Section~5.6), this
 paper cannot rule out that a different margin would yield defined
-CLEAN-condition comparisons -- a sensitivity this paper does not test.
+CLEAN-condition comparisons, a sensitivity this paper does not test.
 
 % EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.9; research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.22
 
@@ -1357,10 +1356,10 @@ The motivating case study is drawn from one domain, Romanian fiscal-document
 invoice-to-account classification. The experiment itself is domain-agnostic
 by construction (Section~3.1), but has not been run against a second
 domain's data. Only exact-match rules and rapidfuzz-based retrieval were
-compared -- not embedding-based retrieval, and not the shipped multi-tier
-production cascade. The large-language-model mechanism was excluded from H1
-for a documented, principled reason -- the synthetic product string carries
-no signal predictive of the true label -- and was not evaluated at all in
+compared. Neither embedding-based retrieval nor the shipped multi-tier
+production cascade was tested. The large-language-model mechanism was excluded from H1
+for a documented, principled reason (the synthetic product string carries
+no signal predictive of the true label) and was not evaluated at all in
 Experiment~1.
 
 % EVIDENCE:
@@ -1392,8 +1391,7 @@ representation-stability signal was designed, prototyped, or tested anywhere
 in this repository; Section~8.1 names it only as a future direction. The
 realized-ADS ceiling of approximately 0.91, a consequence of the fixed
 cross-company-alignment parameter, means the region at or above roughly 0.93
-was never reachable or tested by this generator -- untested, not merely
-unfavorable. This paper makes no deployment or generalization claim: the
+was never reachable or tested by this generator. That region is untested, not merely unfavorable. This paper makes no deployment or generalization claim: the
 finding describes this experiment, not a general recommendation for how to
 build classification systems.
 
@@ -1427,8 +1425,8 @@ this paper does not itself test.
 
 % EVIDENCE: TECHNICAL_REPORT.md Sec.4 (domain-transfer limitation, framing only)
 
-Whether the specific pattern reported in Section~5.5 -- retrieval's noise
-cost staying flat while rules' noise cost grows with realized ADS -- is
+Whether the specific pattern reported in Section~5.5 (retrieval's noise
+cost staying flat while rules' noise cost grows with realized ADS) is
 specific to rapidfuzz-style token similarity, or holds for other retrieval
 implementations such as embedding-based retrieval, is untested here.
 
@@ -1470,7 +1468,7 @@ planned, scheduled, or begun.
 
 This paper tested, with a pre-registered, 240-condition synthetic factorial
 experiment, whether historical decision consistency predicts which of two
-classification mechanisms -- exact-match rules or fuzzy retrieval -- should
+classification mechanisms, exact-match rules or fuzzy retrieval, should
 be selected under a controlled lexical perturbation. Realized historical
 consistency strongly predicts each mechanism's own accuracy. It does not
 predict which mechanism wins: the unconditional form of the original
@@ -1480,8 +1478,8 @@ that historical consistency is informative about mechanism \emph{difficulty},
 not mechanism \emph{ranking}, when, as observed here, ranking is governed by
 a representation-stability property the consistency signal does not observe.
 What remains open is whether a decision rule conditioning on both consistency
-and a measured representation-stability signal would perform better -- named
-here as a direction, not built or tested. The practical consequence is narrow
+and a measured representation-stability signal would perform better. We name it here as a direction, not as something built or
+tested. The practical consequence is narrow
 and concrete: a design-time selector reading only a consistency statistic is
 most confident exactly where it is most wrong. In the realized $\geq0.90$
 band, where R3's recommendation for rules is strongest, it disagreed with the
