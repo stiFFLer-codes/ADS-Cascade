@@ -102,9 +102,11 @@ representation stability.
 
 % =============================================================================
 \section{Introduction}
+\label{sec:introduction}
 % =============================================================================
 
 \subsection{Real-World Motivation and General Problem}
+\label{sec:motivation}
 
 A production accounting-classification system applies a frozen,
 pre-specified decision rule to a measured historical-consistency statistic
@@ -152,6 +154,7 @@ prediction holds.
 % - research/contribution_lock.csv row C2
 
 \subsection{Research Question}
+\label{sec:research-question}
 
 The general problem of choosing among candidate procedures using measured,
 historical evidence has an established name: the Algorithm Selection Problem
@@ -199,6 +202,7 @@ Section~5 reports, partly falsifies.
 % - research/CONTRIBUTION_LOCK.md Sec.2 step 3
 
 \subsection{Experimental Approach and Main Findings}
+\label{sec:approach-and-findings}
 
 We test this with a pre-registered, 240-condition synthetic factorial
 experiment. Two mechanisms are compared in isolation: exact-match rules and
@@ -232,6 +236,7 @@ this paper never merges them into a single statement about whether
 % - research/CONTRIBUTION_LOCK.md Sec.4, Sec.6
 
 \subsection{Contribution Statement and Paper Roadmap}
+\label{sec:contribution-roadmap}
 
 This paper's contribution is a precise, evidenced boundary on what a
 historical-consistency signal can and cannot tell a system designer, not a
@@ -271,9 +276,11 @@ natural next research direction; Section~9 concludes.
 
 % =============================================================================
 \section{Related Work}
+\label{sec:related-work}
 % =============================================================================
 
 \subsection{Cluster Purity and Majority-Vote Agreement}
+\label{sec:cluster-purity}
 
 The historical-consistency signal this paper studies, the Automated
 Determinism Score (ADS, Section~3), is mathematically identical to an
@@ -297,6 +304,7 @@ already-known metric is used for, not in its formula.
 % - research/CONTRIBUTION_LOCK.md Sec.3 (C1)
 
 \subsection{Design-Time Algorithm and Architecture Selection}
+\label{sec:design-time-selection}
 
 The Algorithm Selection Problem \citep{rice1976} originates the general
 question of choosing a procedure from historical evidence, selecting a single
@@ -352,6 +360,7 @@ instability), not a defense of the one-shot-gate design pattern in general.
 % - research/literature/terminology_map.md ("Design-time architecture selection")
 
 \subsection{Inference-Time Selection and Escalation}
+\label{sec:inference-time-selection}
 
 \citet{chow1970} originates the single-threshold accept/reject decision on
 live posterior confidence, formalized further by \citet{elyaniv2010}'s
@@ -401,6 +410,7 @@ design-time/runtime distinction this paper's framing depends on.
 % - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.10 (LLM exclusion rationale)
 
 \subsection{Domain-Specific Practice}
+\label{sec:domain-practice}
 
 \citet{jorgensenigel2021} empirically demonstrates, in the same application
 domain (financial transaction-to-account classification), that a global
@@ -430,7 +440,7 @@ this paper's scientific contribution.
 this paper's design-time consistency-driven mechanism-selection question;
 the narrow delta column states only what Section~5's experiment actually
 bears on, never a claim about the cited literature being incomplete.}
-\label{tab:t2}
+\label{tab:positioning}
 \small
 \begin{tabular}{p{2.6cm}p{4.1cm}p{4.4cm}}
 \toprule
@@ -453,9 +463,11 @@ Domain-specific practice & Empirically documents the same cross-company phenomen
 
 % =============================================================================
 \section{Problem Setting and Signal Definition}
+\label{sec:problem-setting}
 % =============================================================================
 
 \subsection{Historical Product-Level Decisions and Account Labels}
+\label{sec:historical-decisions}
 
 The data object every mechanism and every signal in this paper operates on
 is a repeated, historically observed mapping from an item -- a "product" --
@@ -474,6 +486,7 @@ for that statistic to be estimated reliably.
 % - STATE.md (four preconditions)
 
 \subsection{The Automated Determinism Score (ADS)}
+\label{sec:ads-definition}
 
 For an item $p$ with historical occurrence counts $c_1,\dots,c_k$ across its
 $k$ observed labels, the Automated Determinism Score is
@@ -507,6 +520,7 @@ introduced precisely in Section~4.3.
 % Sec.9, row E1).
 
 \subsection{Two Compared Mechanisms: Exact-Match Rules and Fuzzy Retrieval}
+\label{sec:mechanisms}
 
 The first of the two mechanisms this paper compares, \texttt{rules}, is an
 exact company-scoped string lookup against the historical training data,
@@ -547,6 +561,7 @@ evaluated anywhere in this experiment, and describing it as
 % - research/EXPERIMENT_1_DATA_DICTIONARY.md (retrieval_* columns)
 
 \subsection{Mechanism Accuracy vs. Mechanism Ranking}
+\label{sec:accuracy-vs-ranking}
 
 This paper is organized around a distinction that Section~5 keeps in
 separate subsections throughout: "ADS predicts mechanism accuracy" and "ADS
@@ -567,9 +582,11 @@ exactly what Section~5 reports.
 
 % =============================================================================
 \section{Experimental Design}
+\label{sec:experimental-design}
 % =============================================================================
 
 \subsection{Research Hypothesis}
+\label{sec:research-hypothesis}
 
 H1 (revised), stated and pre-registered before any data from the frozen run
 existed: under controlled synthetic conditions, higher realized historical
@@ -585,6 +602,7 @@ falsification criteria fixed in advance (Section~4.8).
 % - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.2
 
 \subsection{Synthetic Generator and Factorial Design}
+\label{sec:generator-design}
 
 Every condition is generated from a synthetic invoice-classification
 generator spanning 60 companies and a 1,200-product vocabulary, fixed across
@@ -617,6 +635,7 @@ frozen run and its data does not appear in Section~5.
 % - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.3
 
 \subsection{Realized ADS vs. Target Deterministic Share}
+\label{sec:realized-ads}
 
 The generator's nominal target is an input knob at generation time, not
 itself the scientific independent variable. The independent variable this
@@ -646,6 +665,7 @@ nominal target, as its independent-variable axis.
 % - research/EXPERIMENT_1_POSTHOC_ANALYSIS.md Sec.3
 
 \subsection{Lexical Conditions: CLEAN and VARIED}
+\label{sec:lexical-conditions}
 
 Under CLEAN, the generator's product surface strings are emitted without any
 lexical perturbation -- the existing generator's unmodified default output.
@@ -681,6 +701,7 @@ decision on any re-run of the same seed.
 % - research/EXPERIMENT_1_CALIBRATION_REPORT.md (P_TRANSFORM calibration)
 
 \subsection{Mechanisms and Retrieval Cutoff}
+\label{sec:retrieval-cutoff}
 
 Only the retrieval mechanism has a tunable parameter, its similarity cutoff;
 the rules mechanism has none. The cutoff was calibrated once, on a dedicated
@@ -698,6 +719,7 @@ after seeing accuracy results.
 % - research/EXPERIMENT_1_CALIBRATION_REPORT.md
 
 \subsection{Seed Structure, Train/Test Separation, and Winner Definition}
+\label{sec:seeds-splits-winner}
 
 Twenty seeds, $\{31001,\ldots,31020\}$, are used identically across every one
 of the twelve (target, lexical) cells, for 240 total conditions. The seed
@@ -752,6 +774,7 @@ is not re-examined against the outcome data anywhere in this paper.
 % - research/EXPERIMENT_1_DATA_DICTIONARY.md (empirical_winner column)
 
 \subsection{Statistical Analysis}
+\label{sec:statistical-analysis}
 
 The primary performance metric for each mechanism is whole-set accuracy: a
 prediction counts as correct only if the mechanism both answered and was
@@ -781,6 +804,7 @@ band.
 % - research/r3_threshold_analysis.md
 
 \subsection{Calibration and Preregistration}
+\label{sec:calibration-prereg}
 
 Three calibration gates were closed before the frozen run. First, a
 mechanism-blind ADS calibration swept a dense 17-point target grid with ten
@@ -814,6 +838,7 @@ re-tune it.
 % - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.11 (no post-hoc tuning)
 
 \subsection{Reproducibility}
+\label{sec:design-reproducibility}
 
 The entire generator, both mechanisms, the lexical perturbation model, and
 the calibration and analysis code are public, offline, require no API keys
@@ -843,13 +868,13 @@ to re-run.
 structure and the pre-registration-to-falsification-table pipeline before
 any result is shown, so a reader can assess whether the eventual result could
 have come out differently.}
-\label{fig:f1}
+\label{fig:design-flow}
 \end{figure}
 
 \begin{table}[htbp]
 \centering
 \caption{Experimental configuration, frozen before the 240-condition run.}
-\label{tab:t3}
+\label{tab:config}
 \begin{tabular}{ll}
 \toprule
 Parameter & Value \\
@@ -872,6 +897,7 @@ Total conditions & $6 \times 2 \times 20 = 240$ \\
 
 % =============================================================================
 \section{Results}
+\label{sec:results}
 % =============================================================================
 % MOST IMPORTANT SECTION. Governing rule: (A) ADS -> mechanism accuracy and
 % (B) ADS -> mechanism ranking are NEVER merged (research/CONTRIBUTION_LOCK.md
@@ -884,6 +910,7 @@ Total conditions & $6 \times 2 \times 20 = 240$ \\
 % not undocumented drift -- see the E2 skeleton audit trail.
 
 \subsection{Experimental Completeness and Frozen Design}
+\label{sec:results-completeness}
 
 All 240 conditions succeeded; none failed. All 240 (seed, target, lexical)
 triples are unique, with no duplicates. Every frozen-configuration assertion
@@ -899,6 +926,7 @@ draft.
 % - data/outputs/experiments/exp1/final/final_condition_results.csv (240 rows)
 
 \subsection{ADS Predicts Individual Mechanism Accuracy}
+\label{sec:results-accuracy}
 
 Realized ADS is strongly correlated with each mechanism's own accuracy, in
 both lexical conditions and reported for both mechanisms rather than only the
@@ -921,10 +949,11 @@ that is the subject of Section~5.3.
 \caption{Realized ADS versus each mechanism's own whole-set accuracy,
 visualizing the Section~5.2 correlations directly. Source:
 data/outputs/experiments/exp1/final/final\_condition\_results.csv.}
-\label{fig:f2}
+\label{fig:ads-vs-accuracy}
 \end{figure}
 
 \subsection{ADS Does Not Predict Mechanism Ranking}
+\label{sec:results-ranking}
 
 Realized ADS does not predict which mechanism wins. Under VARIED, the
 empirical winner is retrieval in all 120 of 120 conditions -- exceptionless,
@@ -952,10 +981,11 @@ in this experiment.
 rules-minus-retrieval accuracy difference never crosses zero within a
 lexical condition, regardless of realized ADS. Source:
 data/outputs/experiments/exp1/final/final\_condition\_results.csv.}
-\label{fig:f4}
+\label{fig:ranking-constancy}
 \end{figure}
 
 \subsection{R3 Threshold Agreement by Realized-ADS Region}
+\label{sec:results-band-agreement}
 
 This subsection reports the paper's headline finding, leading with the band
 structure rather than the flat aggregate. Binned by each row's own realized
@@ -998,7 +1028,7 @@ agreement with the empirical winner comes from the VARIED condition.
 \includegraphics[width=0.85\linewidth]{figures/f3_r3_agreement_by_band.pdf}
 \caption{R3 agreement with the empirical winner by realized-ADS region: 100\%
 (32/32) in the 0.70--0.90 band versus 0\% (0/18) in the $\geq0.90$ band.}
-\label{fig:f3}
+\label{fig:r3-agreement}
 \end{figure}
 
 \begin{table}[htbp]
@@ -1009,7 +1039,7 @@ frozen evidence), and the Section~5.2 correlation ranges. The sharper,
 exceptionless per-row realized-ADS-band counts (32/32, 0/18) are reported in
 Section~5.4; no independently frozen $p$-value exists for those exact counts,
 so none is stated here.}
-\label{tab:t4}
+\label{tab:main-results}
 \begin{tabular}{lrrr}
 \toprule
 Quantity & Value & 95\% CI & $p$ (vs.\ 50\%) \\
@@ -1035,8 +1065,9 @@ By target, target 1.00 (2/20) & 10\% & --- & $4.0\times10^{-4}$ \\
 % source).
 
 \subsection{ADS $\times$ Representation-Stability Interaction}
+\label{sec:results-interaction}
 
-Table~\ref{tab:t5} shows the mechanistic pattern behind Section~5.4's
+Table~\ref{tab:band-behavior} shows the mechanistic pattern behind Section~5.4's
 reversal. Under VARIED, the rules-minus-retrieval accuracy gap widens as
 realized ADS rises, from $-0.137$ in the $<0.70$ band to $-0.168$ in the
 0.70--0.90 band to $-0.185$ in the $\geq0.90$ band -- the opposite of what
@@ -1058,7 +1089,7 @@ does not need.
 \centering
 \caption{Mechanism-winner behavior by realized-ADS region, both lexical
 conditions. Mean whole-set accuracy and the rules-minus-retrieval gap.}
-\label{tab:t5}
+\label{tab:band-behavior}
 \begin{tabular}{llrrrr}
 \toprule
 Realized ADS band & Lexical & $n$ & Rules acc. & Retrieval acc. & Gap \\
@@ -1076,6 +1107,7 @@ $\geq0.90$ & VARIED & 18 & 0.7130 & 0.8980 & $-0.1851$ \\
 % Sec.5, not re-derived.
 
 \subsection{Statistical Interpretation}
+\label{sec:results-statistics}
 
 Both individual by-nominal-target bands are far more statistically
 significant than the flat aggregate ($p=1.9\times10^{-9}$ for the 30/30
@@ -1097,6 +1129,7 @@ anywhere in this paper.
 % - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.18 (falsification criteria)
 
 \subsection{Summary of Findings}
+\label{sec:results-summary}
 
 Realized ADS strongly predicts each mechanism's own accuracy (Section~5.2);
 it does not predict which mechanism wins (Section~5.3); the mechanistic
@@ -1109,9 +1142,11 @@ already established.
 
 % =============================================================================
 \section{Discussion}
+\label{sec:discussion}
 % =============================================================================
 
 \subsection{What the Experiment Supports}
+\label{sec:what-is-supported}
 
 In this synthetic experiment, historical decision consistency is informative
 about classification-mechanism \emph{difficulty}, not mechanism
@@ -1126,6 +1161,7 @@ hypothesis.
 % - research/CONTRIBUTION_LOCK.md Sec.6
 
 \subsection{The Production Case Study in Light of These Results}
+\label{sec:production-case-study}
 
 The production observation described in Section~1.1 is consistent with
 Section~5.2's positive finding -- a real deployment did show a measured
@@ -1146,6 +1182,7 @@ assumed to carry forward for a reader who begins at this section.
 % - research/MANUSCRIPT_ARCHITECTURE.md Sec.6 (production case study placement)
 
 \subsection{What the Original Hypothesis Got Right and Wrong}
+\label{sec:hypothesis-verdict}
 
 H1's deliberately weaker form -- better-than-chance agreement, not monotonic
 dominance in every band -- is exactly why a PARTIALLY\_SUPPORTED verdict was
@@ -1174,6 +1211,7 @@ single one of 18 tested conditions.
 % - research/EXPERIMENT_1_FINAL_RESULTS.md Sec.6, Sec.8
 
 \subsection{Mechanistic Explanation: Representation Stability}
+\label{sec:representation-stability}
 
 The evidence is consistent with a specific mechanistic account. Realized ADS
 is computed on the stable product identity, structurally blind to the
@@ -1190,7 +1228,7 @@ test of this exact causal claim on new data would strengthen it further
 % - research/CONTRIBUTION_LOCK.md Sec.2 step 8
 % - research/EXPERIMENT_1_DATA_DICTIONARY.md ("What realized ADS is, precisely")
 
-Table~\ref{tab:t5}'s widening gap reveals a specific asymmetry: retrieval's
+Table~\ref{tab:band-behavior}'s widening gap reveals a specific asymmetry: retrieval's
 accuracy cost under lexical noise stays comparatively flat across realized-ADS
 bands, while rules' cost grows with realized ADS. The perturbation degrades
 an exact-match mechanism's precondition -- identical surface strings -- in a
@@ -1210,6 +1248,7 @@ rules-minus-retrieval gap widens, rather than narrows, as realized ADS rises.
 % - research/PAPER_CONTRACT.md Sec.6
 
 \subsection{Relationship to Algorithm Selection and Meta-Learning}
+\label{sec:relation-algorithm-selection}
 
 This finding refines, rather than contradicts, the algorithm-selection and
 meta-learning lineage \citep{rice1976,smithmiles2009,barbudo2023} by
@@ -1225,6 +1264,7 @@ empirically observed blind spot in this experiment.
 % - research/literature/terminology_map.md
 
 \subsection{Implications for Practice and Future Selector Design}
+\label{sec:implications-practice}
 
 Four inferences this experiment does not license, stated explicitly rather
 than left implicit. It does not follow that consistency-style signals are
@@ -1256,6 +1296,7 @@ as a scoped method.
 
 % =============================================================================
 \section{Limitations}
+\label{sec:limitations}
 % =============================================================================
 % Every item from research/CONTRIBUTION_LOCK.md Sec.9 and
 % research/PAPER_CONTRACT.md Sec.6, undiluted, grouped as in the E2 skeleton.
@@ -1264,6 +1305,7 @@ as a scoped method.
 % intent (previously last, contradicting "not buried").
 
 \subsection{H1 Only Partially Supported}
+\label{sec:limits-h1}
 
 H1 (revised) is only partially supported, matching the pre-registered
 PARTIALLY\_SUPPORTED row of the falsification table exactly -- stated here as
@@ -1280,6 +1322,7 @@ explanation for the results reported in Section~5, not normalized away.
 % - research/CONTRIBUTION_LOCK.md Sec.9
 
 \subsection{Synthetic Generator and Perturbation Model Scope}
+\label{sec:limits-generator-scope}
 
 This experiment uses a single synthetic generator family; its 240 conditions
 replicate a seeded random-number generator, not an external population. The
@@ -1296,6 +1339,7 @@ CLEAN-condition comparisons -- a sensitivity this paper does not test.
 % EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.9; research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.22
 
 \subsection{Domain and Mechanism Scope}
+\label{sec:domain-mechanism-scope}
 
 The motivating case study is drawn from one domain, Romanian fiscal-document
 invoice-to-account classification. The experiment itself is domain-agnostic
@@ -1312,6 +1356,7 @@ Experiment~1.
 % - research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.10; research/CONTRIBUTION_LOCK.md Sec.9
 
 \subsection{Production Data Limitations}
+\label{sec:limits-production-data}
 
 The production consistency figures cited in Section~1.1 (91.2\% deterministic
 products, weighted ADS 0.847, unweighted ADS 0.964) were generated by an
@@ -1328,6 +1373,7 @@ does.
 % - research/CONTRIBUTION_LOCK.md Sec.7 (rejected claim), Sec.8
 
 \subsection{No Selector Fix and Limited Generalization}
+\label{sec:limits-no-selector-fix}
 
 No decision rule conditioning on both realized consistency and a
 representation-stability signal was designed, prototyped, or tested anywhere
@@ -1346,10 +1392,12 @@ build classification systems.
 
 % =============================================================================
 \section{Future Work}
+\label{sec:future-work}
 % =============================================================================
 % Every item below is named, not built. All explicitly hedged as untested.
 
 \subsection{Representation-Stability-Aware Selectors}
+\label{sec:future-selectors}
 
 A decision rule that conditions mechanism selection on both realized ADS and
 a measured, not assumed, representation-stability signal is the direct next
@@ -1359,6 +1407,7 @@ prototyped, or partially tested here; it is named only.
 % EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.10 (item 1)
 
 \subsection{Generalization: Additional Domains and Mechanisms}
+\label{sec:future-domains}
 
 Re-running the corrected pipeline against a second domain's data would test
 whether the domain-agnostic design of Section~3.1 actually transfers, which
@@ -1374,6 +1423,7 @@ implementations such as embedding-based retrieval, is untested here.
 % EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.10 (item 2); research/EXPERIMENT_1_REDESIGN_REVIEW.md Sec.9
 
 \subsection{Real-World Noise Models and Independent Datasets}
+\label{sec:future-noise-models}
 
 A real, rather than synthetic, noise or OCR-error model calibrated against an
 actual document corpus would test whether the pattern observed under
@@ -1390,6 +1440,7 @@ specifically.
 % EVIDENCE: research/CONTRIBUTION_LOCK.md Sec.9 (single-generator-family limitation)
 
 \subsection{Broader Architecture-Selection Experiments}
+\label{sec:future-architecture-experiments}
 
 A baseline comparison against simpler pipelines, and a before/after
 measurement of the production feedback loop, are both recommended in prior
@@ -1402,6 +1453,7 @@ planned, scheduled, or begun.
 
 % =============================================================================
 \section{Conclusion}
+\label{sec:conclusion}
 % =============================================================================
 
 This paper tested, with a pre-registered, 240-condition synthetic factorial
@@ -1429,6 +1481,10 @@ validated method, and not a new metric or architecture.
 
 % =============================================================================
 \section*{Reproducibility Statement}
+% No \label here: \section* does not step the section counter, so a \label
+% would capture \@currentlabel from the last numbered section and any \ref
+% to it would render that number. Correct anchoring needs \phantomsection
+% (hyperref), which this manuscript deliberately does not load.
 % =============================================================================
 
 \begin{sloppypar}
@@ -1453,6 +1509,10 @@ arXiv source package.
 
 % =============================================================================
 \section*{Acknowledgements}
+% No \label here: \section* does not step the section counter, so a \label
+% would capture \@currentlabel from the last numbered section and any \ref
+% to it would render that number. Correct anchoring needs \phantomsection
+% (hyperref), which this manuscript deliberately does not load.
 % =============================================================================
 
 AI assistance disclosure. Generative AI tools were used during the research
