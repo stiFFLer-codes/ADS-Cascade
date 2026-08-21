@@ -212,7 +212,8 @@ VARIED (a fixed, controlled lexical/surface-form perturbation) -- are crossed
 with six nominal historical-consistency targets and twenty random seeds. A
 third mechanism, a large language model, is deliberately excluded from the
 primary comparison for a documented, principled reason detailed in
-Section~4: not because it was inconvenient to include, but because the
+Section~\ref{sec:domain-mechanism-scope}: not because it was inconvenient to
+include, but because the
 synthetic generator's product string carries no signal predictive of the
 true label, which would make any LLM result uninterpretable as evidence about
 historical consistency.
@@ -265,7 +266,9 @@ one specific, already-used signal succeeds and where it fails.
 
 Section~2 positions this work against the algorithm-selection, meta-learning,
 AutoML, self-designed-systems, reject-option, learning-to-defer, and model-
-cascade literatures. Section~3 defines the historical-consistency signal and
+cascade literatures, with Table~\ref{tab:positioning} setting out the prior
+art and the narrow delta row by row. Section~3 defines the
+historical-consistency signal and
 the accuracy/ranking distinction the rest of the paper is organized around.
 Section~4 describes the experimental design in full. Section~5 reports
 results, keeping the accuracy and ranking findings in separate subsections.
@@ -501,7 +504,8 @@ assigned its modal label. This is mathematically identical to cluster purity
 \citep{manning2008,amigo2009} and to the raw majority-vote-agreement
 baseline used throughout the crowdsourcing literature descending from
 \citet{dawidskene1979} (Section~2.1); it is a descriptive statistic, not a
-novel contribution of this paper. Two aggregates of ADS over a product
+novel contribution of this paper. Two aggregates of the per-item score in
+Equation~\eqref{eq:ads} over a product
 population are used later in this paper only as diagnostic covariates, never
 as the primary independent variable: the occurrence-weighted mean (what a
 random transaction actually experiences) and the unweighted mean (the
@@ -624,7 +628,7 @@ Two factors are varied systematically. The first is the generator's nominal
 target for the share of products intended to be near-deterministic, run at
 six levels: $\{0.00, 0.20, 0.30, 0.50, 0.75, 1.00\}$. The second is the
 lexical condition, CLEAN or VARIED, two levels. Crossed with 20 seeds, this
-produces $6 \times 2 \times 20 = 240$ conditions exactly, the frozen final
+produces $6 \times 2 \times 20 = 240$ conditions exactly (Figure~\ref{fig:design-flow}), the frozen final
 run this paper reports. A separate, wider 17-point grid was used only during
 an earlier, mechanism-blind calibration pass (Section~4.8) to characterize
 the generator's realizable range; it is not itself part of the 240-condition
@@ -745,7 +749,8 @@ mechanism-selection rule.
 % - research/EXPERIMENT_1_EVIDENCE_CHECKPOINT.md Sec.11 (integrity checks)
 
 Within a condition, both mechanisms are scored on identical held-out test
-lines -- a paired, not an independent, comparison. The empirical winner is
+lines -- a paired, not an independent, comparison. The empirical winner,
+stated formally in Equation~\eqref{eq:winner}, is
 defined by a paired bootstrap on the accuracy difference
 $\mathrm{acc}_{\mathrm{rules}}-\mathrm{acc}_{\mathrm{retrieval}}$ (2{,}000
 resamples, 95\% percentile interval): rules wins if the entire confidence
@@ -844,10 +849,12 @@ The entire generator, both mechanisms, the lexical perturbation model, and
 the calibration and analysis code are public, offline, require no API keys
 or external cost, and are covered by an automated test suite. The
 240-condition dataset itself is generated, not collected: re-running the
-committed seed manifest via \texttt{python
+committed seed manifest under the frozen configuration of Table~\ref{tab:config}
+via \texttt{python
 scripts/experiments/exp1/run\_final.py} reproduces the results reported in
 Section~5 exactly. By contrast, the production case study discussed in
-Sections~1.1 and~6.2 is confidential: only cited aggregate statistics appear
+Sections~\ref{sec:motivation} and~\ref{sec:production-case-study} is
+confidential: only cited aggregate statistics appear
 in this paper, never row-level data, and it is not reproducible from this
 repository in any sense. A reader can therefore reproduce this paper's
 entire statistical evidence base for the accuracy and ranking findings
@@ -930,7 +937,7 @@ draft.
 
 Realized ADS is strongly correlated with each mechanism's own accuracy, in
 both lexical conditions and reported for both mechanisms rather than only the
-stronger one: Pearson $r(\text{realized ADS}, \text{rules accuracy})
+stronger one (Figure~\ref{fig:ads-vs-accuracy}): Pearson $r(\text{realized ADS}, \text{rules accuracy})
 \approx 0.909$ (VARIED) and $0.959$ (CLEAN); $r(\text{realized ADS},
 \text{retrieval accuracy}) \approx 0.948$ (VARIED) and $0.955$ (CLEAN). This
 is a correlational finding about each mechanism's own performance level --
@@ -959,7 +966,7 @@ Realized ADS does not predict which mechanism wins. Under VARIED, the
 empirical winner is retrieval in all 120 of 120 conditions -- exceptionless,
 unconditional on realized ADS across its full observed range (0.44--0.93).
 Under CLEAN, the empirical winner is a tie in all 120 of 120 conditions --
-also exceptionless. The lexical condition here is a manipulated, controlled
+also exceptionless (Figure~\ref{fig:ranking-constancy}). The lexical condition here is a manipulated, controlled
 experimental factor, not merely an observational correlate, which is what
 licenses describing the empirical winner as \emph{governed by} the lexical
 condition in Section~6, rather than only correlated with it. Because realized
@@ -992,7 +999,7 @@ structure rather than the flat aggregate. Binned by each row's own realized
 ADS against R3's own thresholds -- the primary framing, matching the locked
 wording this paper draws on -- R3 agrees with the empirical winner
 in 100\% (32 of 32) of conditions in the realized 0.70--0.90 band, and in 0\%
-(0 of 18) of conditions in the realized $\geq0.90$ band. A secondary, also
+(0 of 18) of conditions in the realized $\geq0.90$ band (Figure~\ref{fig:r3-agreement}). A secondary, also
 valid framing bins by nominal target rather than each row's own realized
 value: 30 of 30 (100\%) at nominal targets 0.50 and 0.75, and 2 of 20 (10\%)
 at nominal target 1.00. These two framings differ because nominal target and
@@ -1005,7 +1012,7 @@ explicitly labeled, rather than silently switching between them.
 Only after this band structure do we report the flat aggregate: 32 of 50
 defined comparisons agree (64.0\%), Wilson 95\% confidence interval
 $[50.14\%, 75.86\%]$, exact binomial $p=0.0649$ against a 50\% chance
-baseline -- not significant at $\alpha=0.05$. This aggregate is a
+baseline -- not significant at $\alpha=0.05$ (Table~\ref{tab:main-results}). This aggregate is a
 near-cancellation of two individually far more decisive, opposite patterns:
 the per-row realized-ADS bands are exceptionless (32 of 32 and 0 of 18), and
 the corresponding by-nominal-target counts are independently significant at
@@ -1493,7 +1500,8 @@ calibration and analysis code used to produce every number in Section~5 are
 public and offline-reproducible with no client data, no API keys, and no
 cost; re-running \texttt{python scripts/experiments/exp1/run\_final.py}
 reproduces \texttt{final\_condition\_results.csv} exactly. The production
-case study discussed in Sections~1.1 and~6.2 is confidential and not
+case study discussed in Sections~\ref{sec:motivation}
+and~\ref{sec:production-case-study} is confidential and not
 reproducible from this repository in any sense; only its cited aggregate
 statistics appear in this paper. That file is committed in the paper's public
 code repository, at
