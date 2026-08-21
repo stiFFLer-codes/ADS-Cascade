@@ -66,27 +66,24 @@ repository. For the broader Phase 1/2 Engineering Report this experiment is moti
 \end{center}
 
 \begin{abstract}
-Classification systems are usually built by selecting a mechanism -- rules,
-retrieval, a trained model -- before any measurement of whether that choice
-fits the data. We ask whether historical decision consistency, measured
-before deployment, can be used to select between qualitatively different
-classification mechanisms. We test this with a pre-registered, 240-condition
-synthetic factorial experiment (20 seeds $\times$ 6 nominal-consistency
+Can historical decision consistency, measured before deployment, tell a
+system designer which classification mechanism to build? We test this with a
+pre-registered 240-condition synthetic factorial experiment (20 seeds $\times$ 6 nominal-consistency
 targets $\times$ 2 lexical conditions) comparing exact-match rules against
 fuzzy retrieval, under both a lexically clean condition and a controlled
-lexical/surface-form perturbation. Realized historical consistency is
-strongly correlated with each mechanism's own accuracy (Pearson $r>0.9$ in
-both lexical conditions), but it does not predict which mechanism wins: a
-frozen, pre-specified consistency-threshold decision rule agrees with the
-empirically best-performing mechanism in 100\% of comparisons in one
-consistency band and in 0\% of comparisons in another, because the empirical
-winner is instead a constant function of the separately manipulated lexical
-condition -- a variable the consistency signal is constructed to be blind to.
+lexical/surface-form perturbation. The answer splits in two.
+Realized consistency predicts each mechanism's own accuracy well (Pearson
+$r>0.9$ in both lexical conditions). It does not predict which mechanism
+wins. A frozen, pre-specified consistency-threshold rule agrees with the
+empirically best mechanism in 100\% of comparisons in one consistency band
+and 0\% in another, because the winner is instead a constant function of the
+separately manipulated lexical condition, a variable the consistency signal
+is constructed not to observe.
 This finding is scoped to one synthetic generator, one lexical-perturbation
 model, and one motivating (non-evidentiary) production case study; it is not
-a deployment or generalization claim. We conclude that a design-time selector
-built on historical consistency alone should not be used to predict which
-mechanism will win. Whether a selector that also conditions on a measured
+a deployment or generalization claim. A design-time selector built on historical
+consistency alone therefore cannot predict which mechanism will win in this
+setting. Whether a selector that also conditions on a measured
 representation-stability signal would reliably predict which mechanism wins
 is the direct next hypothesis this experiment motivates: no such selector was
 designed, prototyped, or tested here.
@@ -264,6 +261,25 @@ one specific, already-used signal succeeds and where it fails.
 % - research/CONTRIBUTION_LOCK.md Sec.6 (exact wording to reuse)
 % - research/PAPER_CONTRACT.md Sec.8
 
+\subsection{Scope and Non-Novelty}
+\label{sec:scope-non-novelty}
+
+Four things this paper does not claim, stated once here rather than repeated
+at each point of contact. ADS is not a new metric: its closed form is cluster
+purity, and equally the raw majority-vote agreement proportion
+(Section~\ref{sec:cluster-purity}). Design-time selection from historical
+evidence is not a new pattern; it is the Algorithm Selection Problem
+\citep{rice1976} and its descendants. R3 is not a proposed method: it is
+reused unmodified from a production system's own rule taxonomy, and this
+paper measures where it fails. The application domain is not unprecedented;
+at least one non-peer-reviewed industry source \citep{kenfromfinance2025}
+describes similar practice already in use. What the paper does claim is a
+bounded empirical result about where one already-used signal succeeds and
+where it fails.
+
+\subsection{Paper Roadmap}
+\label{sec:roadmap}
+
 Section~2 positions this work against the algorithm-selection, meta-learning,
 AutoML, self-designed-systems, reject-option, learning-to-defer, and model-
 cascade literatures, with Table~\ref{tab:positioning} setting out the prior
@@ -295,11 +311,9 @@ expression as ADS under the substitution "cluster" $\leftrightarrow$ "an
 item's historical booking multiset." Independently, the raw majority-vote
 agreement proportion used throughout the crowdsourcing and truth-inference
 literature descending from \citet{dawidskene1979} is the same quantity under
-a different name, applied to the same kind of repeated-labeling data. We
-therefore make no claim that ADS is a novel metric -- this is a closed
-question, not an open one, and the paper's contribution, developed in the
-following subsections and in Section~5, lies entirely in what this
-already-known metric is used for, not in its formula.
+a different name, applied to the same kind of repeated-labeling data. The
+paper's contribution lies in what this already-known metric is used for, not
+in its formula.
 
 % EVIDENCE:
 % - research/literature/ads_metric_prior_art.md
@@ -315,9 +329,8 @@ algorithm per problem instance. \citet{smithmiles2009} unifies this framing
 with meta-learning, and later work applies the same design-time,
 historical-evidence-driven pattern to select a generic machine-learning
 algorithm within the same broad application area, classification, that this
-paper studies. We make no claim that design-time selection from historical
-evidence is itself new -- this general pattern is well established. This
-paper's narrower question is whether a \emph{label-consistency-specific}
+paper studies. This general pattern is well established. This paper's
+narrower question is whether a \emph{label-consistency-specific}
 signal, as opposed to generic statistical meta-features or benchmarked
 performance search, predicts a \emph{qualitative mechanism-class} choice
 (rules versus retrieval, not one machine-learning algorithm versus another),
@@ -332,10 +345,8 @@ selection toward automated, benchmarked-performance-driven workflow
 composition, describing the field as having moved from the algorithm
 selection problem toward the broader challenge of composing an entire
 processing workflow -- the closest terminological echo of this paper's own
-framing found in the surrounding literature. This paper's simple,
-interpretable threshold rule is not offered as a competitor to that automated
-search paradigm. The delta is one of evidence type and mechanism, not
-performance: this paper studies a label-consistency signal driving a named,
+framing found in the surrounding literature. The delta is one of evidence
+type and mechanism, not performance: this paper studies a label-consistency signal driving a named,
 interpretable threshold rule, not a benchmarked optimization search over a
 combinatorial pipeline space -- a difference in kind, not a claim of
 superiority.
@@ -351,10 +362,9 @@ evidence type there is workload or query \emph{frequency}, not label
 \emph{consistency}, and the literature's own thesis is continuous
 self-adaptation, explicitly rejecting a one-time, human-gated design
 decision -- the opposite temporal structure from the one this paper's
-experiment tests. We do not claim that a one-shot, pre-deployment design gate
-is itself a contribution; if anything, it is the position this literature
-argues against, cited here as contrast rather than as an unsolved problem
-this paper addresses. This paper's experiment is about a specific signal type
+experiment tests. This literature argues against the one-shot gate; it is
+cited here as contrast, not as an unsolved problem this paper addresses.
+This paper's experiment is about a specific signal type
 (label consistency) and its specific limitation (blindness to representation
 instability), not a defense of the one-shot-gate design pattern in general.
 
@@ -368,9 +378,8 @@ instability), not a defense of the one-shot-gate design pattern in general.
 \citet{chow1970} originates the single-threshold accept/reject decision on
 live posterior confidence, formalized further by \citet{elyaniv2010}'s
 risk-coverage framework and surveyed comprehensively by
-\citet{hendrickx2024}. Nothing in this experiment is offered as a new
-reject-option variant. This literature is not directly engaged by
-Experiment~1 at all, because Experiment~1 tests a \emph{design-time}
+\citet{hendrickx2024}. This literature is not directly engaged by
+Experiment~1, because Experiment~1 tests a \emph{design-time}
 selection rule applied once before deployment, not a \emph{runtime} reject
 threshold applied per item at inference time; we cite it only to establish
 that distinction, which this paper's scope sits firmly on the design-time
@@ -382,9 +391,8 @@ side of.
 
 \citet{mozannarsontag2020} establishes the modern learning-to-defer
 framework: a trained or rule-based function decides, per item, whether to
-defer to a human, informed by historical decision data. We do not claim that
-this experiment's mechanism-selection rule is an instance of learning to
-defer. As with reject-option methods, this literature establishes the same
+defer to a human, informed by historical decision data. As with
+reject-option methods, this literature establishes the same
 design-time/inference-time boundary this paper's scope sits on the design-time
 side of; the production system's runtime human-escalation cascade sits closer
 to this literature, but that cascade is not evaluated in Experiment~1, which
@@ -399,8 +407,7 @@ surrounding literature to a multi-tier, historically-calibrated cascade of
 classification mechanisms. RankGPT \citep{rankgpt2023} establishes that
 using a large language model to re-rank a pre-fetched candidate list, rather
 than to classify from a blank input, is commodity information-retrieval
-technique. Experiment~1's two-mechanism comparison is not itself put forward
-as a cascade contribution. Neither family is directly relevant to the
+technique. Neither family is directly relevant to the
 experiment reported here -- the LLM mechanism is explicitly excluded from
 Experiment~1 (Section~7.3) -- and both are cited only for completeness of the
 design-time/runtime distinction this paper's framing depends on.
@@ -422,11 +429,9 @@ the same phenomenon the production system's own cross-company-consistency
 threshold encodes, though reported there as a direct accuracy gap rather than
 formalized into a named metric. Independent industry sources (accounts-payable
 automation vendors, not peer-reviewed) \citep{kenfromfinance2025,peakflo2025,ramp2025} describe
-similar informal historical-consistency-audit practice already in production use. We do not
-claim that the application domain itself is unprecedented, or that no vendor
-measures historical consistency before choosing a mechanism -- at least one
-industry source \citep{kenfromfinance2025} (not peer-reviewed) directly contradicts that framing. The narrow delta that
-survives is academic, not methodological: no peer-reviewed study of this
+similar informal historical-consistency-audit practice already in production
+use. The narrow delta that survives, stated row by row in
+Table~\ref{tab:positioning}, is academic, not methodological: no peer-reviewed study of this
 specific document-classification niche was found in the literature search
 this paper's evidence base draws on, which is a modest, honest niche-novelty
 observation, much weaker than any claim of methodological novelty, and not
@@ -510,7 +515,7 @@ population are used later in this paper only as diagnostic covariates, never
 as the primary independent variable: the occurrence-weighted mean (what a
 random transaction actually experiences) and the unweighted mean (the
 catalog's intrinsic learnability). The primary independent variable
-throughout Sections~4--5 is a third quantity, \emph{realized} ADS,
+throughout Sections~\ref{sec:experimental-design} and~\ref{sec:results} is a third quantity, \emph{realized} ADS,
 introduced precisely in Section~4.3.
 
 % EVIDENCE:
@@ -1144,8 +1149,8 @@ reason is the ADS-by-representation-stability interaction reported in
 Section~5.5; and the flat 64.0\% aggregate agreement rate alone
 under-communicates the underlying 100\%-versus-0\% band structure
 (Section~5.4). These four statements, taken together, are what Section~6
-discusses; none of them is new information beyond what Sections~5.2--5.6
-already established.
+discusses; none of them is new information beyond what the preceding
+subsections already established.
 
 % =============================================================================
 \section{Discussion}
@@ -1476,10 +1481,11 @@ not mechanism \emph{ranking}, when, as observed here, ranking is governed by
 a representation-stability property the consistency signal does not observe.
 What remains open is whether a decision rule conditioning on both consistency
 and a measured representation-stability signal would perform better -- named
-here as a direction, not built or tested. This paper's contribution is a
-precise, evidenced boundary on what a historical-consistency signal can and
-cannot tell a system designer, not a solution to mechanism selection, not a
-validated method, and not a new metric or architecture.
+here as a direction, not built or tested. The practical consequence is narrow
+and concrete: a design-time selector reading only a consistency statistic is
+most confident exactly where it is most wrong. In the realized $\geq0.90$
+band, where R3's recommendation for rules is strongest, it disagreed with the
+empirical winner in all 18 tested conditions.
 
 % EVIDENCE:
 % - research/CONTRIBUTION_LOCK.md Sec.11.B, Sec.11.C
